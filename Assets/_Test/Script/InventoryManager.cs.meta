@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c4c110450104c1543b860426750c0ed8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spawnButton: {instanceID: 0}
+  - draggablePrefab: {fileID: 380982778855153007, guid: af0e071d2add4324990714acbe3aaf2c,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

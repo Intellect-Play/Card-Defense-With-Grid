@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e87cabd9f5de147824233e3c35ae6f, type: 3}
+  m_Name: Inventor
+  m_EditorClassIdentifier: 
+  heroName: Inventor
+  heroCard: {fileID: 365907408403012254, guid: 9ad3cefae12724a409b5e2a1f3e0d09a, type: 3}
+  heroImg: {fileID: 21300000, guid: eb7551d524d3d1f4f9bea1e446dd5884, type: 3}
+  cardImg: {fileID: 21300000, guid: 9794073a40ab64e6c9db62041f368a83, type: 3}
+  heroCards:
+  - {fileID: 11400000, guid: 813a5d41be7f89f43b825f4be22ca02d, type: 2}
+  - {fileID: 11400000, guid: 78eee6b72af58c14e8b847d5ca6ac4b4, type: 2}
+  - {fileID: 11400000, guid: 72876aec0fb3a3c4dbafef2e96ecc3e9, type: 2}
+  - {fileID: 11400000, guid: 631873dd26503a64f874650d1ecc403f, type: 2}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e87cabd9f5de147824233e3c35ae6f, type: 3}
+  m_Name: Samurai
+  m_EditorClassIdentifier: 
+  heroName: Samurai
+  heroCard: {fileID: 365907408403012254, guid: 05d263e491afd8b49a4c72783362963f, type: 3}
+  heroImg: {fileID: 21300000, guid: 59fd76ebe42715346a04e9dc4719a9bb, type: 3}
+  cardImg: {fileID: 21300000, guid: c6962cf573ca841849c5dc702166ac19, type: 3}
+  heroCards:
+  - {fileID: 11400000, guid: 0adcbc7e7cd283749998bffe6f0fdd12, type: 2}
+  - {fileID: 11400000, guid: 947a3980207347e4aad52389b5171619, type: 2}
+  - {fileID: 11400000, guid: 407d2fbeef3d6df4abeca62f83d5fd24, type: 2}
+  - {fileID: 11400000, guid: 6f63b52fa55338e4bad49d78a7ba6530, type: 2}

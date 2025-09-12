@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e87cabd9f5de147824233e3c35ae6f, type: 3}
+  m_Name: Wizard
+  m_EditorClassIdentifier: 
+  heroName: Wizard
+  heroCard: {fileID: 365907408403012254, guid: e0d4128293ce03944acaf6c4917281c4, type: 3}
+  heroImg: {fileID: 21300000, guid: 02b9c3733867050438a272cca3a31574, type: 3}
+  cardImg: {fileID: 21300000, guid: 81c20c48a98014629b2906ae399e4996, type: 3}
+  heroCards:
+  - {fileID: 11400000, guid: eb41ab71461dd0c4fb81a80834d43155, type: 2}
+  - {fileID: 11400000, guid: be20549d0349ecf41a4d1b46c6d385e9, type: 2}
+  - {fileID: 11400000, guid: 8854384f6ddcbee42b313e2bc4cb963c, type: 2}
+  - {fileID: 11400000, guid: 181a978c9cca0da4ab9925f740e6b305, type: 2}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2801d9150db9dc0429a06a64931fb341, type: 3}
+  m_Name: InvCooldown
+  m_EditorClassIdentifier: 
+  cardName: Inventor Cooldown
+  baseDmg: 0
+  baseSpeed: 0
+  fireInterval: 0
+  artwork: {fileID: 21300000, guid: eda38c6a3395a5a4196f48a8955389e0, type: 3}
+  fireObject: {fileID: 0}
