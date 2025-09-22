@@ -66,6 +66,7 @@ public class Wave
 {
     [Header("Gold Amount Multiplier")]
     public float goldAmountMultiplier = 1.0f;
+    public bool RoguelikeBool = false;
 
     [Header("Wave Composition")]
     public List<EnemyCount> enemies = new List<EnemyCount>();

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 2966281f737bc9744a0d0018774081f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -210,6 +210,7 @@ MonoBehaviour:
   attackType: 0
   chainCount: 0
   areaRadius: 0
+  _damage: 0
 --- !u!1001 &2714219266397963841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,7 +222,7 @@ PrefabInstance:
     - target: {fileID: 3562795021545226354, guid: 3da013f10a18a1c4b9e13dcda6944915,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3610722308158284858, guid: 3da013f10a18a1c4b9e13dcda6944915,
         type: 3}
@@ -293,6 +294,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: fire_ball
       objectReference: {fileID: 0}
+    - target: {fileID: 4187909247667986630, guid: 3da013f10a18a1c4b9e13dcda6944915,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4288456350930261766, guid: 3da013f10a18a1c4b9e13dcda6944915,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -341,12 +347,12 @@ PrefabInstance:
     - target: {fileID: 6451313203081552907, guid: 3da013f10a18a1c4b9e13dcda6944915,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9107102018129939109, guid: 3da013f10a18a1c4b9e13dcda6944915,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 24
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

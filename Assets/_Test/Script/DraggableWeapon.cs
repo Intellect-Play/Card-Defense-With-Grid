@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -73,7 +72,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (weaponData == null) return;
+        if (weaponData == null || !TetrisWeaponManager.isTetrisScene) return;
 
         //originalParent = transform.parent;
         originalParentSlot = parentSlot;
@@ -93,7 +92,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (weaponData == null) return;
+        if (weaponData == null||!TetrisWeaponManager.isTetrisScene) return;
         Vector2 localPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas as RectTransform,
@@ -108,6 +107,8 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!TetrisWeaponManager.isTetrisScene) return;
+
         InventoryManager.instance.ActiveWeaponsRay(true); 
         if (transform.parent == canvas) 
         { 

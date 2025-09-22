@@ -23,25 +23,25 @@ public class GridInventory : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            int z = 0;
-            //Debug.Log("Grid state:");
-            for (int y = 0; y < height; y++)
-            {
-                for (int x = 0; x < width; x++)
-                {
-                    if (grid[x, y] != null)
-                    {
-                        line = z+" "+grid[x, y].name.ToString() + x + " " + y;
-                        //Debug.Log(line);
-                        ++z;
-                    }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    int z = 0;
+        //    //Debug.Log("Grid state:");
+        //    for (int y = 0; y < height; y++)
+        //    {
+        //        for (int x = 0; x < width; x++)
+        //        {
+        //            if (grid[x, y] != null)
+        //            {
+        //                line = z+" "+grid[x, y].name.ToString() + x + " " + y;
+        //                //Debug.Log(line);
+        //                ++z;
+        //            }
                         
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
     }
     public bool InBounds(int x, int y) => x >= 0 && y >= 0 && x < width && y < height;
 

@@ -39,7 +39,7 @@ public class CardDeckAnimator : MonoBehaviour
     public bool avoidImmediateRepeat = true;
     public bool revertMaterialAfterFire = false;
     public float revertDelay = 0.25f;
-
+    public StaticWeapon staticWeapon;
     [Header("Debug")]
     public bool verboseLogs = false;
 
@@ -91,13 +91,23 @@ public class CardDeckAnimator : MonoBehaviour
         animCooldownSecs = Mathf.Max(0.05f, animCooldownSecs * f);
         if (verboseLogs) Debug.Log($"[CardDeckAnimator] animCooldownSecs={animCooldownSecs:0.###}");
     }
+    private float timer;
+    public float fireInterval = 2f; // neçə saniyədən bir işləsin
+
     void Update()
     {
+        if(TetrisWeaponManager.isTetrisScene) return;
         float dt = useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
 
-        // 🔹 Əgər Space basılıbsa → random kart seç və vur
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Timer artır
+        timer += dt;
+
+        // Əgər vaxt çatıbsa → işlə
+        if (timer >= fireInterval)
         {
+            timer = 0f; // sıfırla
+
+            if (!staticWeapon.isActive) return;
             _currentCycleCard = PickRandomCard();
             if (_currentCycleCard)
             {
@@ -111,6 +121,7 @@ public class CardDeckAnimator : MonoBehaviour
             }
         }
     }
+
 
     //void Update()
     //{

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: fff440228d7f44a65ba4507a5d747757, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -209,6 +209,7 @@ MonoBehaviour:
   attackType: 0
   chainCount: 0
   areaRadius: 0
+  _damage: 0
 --- !u!1001 &1602476037095453275
 PrefabInstance:
   m_ObjectHideFlags: 0

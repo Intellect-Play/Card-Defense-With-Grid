@@ -122,7 +122,7 @@ public class RoguelikeManager : MonoBehaviour
         if (PlayerPrefs.GetInt("Hero_Wizard",   0) == 1)
             list.Add(new RoguelikeOption { type = OptionType.NewHero, deckName = "Wizard",   targetHero = wizardSO   });
         if (PlayerPrefs.GetInt("Hero_Samurai",  0) == 1)
-            list.Add(new RoguelikeOption { type = OptionType.NewHero, deckName = "Samurai",  targetHero = samuraiSO  });
+           list.Add(new RoguelikeOption { type = OptionType.NewHero, deckName = "Samurai",  targetHero = samuraiSO  });
 
         if (list.Count == 0)
         {
@@ -187,6 +187,7 @@ public class RoguelikeManager : MonoBehaviour
 
     private void InitAllCardsSessionLevelsFromPrefs()
     {
+        Debug.Log("RoguelikeManager: Initializing all card session levels from PlayerPrefs.");
         InitDeckSessionLevelsFromPrefs("Inventor");
         InitDeckSessionLevelsFromPrefs("Wizard");
         InitDeckSessionLevelsFromPrefs("Samurai");
@@ -223,6 +224,7 @@ public class RoguelikeManager : MonoBehaviour
 
     public IEnumerator RunRoguelike(int waveNumber, List<RoguelikeOption> options)
     {
+        Debug.Log($"RoguelikeManager: Running roguelike options for wave {waveNumber}.");
         // Active decks right now
         var activeDecks = new List<string>();
         if (PlayerPrefs.GetInt("Deck_Inventor_Active", 0) == 1) activeDecks.Add("Inventor");
@@ -247,7 +249,7 @@ public class RoguelikeManager : MonoBehaviour
         List<string> InactiveHeroes()
         {
             var list = new List<string>();
-            foreach (var d in new[] { "Inventor", "Wizard", "Samurai" })
+            foreach (var d in new[] { "Inventor", "Wizard", "Samurai" })//
                 if (PlayerPrefs.GetInt($"Deck_{d}_Active", 0) == 0) list.Add(d);
             return list;
         }

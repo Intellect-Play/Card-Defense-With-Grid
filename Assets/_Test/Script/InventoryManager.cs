@@ -62,6 +62,14 @@ public class InventoryManager : MonoBehaviour
         if (spawnButton != null) spawnButton.onClick.AddListener(SpawnWeapons);
         SpawnWeapons();
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SpawnWeapons();
+
+        }
+    }
     public void ActiveWeaponsRay(bool isActive)
     {
         for (int i = AllWeapons.Count - 1; i >= 0; --i)

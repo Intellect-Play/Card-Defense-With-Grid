@@ -12,33 +12,49 @@ public class StaticWeapon : MonoBehaviour
     public Transform BulletPos;
     [SerializeField] private Image icon;
     [SerializeField] private Image icon2;
+    [SerializeField] private GameObject WeaponSpawned;
 
     [SerializeField] private PlacedWeapon? placedWeapon;
     public Camera mainCamera;
+    public CardDeckAnimator cardDeckAnimator;
+
     private void Awake()
     {
         //placedWeapon = randomWeaponSpawner.inventoryManager.gridInventory.grid[gridPosition.x, gridPosition.y];
         //icon.GetComponent<Image>();
 
     }
+
     public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera camera)
+    {
+        Init(_weaponData, Level, pos, camera, WeaponSpawned);
+    }
+
+    public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera camera, GameObject weaponSpawned)
     {
         gameObject.name = _weaponData.weaponName.ToString();
         weaponData = _weaponData;
         gridPosition = pos;
         isActive = false;
+        WeaponSpawned = Instantiate(weaponData.weaponType,Vector3.zero,Quaternion.identity,transform);
+
+        cardDeckAnimator = WeaponSpawned.GetComponentInChildren<CardDeckAnimator>();
+        cardDeckAnimator.staticWeapon = this;
+        cardDeckAnimator.cards[0].attackType = weaponData.attackType;
+        WeaponSpawned.transform.localScale = new Vector3(.5f,.5f,.5f);
         SetIcon();
-        BulletPos.SetParent(null); // detach UI parent
+        WeaponSpawned.transform.SetParent(null); // detach UI parent
 
-        //// UI pozisiyasını world-space-ə çevir
-        //float zDistance = Mathf.Abs(Camera.main.transform.position.z - 0); // düşmənin Z-dəyəri
-        BulletPos.position = new Vector3(
-            BulletPos.position.x,
-            BulletPos.position.y,
-            0
-        );
+        ChangePosWeapon();
 
-
+    }
+    public void ChangePosWeapon()
+    {
+        WeaponSpawned.transform.position = new Vector3(
+           BulletPos.position.x,
+           BulletPos.position.y,
+           0
+       );
     }
     public void Shuffle(Vector2Int pos)
     {       

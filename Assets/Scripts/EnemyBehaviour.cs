@@ -132,7 +132,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (_dead || _dying) return;
 
         // Move the general parent in world space; do NOT rotate it.
-        if (!_isAttacking)
+        if (!_isAttacking&&!TetrisWeaponManager.isTetrisScene)
             _owner.Translate(Vector3.down * moveSpeed * Time.deltaTime, Space.World);
     }
 
@@ -216,7 +216,7 @@ public class EnemyBehaviour : MonoBehaviour
                   StartContinuousYBob(offsetY, halfTime);
               });
           _yBobTweenId = t2.id;
-      });
+      }).setIgnoreTimeScale(false); 
 
       
     }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a30482f62954154b99ea71caba5d978, type: 3}
   m_Name: Arrow
   m_EditorClassIdentifier: 
-  weaponName: 
+  weaponName: 0
   icons:
   - {fileID: 21300000, guid: 68d6303cd7054684b992ca89a17b77be, type: 3}
   - {fileID: 21300000, guid: 5820e0cf909487f41ba35d82922d5b01, type: 3}
@@ -22,3 +22,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aa58df41c2e43f94f989397810468e40, type: 3}
   - {fileID: 21300000, guid: 277a220e29df86a42a750c5f76d40d61, type: 3}
   levelWeapon: 1
+  levelToIconIndex: 0000000001000000010000000200000002000000
+  attackType: 8
+  weaponType: {fileID: 7787875020771003900, guid: 68690f8cf8ac74e4a85174c7202a30d3,
+    type: 3}

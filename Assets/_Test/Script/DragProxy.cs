@@ -13,7 +13,7 @@ public class DragProxy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (parent == null) return;
+        if (parent == null || !TetrisWeaponManager.isTetrisScene) return;
 
         // pointerDrag-ı parent obyektə yönləndir
         eventData.pointerDrag = parent.gameObject;
@@ -22,7 +22,7 @@ public class DragProxy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (parent == null) return;
+        if (parent == null || !TetrisWeaponManager.isTetrisScene) return;
 
         eventData.pointerDrag = parent.gameObject;
         parent.OnDrag(eventData);
@@ -36,7 +36,7 @@ public class DragProxy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (parent == null) return;
+        if (parent == null || !TetrisWeaponManager.isTetrisScene) return;
 
         eventData.pointerDrag = parent.gameObject;
         parent.OnEndDrag(eventData);

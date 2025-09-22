@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     public float      areaRadius;
 
     private Vector3 _direction = Vector3.up;
-    private int     _damage    = 0;
+    public int     _damage    = 0;
     private float   _speed     = 5f;
 
     // -------------------- Fire entry --------------------
@@ -1327,7 +1327,7 @@ public class Bullet : MonoBehaviour
     private static Vector3 FindDirectionToClosestEnemy(Vector3 origin)
     {
         Vector3 dir = Vector3.up;
-        float best = float.MaxValue;
+        float best = GameManager.Instance.bulletInterval;
         foreach (var e in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             if (!e.activeInHierarchy) continue;
@@ -1340,7 +1340,7 @@ public class Bullet : MonoBehaviour
     private Transform FindClosestEnemyTransform()
     {
         var enemies = FindObjectsOfType<EnemyBehaviour>();
-        float minSqr = float.MaxValue;
+        float minSqr = GameManager.Instance.bulletInterval;
         Transform best = null;
         foreach (var eb in enemies)
         {

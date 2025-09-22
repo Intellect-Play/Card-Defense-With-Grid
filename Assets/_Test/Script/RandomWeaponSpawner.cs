@@ -38,7 +38,7 @@ public class RandomWeaponSpawner : MonoBehaviour
             Shuffle();
         }
     }
-    private void SpawnRandomWeapons()
+    public void SpawnRandomWeapons()
     {
 
         for (int i = 0; i < spawnCount; i++)
@@ -58,6 +58,13 @@ public class RandomWeaponSpawner : MonoBehaviour
         }
         ActivatesWeapons();
 
+    }
+    public void GetPossforWeapons()
+    {
+        foreach (var w in spawnedWeapons)
+        {
+            w.ChangePosWeapon();
+        }
     }
     public void Shuffle()
     {

@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
     [Header("References")]
     public LevelManager        levelManager;
     public UIManager           uIManager;
     public RoguelikeManager    roguelikeManager;
+    public TetrisWeaponManager tetrisWeaponManager;
+
     public CardDeckAnimator[]  cardDeckAnimators;   // 0=Inventor, 1=Wizard, 2=Samurai
     public Transform           enemyParent;
 
@@ -18,7 +21,10 @@ public class GameManager : MonoBehaviour
     public float enemySpawnXMax = 1.5f;
     public float enemySpawnYMin = 3;
     public float enemySpawnYMax = 3.5f;
-    public float checkInterval  = 0.1f;
+    public float checkInterval = 0.1f;
+    public float checkIntervalGroup = 0.1f;
+    public float IntervalWave = 0.1f;
+    public float bulletInterval = 3f;
 
     [Header("Fortress Health")]
     public int health = 100;
@@ -77,7 +83,14 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        if (Instance == null) Instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         _currentLevelIndex = ResolveCurrentLevelIndex();
+        Debug.Log(PlayerPrefs.GetInt(PrefMatchIndex) + $"[GameManager] Current level index is {_currentLevelIndex}.");
     }
 
     void Start()
@@ -299,6 +312,7 @@ public class GameManager : MonoBehaviour
             var root = new GameObject($"Wave {i + 1}");
             root.transform.SetParent(enemyParent, false);
             _waveRoots[i] = root.transform;
+            Debug.Log($"[GameManager] Wave {i + 1} has {c} enemies (cumulative {_cumuCounts[i]}).");
         }
 
         uIManager.SetLevelText($"Lvl {_currentLevelIndex + 1}");
@@ -314,7 +328,7 @@ public class GameManager : MonoBehaviour
         yield return SpawnWave(0, _waveCountsDeclared[0], waves[0], _waveRoots[0]);
         _waveSpawnFinished[0] = true;
         _waveSpawned[0]       = true;
-
+        Debug.Log("[GameManager] First wave spawned.");
         StartCoroutine(MidpointSpawnCoordinator(waves));
         StartCoroutine(RoguelikeCoordinator(waves));
 
@@ -323,12 +337,15 @@ public class GameManager : MonoBehaviour
 
         // Record progression immediately upon win
         AdvanceProgressOnWin();
+        BumpNextLevelIndexAfterWin();
 
         // Win board
         yield return new WaitForSecondsRealtime(2f);
         Time.timeScale = 0f;
         AudioListener.pause = true;
         uIManager.SetWinBoardActive(true);
+        Debug.Log("[GameManager] Player has won the level.");
+        AwardGold(30);
     }
 
     private IEnumerator MidpointSpawnCoordinator(Wave[] waves)
@@ -339,7 +356,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0f); // safety
             yield return new WaitUntil(() => _waveSpawnFinished[wi]);
-            yield return new WaitUntil(() => FrontMostBelowMidpoint(wi) || WaveIsFullyDeadByCumulative(wi));
+            //yield return new WaitUntil(() => FrontMostBelowMidpoint(wi) || WaveIsFullyDeadByCumulative(wi));
 
             int next = wi + 1;
             if (!_waveSpawned[next])
@@ -426,14 +443,17 @@ public class GameManager : MonoBehaviour
 
             if (_roguelikeShown[wi]) continue;
             _roguelikeShown[wi] = true;
+            if (waves[wi].RoguelikeBool)
+            {
+                PauseGameForRoguelike();
+                yield return roguelikeManager.RunRoguelike(wi + 1, waves[wi].roguelikeOptions);
+                if (uIManager.roguelikeBoard.activeSelf)
+                    yield return new WaitUntil(() => !uIManager.roguelikeBoard.activeSelf);
+                ResumeGameAfterRoguelike();
+                ActivateDecksFromPrefs();
+            }
 
-            PauseGameForRoguelike();
-            yield return roguelikeManager.RunRoguelike(wi + 1, waves[wi].roguelikeOptions);
-            if (uIManager.roguelikeBoard.activeSelf)
-                yield return new WaitUntil(() => !uIManager.roguelikeBoard.activeSelf);
-            ResumeGameAfterRoguelike();
 
-            ActivateDecksFromPrefs();
         }
     }
 
@@ -456,6 +476,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < queue.Count; i++)
         {
+            //Debug.Log($"[SpawnWave] Spawning enemy {i + 1}/{queue.Count} of wave {wi + 1}.");
             var eso = queue[i];
             if (eso == null || eso.prefab == null)
             {
@@ -464,9 +485,10 @@ public class GameManager : MonoBehaviour
             }
 
             Vector3 pos = new Vector3(xs[i], ys[i], 0f);
-
             while (!IsSpawnPositionClear(pos.x))
-                yield return new WaitForSeconds(checkInterval);
+                yield return new WaitForSeconds(checkIntervalGroup);
+            //while (!IsSpawnPositionClear(pos.x))
+            //    yield return new WaitForSeconds(checkInterval);
 
             float z = spawnZStart + (_spawnSequenceIndex * spawnZStep);
             _spawnSequenceIndex++;
@@ -486,9 +508,20 @@ public class GameManager : MonoBehaviour
             eb.moveSpeed        = eso.moveSpeed;
             eb.rewardGold       = eso.rewardedGold;
             eb.onFortressDamage = TakeDamage;
+            yield return new WaitForSeconds(checkInterval);
         }
     }
+    private void BumpNextLevelIndexAfterWin()
+    {
+        int max = (levelManager != null && levelManager.levels != null) ? levelManager.levels.Length : 0;
+        if (max <= 0) return;
 
+        int next = PlayerPrefs.GetInt(PrefNextLevelIndex, 0) + 1;
+        //if (next >= max) next = 0; // istəsən clamp də edə bilərsən
+
+        PlayerPrefs.SetInt(PrefNextLevelIndex, next);
+        PlayerPrefs.Save();
+    }
     // =================== Util ===================
 
     private void AwardGold(int amount)
@@ -542,14 +575,14 @@ public class GameManager : MonoBehaviour
         }
 
         int next = _currentLevelIndex + 1;
-        if (levelManager != null && levelManager.levels != null && levelManager.levels.Length > 0)
-        {
-            if (next >= levelManager.levels.Length) next = 0;
-        }
-        else
-        {
-            next = 0;
-        }
+        //if (levelManager != null && levelManager.levels != null && levelManager.levels.Length > 0)
+        //{
+        //    if (next >= levelManager.levels.Length) next = 0;
+        //}
+        //else
+        //{
+        //    next = 0;
+        //}
 
         PlayerPrefs.SetInt(PrefNextLevelIndex, next);
 
