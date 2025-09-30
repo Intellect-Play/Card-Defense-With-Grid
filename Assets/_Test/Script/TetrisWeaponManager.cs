@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.UI;
 
 public class TetrisWeaponManager : MonoBehaviour
 {
+    public static TetrisWeaponManager instance;
     [SerializeField] private Canvas TetrisCancas;
     [SerializeField] private RectTransform TetrisWeaponPanel;
     [SerializeField] private Animator AnimatorController;
@@ -15,14 +17,25 @@ public class TetrisWeaponManager : MonoBehaviour
     [SerializeField] private Button BuyButton;
     [SerializeField] private Button ShuffleButton;
 
+    public List<WeaponSetting> weaponSettings;
+    public List<WeaponSetting> weaponUnlockedSettings;
+    public List<WeaponSetting> weaponLockedSettings;
 
     public static bool isTetrisScene = false;
 
     private void Awake()
     {
+        if (instance == null) instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         FightButton.onClick.AddListener(Fight);
         BuyButton.onClick.AddListener(Buy);
         ShuffleButton.onClick.AddListener(Shuffle);
+        
+        UnlockedWeapons();
     }
     private void Start()
     {
@@ -41,6 +54,27 @@ public class TetrisWeaponManager : MonoBehaviour
         Debug.Log("Fight");
         Time.timeScale = 1;
         StartCoroutine(WaitForAnimation());
+    }
+    public void UnlockedWeapons()
+    {
+        weaponUnlockedSettings.Clear();
+        weaponLockedSettings.Clear();
+        foreach (var w in weaponSettings)
+        {
+            if (w.Unlocked)
+            {
+                weaponUnlockedSettings.Add(w);
+            }
+            else
+            {
+                weaponLockedSettings.Add(w);
+            }
+        }
+    }
+
+    public SlotWeaponsSO GetSlotWeapon()
+    {
+        return weaponUnlockedSettings[UnityEngine.Random.Range(0, weaponUnlockedSettings.Count)].slotWeaponsSO;
     }
     IEnumerator WaitForAnimation()
     {
@@ -77,4 +111,20 @@ public class TetrisWeaponManager : MonoBehaviour
     public void Shuffle() {
         randomWeaponSpawner.Shuffle();
     }
+}
+[Serializable]
+public class WeaponSetting
+{
+    public WeaponsType WeaponType;
+    public SlotWeaponsSO slotWeaponsSO;
+    public bool Unlocked=false;
+    public int Level=1;
+    public float Countdawn=1;
+}
+public enum WeaponsType
+{
+    Arrow,
+    Bomb,
+    Axe,
+    Stone
 }

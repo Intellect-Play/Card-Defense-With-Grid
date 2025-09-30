@@ -20,6 +20,6 @@ public class HeroSO : ScriptableObject
 
     [Tooltip("Hero cards")]
     public CardSO[] heroCards;
-    
-    
+
+    public CardSO heroCarcd;
 }

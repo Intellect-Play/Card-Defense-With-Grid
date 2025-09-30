@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2745c3b9fffebf4cb7dfeaa501f7b86, type: 3}
-  m_Name: New Weapon SO
+  m_Name: J Weapon SO 1
   m_EditorClassIdentifier: 
-  weaponName: Z
-  icon: {fileID: 21300000, guid: d7b4996e402b1f74180bd3b07fe18f73, type: 3}
+  weaponName: x
+  icon: {fileID: 21300000, guid: aa44e8bd402adfc4da20c1d9d3db05f8, type: 3}
   levelWeapon: 1
   nextLevelWeapon: {fileID: 0}
-  size: {x: 2, y: 1}
+  size: {x: 2, y: 3}
   shapeOffsets:
   - {x: 0, y: 0}
-  - {x: 1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: 2}
+  - {x: -1, y: 0}

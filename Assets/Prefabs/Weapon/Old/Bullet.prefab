@@ -205,3 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSteerAngle: 45
   steerSpeed: 90
+  attackType: 10
+  chainCount: 0
+  areaRadius: 0
+  _damage: 0

@@ -17,6 +17,7 @@ public enum OptionType
     ReduceCooldown,
     NewHero,
     HealthUp,
+    AddPiece
 }
 
 [Serializable]

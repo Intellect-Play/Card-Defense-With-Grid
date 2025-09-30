@@ -99,15 +99,10 @@ public class LobbyManager : MonoBehaviour
     void OnEnable()
     { //RefreshFromPrefsAndRedraw(); 
     }
-    private void Awake()
-    {
-        Debug.Log("ArenaIndex" + ArenaIndex);
-
-    }
+    
     // =================== Unity ===================
     void Start()
     {
-        Debug.Log("ArenaIndex" + ArenaIndex);
         EnsurePriceArrays();
         EnsureDefaults_OnlyFirstUnlocked();
         EnsureProgressDefaults();

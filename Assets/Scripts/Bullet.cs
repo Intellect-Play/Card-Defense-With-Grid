@@ -6,23 +6,23 @@ public class Bullet : MonoBehaviour
 {
     [Header("Steering Limits")]
     public float maxSteerAngle = 45f;
-    public float steerSpeed    = 90f;
+    public float steerSpeed = 90f;
 
     [Header("Attack Settings")]
     public AttackType attackType;
-    public int        chainCount;   // = CardSO.sessionLevel for this run
-    public float      areaRadius;
+    public int chainCount;   // = CardSO.sessionLevel for this run
+    public float areaRadius;
 
     private Vector3 _direction = Vector3.up;
-    public int     _damage    = 0;
-    private float   _speed     = 5f;
+    private int _damage = 0;
+    private float _speed = 5f;
 
     // -------------------- Fire entry --------------------
     public static void Fire(CardSO card, Vector3 origin)
     {
         Vector3 dir = FindDirectionToClosestEnemy(origin);
         var go = Instantiate(card.fireObject, origin, Quaternion.identity);
-        var b  = go.GetComponent<Bullet>();
+        var b = go.GetComponent<Bullet>();
         b.attackType = card.attackType;
         b.chainCount = Mathf.Max(1, card.sessionLevel);   // scale counts off session level
         b.Initialize(dir, card.baseDmg, 3);
@@ -31,24 +31,24 @@ public class Bullet : MonoBehaviour
     public void Initialize(Vector3 dir, int damage, float bulletSpeed)
     {
         _direction = dir.normalized;
-        _damage    = damage;
-        _speed     = bulletSpeed;
+        _damage = damage;
+        _speed = bulletSpeed;
         FaceDirection();
 
         switch (attackType)
         {
-            case AttackType.Samurai_Hammer:              StartCoroutine(HammerRoutine()); break;
-            case AttackType.Samurai_Blades:              StartCoroutine(BladesRoutine()); break;
-            case AttackType.Samurai_Shiruken_Spinning:   StartCoroutine(ShirukenRoutine()); break;
-            case AttackType.Samurai_ArrowRain:           StartCoroutine(ArrowRainRoutine()); break;
-            case AttackType.Inventor_FireBomb:           StartCoroutine(FireBombRoutine()); break;
-            case AttackType.Inventor_Piercing_Cogs:      StartCoroutine(PiercingCogsRoutine()); break;
-            case AttackType.Inventor_Drone:              StartCoroutine(DroneRoutine()); break;
-            case AttackType.Inventor_Dagger:             StartCoroutine(DaggerRoutine()); break;
-            case AttackType.Wizard_Dagger:               StartCoroutine(DaggerRoutine()); break; 
-            case AttackType.Wizard_WindPush:             StartCoroutine(WindPushRoutine()); break;
-            case AttackType.Wizard_MagicBall:            StartCoroutine(MagicBallRoutine()); break;
-            case AttackType.Wizard_WizStone:             StartCoroutine(WizardStoneRoutine()); break;
+            case AttackType.Samurai_Hammer: StartCoroutine(HammerRoutine()); break;
+            case AttackType.Samurai_Blades: StartCoroutine(BladesRoutine()); break;
+            case AttackType.Samurai_Shiruken_Spinning: StartCoroutine(ShirukenRoutine()); break;
+            case AttackType.Samurai_ArrowRain: StartCoroutine(ArrowRainRoutine()); break;
+            case AttackType.Inventor_FireBomb: StartCoroutine(FireBombRoutine()); break;
+            case AttackType.Inventor_Piercing_Cogs: StartCoroutine(PiercingCogsRoutine()); break;
+            case AttackType.Inventor_Drone: StartCoroutine(DroneRoutine()); break;
+            case AttackType.Inventor_Dagger: StartCoroutine(DaggerRoutine()); break;
+            case AttackType.Wizard_Dagger: StartCoroutine(DaggerRoutine()); break;
+            case AttackType.Wizard_WindPush: StartCoroutine(WindPushRoutine()); break;
+            case AttackType.Wizard_MagicBall: StartCoroutine(MagicBallRoutine()); break;
+            case AttackType.Wizard_WizStone: StartCoroutine(WizardStoneRoutine()); break;
             default: break;
         }
     }
@@ -77,18 +77,18 @@ public class Bullet : MonoBehaviour
         Transform target = FindClosestEnemyTransform();
         if (!target) { Destroy(gameObject); yield break; }
 
-        int bees   = Mathf.Clamp(3 * Mathf.Max(1, chainCount), 3, 24);
+        int bees = Mathf.Clamp(3 * Mathf.Max(1, chainCount), 3, 24);
         int stings = Mathf.Clamp(1 + chainCount, 2, 6); // # of stings per bee
 
         for (int i = 0; i < bees; i++)
         {
             var beeGO = Instantiate(gameObject, transform.position, transform.rotation);
-            var bee   = beeGO.GetComponent<Bullet>();
+            var bee = beeGO.GetComponent<Bullet>();
             bee.attackType = AttackType.Inventor_Drone;
             bee.chainCount = chainCount;
             bee.areaRadius = areaRadius;
-            bee._damage    = _damage;
-            bee._speed     = _speed;
+            bee._damage = _damage;
+            bee._speed = _speed;
             bee._direction = _direction;
             bee.FaceDirection();
 
@@ -104,18 +104,18 @@ public class Bullet : MonoBehaviour
         if (!target) { Destroy(gameObject); yield break; }
 
         // motion tuning
-        const float wiggleFreq     = 1.2f;
-        const float cruiseAmp      = 5f;
-        const float diveAmp        = 0.45f;
-        float       cruiseSpeed    = _speed;
-        float       diveSpeed      = _speed * 3f;
+        const float wiggleFreq = 1.2f;
+        const float cruiseAmp = 5f;
+        const float diveAmp = 0.45f;
+        float cruiseSpeed = _speed;
+        float diveSpeed = _speed * 3f;
         const float waypointThresh = 0.12f;
-        const float hitRadius      = 0.12f;
+        const float hitRadius = 0.12f;
 
         // “bird-view” scaling
-        Vector3 baseScale   = transform.localScale;
+        Vector3 baseScale = transform.localScale;
         Vector3 cruiseScale = baseScale * 1.15f;
-        Vector3 diveScale   = baseScale * 0.88f;
+        Vector3 diveScale = baseScale * 0.88f;
 
         Vector3 HoverPoint()
             => (target ? target.position : transform.position) +
@@ -162,8 +162,8 @@ public class Bullet : MonoBehaviour
             // RETREAT to a small offset
             if (!target) break;
             Vector3 toTarget = (target.position - transform.position).normalized;
-            Vector3 side     = new Vector3(-toTarget.y, toTarget.x, 0f);
-            Vector3 retreat  = transform.position
+            Vector3 side = new Vector3(-toTarget.y, toTarget.x, 0f);
+            Vector3 retreat = transform.position
                             - toTarget * Random.Range(0.8f, 1.2f)
                             + side * Random.Range(-0.6f, 0.6f);
 
@@ -204,7 +204,7 @@ public class Bullet : MonoBehaviour
     // L1=2, then +1 per level, max 6
     private IEnumerator DaggerRoutine()
     {
-        int count = Mathf.Clamp(chainCount + 1, 2, 6);
+        int count = Mathf.Clamp(chainCount + 2, 3, 6);
 
         if (count > 1)
         {
@@ -216,12 +216,12 @@ public class Bullet : MonoBehaviour
                                 : (_direction.sqrMagnitude > 0f ? _direction.normalized : Vector3.up));
             Vector3 perp = new Vector3(-fwd.y, fwd.x, 0f);
 
-            float lateral     = 0.35f;
-            float fwdSpacing  = 0.25f;
+            float lateral = 0.35f;
+            float fwdSpacing = 0.25f;
             float backSpacing = 0.35f;
-            float smallLat    = 0.20f;
-            float bigLat      = 0.35f;
-            float backDelay   = 0.08f;
+            float smallLat = 0.20f;
+            float bigLat = 0.35f;
+            float backDelay = 0.08f;
 
             var shots = new List<(Vector3 pos, float delay)>();
             switch (count)
@@ -238,16 +238,16 @@ public class Bullet : MonoBehaviour
                 case 4:
                     shots.Add((transform.position + fwd * fwdSpacing + perp * (+smallLat), 0f));
                     shots.Add((transform.position + fwd * fwdSpacing + perp * (-smallLat), 0f));
-                    shots.Add((transform.position - fwd * backSpacing + perp * (+bigLat),  backDelay));
-                    shots.Add((transform.position - fwd * backSpacing + perp * (-bigLat),  backDelay));
+                    shots.Add((transform.position - fwd * backSpacing + perp * (+bigLat), backDelay));
+                    shots.Add((transform.position - fwd * backSpacing + perp * (-bigLat), backDelay));
                     break;
                 default: // 5..6 – just add more back-row daggers
                     shots.Add((transform.position + fwd * fwdSpacing + perp * (+smallLat), 0f));
                     shots.Add((transform.position + fwd * fwdSpacing + perp * (-smallLat), 0f));
-                    shots.Add((transform.position - fwd * backSpacing + perp * (+bigLat),  backDelay));
-                    shots.Add((transform.position - fwd * backSpacing + perp * (-bigLat),  backDelay));
+                    shots.Add((transform.position - fwd * backSpacing + perp * (+bigLat), backDelay));
+                    shots.Add((transform.position - fwd * backSpacing + perp * (-bigLat), backDelay));
                     for (int i = 4; i < count; i++)
-                        shots.Add((transform.position - fwd * (backSpacing + 0.1f*i), backDelay + 0.02f * (i-3)));
+                        shots.Add((transform.position - fwd * (backSpacing + 0.1f * i), backDelay + 0.02f * (i - 3)));
                     break;
             }
 
@@ -257,18 +257,18 @@ public class Bullet : MonoBehaviour
                 Transform tgt = targets[Mathf.Min(i, targets.Count - 1)];
 
                 var go = Instantiate(gameObject, pos, Quaternion.identity);
-                var b  = go.GetComponent<Bullet>();
+                var b = go.GetComponent<Bullet>();
                 b.attackType = attackType;
                 b.chainCount = 1;
-                b._damage    = _damage;
-                b._speed     = _speed;
+                b._damage = _damage;
+                b._speed = _speed;
 
                 Vector3 dir = (tgt ? (tgt.position - pos).normalized : fwd);
                 b._direction = dir;
                 b.FaceDirection();
 
                 if (delay > 0f) b.StartCoroutine(b.DelayStartDaggerFly(tgt, delay));
-                else            b.StartCoroutine(b.DaggerFlyRoutine(tgt));
+                else b.StartCoroutine(b.DaggerFlyRoutine(tgt));
             }
 
             Destroy(gameObject);
@@ -309,14 +309,14 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator DaggerFlyRoutine(Transform target)
     {
-        float accelTime  = 0f;
+        float accelTime = 0f;
         float startSpeed = 1f;
-        float accelRate  = 5f;
+        float accelRate = 5f;
 
         while (target && target.gameObject.activeInHierarchy)
         {
             Vector3 dir = (target.position - transform.position).normalized;
-            _direction  = dir;
+            _direction = dir;
             FaceDirection();
 
             transform.position += dir * (startSpeed + accelRate * accelTime) * Time.deltaTime;
@@ -347,28 +347,28 @@ public class Bullet : MonoBehaviour
             if (targets.Count == 0) { Destroy(gameObject); yield break; }
 
             Transform primary = targets[0];
-            Vector3 fwd  = (primary ? (primary.position - transform.position).normalized
+            Vector3 fwd = (primary ? (primary.position - transform.position).normalized
                                     : (_direction.sqrMagnitude > 0f ? _direction.normalized : Vector3.up));
             Vector3 perp = new Vector3(-fwd.y, fwd.x, 0f);
 
-            float spreadDeg    = 16f;
+            float spreadDeg = 16f;
             float forwardSpace = 0.30f;
-            float sideSpace    = 0.18f;
+            float sideSpace = 0.18f;
             float delayBetween = 0.06f;
 
             for (int i = 0; i < count; i++)
             {
-                float ang   = (i - (count - 1) / 2f) * spreadDeg;
+                float ang = (i - (count - 1) / 2f) * spreadDeg;
                 Vector3 dir = (Quaternion.Euler(0f, 0f, ang) * fwd).normalized;
 
                 Vector3 spawnPos = transform.position
                                 + dir * (i * forwardSpace)
                                 + perp * ((i - (count - 1) / 2f) * sideSpace);
 
-                var go  = Instantiate(gameObject, spawnPos, Quaternion.identity);
-                var hb  = go.GetComponent<Bullet>();
+                var go = Instantiate(gameObject, spawnPos, Quaternion.identity);
+                var hb = go.GetComponent<Bullet>();
                 hb.attackType = AttackType.Samurai_Hammer;
-                hb._damage    = _damage;
+                hb._damage = _damage;
 
                 var windFx = go.transform.Find("wind_fx");
                 if (windFx) windFx.gameObject.SetActive(true);
@@ -395,15 +395,15 @@ public class Bullet : MonoBehaviour
                             .setEaseLinear()
                             .id;
 
-        Transform hitVFX  = transform.Find("hit");
+        Transform hitVFX = transform.Find("hit");
         if (hitVFX) hitVFX.gameObject.SetActive(false);
-        Transform windFx  = transform.Find("wind_fx");
+        Transform windFx = transform.Find("wind_fx");
         if (windFx) windFx.gameObject.SetActive(true);
 
-        float moveSpeed   = 3.25f;
-        float reTargetT   = 0f;
-        float maxLife     = 2.5f;
-        float t           = 0f;
+        float moveSpeed = 3.25f;
+        float reTargetT = 0f;
+        float maxLife = 2.5f;
+        float t = 0f;
 
         while (t < maxLife)
         {
@@ -440,7 +440,7 @@ public class Bullet : MonoBehaviour
     // L1=3, then +1 per level, max 6
     private IEnumerator BladesRoutine()
     {
-        int count = Mathf.Clamp(chainCount + 2, 3, 6);
+        int count = Mathf.Clamp(chainCount + 3, 3, 6);
 
         var targets = GetEnemyTargets(count, transform.position);
         if (targets.Count == 0) { Destroy(gameObject); yield break; }
@@ -450,12 +450,12 @@ public class Bullet : MonoBehaviour
                             : (_direction.sqrMagnitude > 0f ? _direction.normalized : Vector3.up));
         Vector3 perp = new Vector3(-fwd.y, fwd.x, 0f);
 
-        float lateral     = 0.35f;
-        float fwdSpacing  = 0.25f;
+        float lateral = 0.35f;
+        float fwdSpacing = 0.25f;
         float backSpacing = 0.35f;
-        float smallLat    = 0.20f;
-        float bigLat      = 0.35f;
-        float backDelay   = 0.08f;
+        float smallLat = 0.20f;
+        float bigLat = 0.35f;
+        float backDelay = 0.08f;
 
         var shots = new List<(Vector3 pos, float delay, float phase)>();
         switch (count)
@@ -478,10 +478,10 @@ public class Bullet : MonoBehaviour
             default: // 4..6
                 shots.Add((transform.position + fwd * fwdSpacing + perp * (+smallLat), 0f, 0f));
                 shots.Add((transform.position + fwd * fwdSpacing + perp * (-smallLat), 0f, Mathf.PI));
-                shots.Add((transform.position - fwd * backSpacing + perp * (+bigLat),  backDelay, 0f));
-                shots.Add((transform.position - fwd * backSpacing + perp * (-bigLat),  backDelay, Mathf.PI));
+                shots.Add((transform.position - fwd * backSpacing + perp * (+bigLat), backDelay, 0f));
+                shots.Add((transform.position - fwd * backSpacing + perp * (-bigLat), backDelay, Mathf.PI));
                 for (int i = 4; i < count; i++)
-                    shots.Add((transform.position - fwd * (backSpacing + 0.1f*i), backDelay + 0.02f*(i-3), (i%2==0)?0f:Mathf.PI));
+                    shots.Add((transform.position - fwd * (backSpacing + 0.1f * i), backDelay + 0.02f * (i - 3), (i % 2 == 0) ? 0f : Mathf.PI));
                 break;
         }
 
@@ -491,12 +491,12 @@ public class Bullet : MonoBehaviour
             Transform tgt = targets[Mathf.Min(i, targets.Count - 1)];
 
             var bladeGO = Instantiate(gameObject, pos, Quaternion.identity);
-            var bComp   = bladeGO.GetComponent<Bullet>();
+            var bComp = bladeGO.GetComponent<Bullet>();
             bComp.attackType = AttackType.Samurai_Blades;
-            bComp._damage    = _damage;
+            bComp._damage = _damage;
 
             if (delay > 0f) bComp.StartCoroutine(bComp.DelayStartBladeZigZag(tgt, phase, delay));
-            else            bComp.StartCoroutine(bComp.BladeZigZag(tgt, phase));
+            else bComp.StartCoroutine(bComp.BladeZigZag(tgt, phase));
         }
 
         Destroy(gameObject);
@@ -513,19 +513,19 @@ public class Bullet : MonoBehaviour
     {
         if (!target) { Destroy(gameObject); yield break; }
 
-        float time  = 0f;
+        float time = 0f;
         float speed = 4f;
-        float amp   = 2f;
-        float freq  = 4f;
+        float amp = 2f;
+        float freq = 4f;
         float minAmp = 0.2f;
 
         while (target && target.gameObject.activeInHierarchy)
         {
             Vector3 toTarget = (target.position - transform.position).normalized;
-            Vector3 side     = new Vector3(-toTarget.y, toTarget.x, 0f);
+            Vector3 side = new Vector3(-toTarget.y, toTarget.x, 0f);
 
             float currentAmp = Mathf.Lerp(amp, minAmp, time * 0.4f);
-            Vector3 offset   = side * Mathf.Sin(time * freq + phaseOffset) * currentAmp;
+            Vector3 offset = side * Mathf.Sin(time * freq + phaseOffset) * currentAmp;
 
             transform.position += (toTarget * speed + offset) * Time.deltaTime;
 
@@ -550,17 +550,17 @@ public class Bullet : MonoBehaviour
     // L1=4, grows 4 per level, max 24
     private IEnumerator ShirukenRoutine()
     {
-        int   shurikenCount = Mathf.Clamp(4 * Mathf.Max(1, chainCount), 4, 24);
-        float spreadDeg     = 18f;
-        float delayBetween  = 0.08f;
+        int shurikenCount = Mathf.Clamp(4 * Mathf.Max(1, chainCount), 4, 24);
+        float spreadDeg = 18f;
+        float delayBetween = 0.08f;
         float forwardSpacing = 0.25f;
-        float sideSpacing    = 0.12f;
+        float sideSpacing = 0.12f;
 
         Transform primary = FindClosestEnemyTransform();
         if (!primary) { Destroy(gameObject); yield break; }
 
         Vector3 forward = (primary.position - transform.position).normalized;
-        Vector3 side    = new Vector3(-forward.y, forward.x, 0f);
+        Vector3 side = new Vector3(-forward.y, forward.x, 0f);
 
         var targets = GetEnemyTargets(shurikenCount, transform.position);
         if (targets.Count == 0) { Destroy(gameObject); yield break; }
@@ -568,17 +568,17 @@ public class Bullet : MonoBehaviour
         for (int i = 0; i < shurikenCount; i++)
         {
             float angleOff = (i - (shurikenCount - 1) / 2f) * spreadDeg;
-            Vector3 dir2D  = (Quaternion.Euler(0f, 0f, angleOff) * forward).normalized;
+            Vector3 dir2D = (Quaternion.Euler(0f, 0f, angleOff) * forward).normalized;
 
-            float fwdOff  = i * forwardSpacing;
+            float fwdOff = i * forwardSpacing;
             float sideOff = (i - (shurikenCount - 1) / 2f) * sideSpacing;
             Vector3 spawnPos = transform.position + dir2D * fwdOff + side * sideOff;
 
             GameObject go = Instantiate(gameObject, spawnPos, Quaternion.identity);
             var b = go.GetComponent<Bullet>();
             b.attackType = AttackType.Samurai_Shiruken_Spinning;
-            b._damage    = _damage;
-            b._speed     = _speed;
+            b._damage = _damage;
+            b._speed = _speed;
             b._direction = dir2D;
 
             Transform tgt = targets[Mathf.Min(i, targets.Count - 1)];
@@ -593,10 +593,10 @@ public class Bullet : MonoBehaviour
     private IEnumerator SingleShurikenRoutine(Transform target)
     {
         Transform spinT = transform.Find("Bullet");
-        float spinSpeed   = 1080f;
-        float moveSpeed   = 8f;
-        float lifeMax     = 3.0f;
-        float hitRadius   = 0.25f;
+        float spinSpeed = 1080f;
+        float moveSpeed = 8f;
+        float lifeMax = 3.0f;
+        float hitRadius = 0.25f;
 
         float t = 0f;
         while (t < lifeMax)
@@ -648,14 +648,14 @@ public class Bullet : MonoBehaviour
         {
             Transform tgt = pool[i % pool.Count];
 
-            float sign    = (i % 2 == 0) ? 1f : -1f;
+            float sign = (i % 2 == 0) ? 1f : -1f;
             float lateral = sign * Mathf.Lerp(0.05f, 0.6f, (float)i / Mathf.Max(1, arrowCount - 1));
             Vector3 spawnPos = transform.position + perp * lateral;
 
             var arrow = Instantiate(gameObject, spawnPos, Quaternion.identity);
             var bComp = arrow.GetComponent<Bullet>();
             bComp.attackType = AttackType.Samurai_ArrowRain;
-            bComp._damage    = _damage;
+            bComp._damage = _damage;
 
             Transform trailVFX = arrow.transform.Find("trail_vfx");
             if (trailVFX) trailVFX.gameObject.SetActive(true);
@@ -675,14 +675,14 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator ArrowRainArrow(Transform target, float angleOffset)
     {
-        const float speed        = 5f;
-        const float accel        = 18f;
-        const float maxSpeed     = 8f;
-        const float turnRateDeg  = 540f;
-        const float swayFreq     = 7f;
-        const float swayAmp      = 0.10f;
-        const float lifeMax      = 2.0f;
-        const float hitRadius    = 0.28f;
+        const float speed = 5f;
+        const float accel = 18f;
+        const float maxSpeed = 8f;
+        const float turnRateDeg = 540f;
+        const float swayFreq = 7f;
+        const float swayAmp = 0.10f;
+        const float lifeMax = 2.0f;
+        const float hitRadius = 0.28f;
 
         Vector3 minScale = transform.localScale * 0.85f;
         Vector3 maxScale = transform.localScale * 1.15f;
@@ -723,7 +723,7 @@ public class Bullet : MonoBehaviour
             curSpeed = Mathf.Min(maxSpeed, curSpeed + accel * Time.deltaTime);
 
             Vector3 newPos = transform.position + (forward * curSpeed + perp * sway) * Time.deltaTime;
-            Vector3 delta  = newPos - transform.position;
+            Vector3 delta = newPos - transform.position;
             transform.position = newPos;
 
             if (delta.sqrMagnitude > 1e-8f)
@@ -773,12 +773,12 @@ public class Bullet : MonoBehaviour
             : (_direction.sqrMagnitude > 0f ? _direction.normalized : Vector3.up);
         Vector3 perp = new Vector3(-fwd.y, fwd.x, 0f);
 
-        float lateral     = 0.35f;
-        float fwdSpacing  = 0.25f;
+        float lateral = 0.35f;
+        float fwdSpacing = 0.25f;
         float backSpacing = 0.35f;
-        float smallLat    = 0.20f;
-        float bigLat      = 0.35f;
-        float backDelay   = 0.08f;
+        float smallLat = 0.20f;
+        float bigLat = 0.35f;
+        float backDelay = 0.08f;
 
         var shots = new List<(Vector3 pos, float delay)>();
         if (count == 2)
@@ -799,16 +799,16 @@ public class Bullet : MonoBehaviour
         {
             var (pos, delay) = shots[i];
             var go = Instantiate(gameObject, pos, Quaternion.identity);
-            var b  = go.GetComponent<Bullet>();
+            var b = go.GetComponent<Bullet>();
             b.attackType = AttackType.Inventor_FireBomb;
-            b._damage    = _damage;
-            b._speed     = _speed;
+            b._damage = _damage;
+            b._speed = _speed;
             b.chainCount = 1;
 
             bool isMainBomb = (i == 0);
 
             if (delay > 0f) b.StartCoroutine(b.DelayStartFireBomb(delay, isMainBomb));
-            else            b.StartCoroutine(b.FireBombSingleRoutine(isMainBomb));
+            else b.StartCoroutine(b.FireBombSingleRoutine(isMainBomb));
         }
 
         Destroy(gameObject);
@@ -823,7 +823,7 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator FireBombSingleRoutine(bool isMainBomb)
     {
-        Transform hitVFX  = transform.Find("hit_vfx");
+        Transform hitVFX = transform.Find("hit_vfx");
         if (hitVFX) hitVFX.gameObject.SetActive(false);
 
         // choose strike point
@@ -833,10 +833,10 @@ public class Bullet : MonoBehaviour
         {
             var pool = new List<Transform>();
             foreach (var e in enemies) if (e && e.gameObject.activeInHierarchy) pool.Add(e.transform);
-            if (pool.Count == 1)      strike = pool[0].position;
+            if (pool.Count == 1) strike = pool[0].position;
             else if (pool.Count >= 2)
             {
-                pool.Sort((a,b) =>
+                pool.Sort((a, b) =>
                     (a.position - transform.position).sqrMagnitude.CompareTo(
                     (b.position - transform.position).sqrMagnitude));
                 strike = (pool[0].position + pool[1].position) * 0.5f;
@@ -845,27 +845,27 @@ public class Bullet : MonoBehaviour
         strike += new Vector3(Random.Range(-0.25f, 0.25f), Random.Range(-0.15f, 0.15f), 0f);
 
         // lob
-        Vector3 startPos  = transform.position;
-        Vector3 endPos    = strike;
-        float   arcHeight = 2.2f;
-        Vector3 ctrlPos   = (startPos + endPos) * 0.5f + Vector3.up * arcHeight;
+        Vector3 startPos = transform.position;
+        Vector3 endPos = strike;
+        float arcHeight = 2.2f;
+        Vector3 ctrlPos = (startPos + endPos) * 0.5f + Vector3.up * arcHeight;
 
-        float flightTime  = 1.4f;
+        float flightTime = 1.4f;
         Vector3 startScale = transform.localScale;
-        Vector3 midScale   = startScale * 1.10f;
+        Vector3 midScale = startScale * 1.10f;
 
         float t = 0f;
         while (t < 1f)
         {
             t += Time.deltaTime / flightTime;
-            float u  = Mathf.Clamp01(t);
+            float u = Mathf.Clamp01(t);
             float eu = u * u * (3f - 2f * u);
 
-            Vector3 p = (1-eu)*(1-eu)*startPos + 2*(1-eu)*eu*ctrlPos + eu*eu*endPos;
-            transform.position   = p;
+            Vector3 p = (1 - eu) * (1 - eu) * startPos + 2 * (1 - eu) * eu * ctrlPos + eu * eu * endPos;
+            transform.position = p;
             transform.localScale = Vector3.Lerp(startScale, midScale, Mathf.Sin(eu * Mathf.PI));
 
-            Vector3 deriv = 2*(1-eu)*(ctrlPos - startPos) + 2*eu*(endPos - ctrlPos);
+            Vector3 deriv = 2 * (1 - eu) * (ctrlPos - startPos) + 2 * eu * (endPos - ctrlPos);
             if (deriv.sqrMagnitude > 1e-4f)
             {
                 float ang = Mathf.Atan2(deriv.y, deriv.x) * Mathf.Rad2Deg;
@@ -929,12 +929,12 @@ public class Bullet : MonoBehaviour
         forward.z = 0f;
         forward = forward.normalized;
 
-        int   cogCount     = Mathf.Clamp(4 + 2 * Mathf.Max(1, chainCount), 6, 18);
-        float spreadDeg    = 18f;
+        int cogCount = Mathf.Clamp(4 + 2 * Mathf.Max(1, chainCount), 6, 18);
+        float spreadDeg = 18f;
         float delayBetween = 0.4f;
 
         float forwardSpacing = 0.35f;
-        float sideSpacing    = 0.12f;
+        float sideSpacing = 0.12f;
 
         Vector3 side = new Vector3(-forward.y, forward.x, 0f);
         Vector3 basePos = new Vector3(transform.position.x, transform.position.y, planeZ);
@@ -942,10 +942,10 @@ public class Bullet : MonoBehaviour
         for (int i = 0; i < cogCount; i++)
         {
             float angleOff = (i - (cogCount - 1) / 2f) * spreadDeg;
-            Vector3 dir2D  = (Quaternion.Euler(0f, 0f, angleOff) * forward).normalized;
+            Vector3 dir2D = (Quaternion.Euler(0f, 0f, angleOff) * forward).normalized;
 
             float forwardOff = i * forwardSpacing;
-            float sideOff    = (i - (cogCount - 1) / 2f) * sideSpacing;
+            float sideOff = (i - (cogCount - 1) / 2f) * sideSpacing;
             Vector3 spawnPos = basePos + dir2D * forwardOff + side * sideOff;
             spawnPos.z = planeZ;
 
@@ -954,7 +954,7 @@ public class Bullet : MonoBehaviour
             Bullet cog = cogGO.GetComponent<Bullet>();
             cog.StopAllCoroutines();
             cog.attackType = AttackType.Inventor_Piercing_Cogs;
-            cog._damage    = _damage;
+            cog._damage = _damage;
             cog._direction = dir2D;
             cog.StartCoroutine(cog.CogFlyRoutine(planeZ));
 
@@ -966,10 +966,10 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator CogFlyRoutine(float planeZ)
     {
-        float moveSpeed   = 6f;
-        float spinSpeedZ  = -720f;
+        float moveSpeed = 6f;
+        float spinSpeedZ = -720f;
         float lifeSeconds = 3.0f;
-        float hitRadius   = 0.35f;
+        float hitRadius = 0.35f;
 
         var hitSet = new HashSet<EnemyBehaviour>();
         Transform visual = transform.Find("Bullet");
@@ -991,7 +991,7 @@ public class Bullet : MonoBehaviour
                 if (!eb || !eb.gameObject.activeInHierarchy || hitSet.Contains(eb)) continue;
 
                 Vector3 c = ClosestPointOnSegment(prevPos, newPos, eb.transform.position);
-                c.z = eb.transform.position.z; 
+                c.z = eb.transform.position.z;
                 if ((eb.transform.position - c).sqrMagnitude <= hitRadius * hitRadius)
                 {
                     eb.ApplyDamage(_damage);
@@ -1001,7 +1001,7 @@ public class Bullet : MonoBehaviour
 
             transform.position = newPos;
             if (visual) visual.Rotate(Vector3.forward, spinSpeedZ * Time.deltaTime, Space.Self);
-            else        transform.Rotate(Vector3.forward, spinSpeedZ * Time.deltaTime, Space.Self);
+            else transform.Rotate(Vector3.forward, spinSpeedZ * Time.deltaTime, Space.Self);
 
             prevPos = newPos;
             t += Time.deltaTime;
@@ -1020,7 +1020,7 @@ public class Bullet : MonoBehaviour
         int n = enemies.Length;
 
         Vector3[] startPos = new Vector3[n];
-        float[] targetY    = new float[n];
+        float[] targetY = new float[n];
 
         for (int i = 0; i < n; i++)
         {
@@ -1028,7 +1028,7 @@ public class Bullet : MonoBehaviour
             if (!eb || !eb.gameObject.activeInHierarchy) continue;
 
             startPos[i] = eb.transform.position;
-            targetY[i]  = startPos[i].y + 2f;
+            targetY[i] = startPos[i].y + 2f;
         }
 
         float duration = 4.0f;
@@ -1061,8 +1061,8 @@ public class Bullet : MonoBehaviour
     // L1=2, then +1 per level, max 8
     private IEnumerator MagicBallRoutine()
     {
-        int ballCount  = Mathf.Clamp(chainCount + 1, 2, 8);
-        float delay    = 0.08f;
+        int ballCount = Mathf.Clamp(chainCount + 2, 3, 8);
+        float delay = 0.08f;
         float ringRadius = 0.25f;
 
         var targets = GetEnemyTargets(ballCount, transform.position);
@@ -1080,10 +1080,10 @@ public class Bullet : MonoBehaviour
             Vector3 spawnPos = transform.position + radial * ringRadius;
 
             var orbGO = Instantiate(gameObject, spawnPos, Quaternion.identity);
-            var orb   = orbGO.GetComponent<Bullet>();
+            var orb = orbGO.GetComponent<Bullet>();
             orb.attackType = AttackType.Wizard_MagicBall;
-            orb._damage    = _damage;
-            orb._speed     = _speed * 0.9f;
+            orb._damage = _damage;
+            orb._speed = _speed * 0.9f;
 
             orb._direction = (primary ? (primary.position - spawnPos).normalized : fwd);
             orb.FaceDirection();
@@ -1105,11 +1105,11 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator MagicBallFlyRoutine(Transform target)
     {
-        float lifeMax     = 3.5f;
-        float accel       = 2.5f;
-        float maxSpeed    = Mathf.Max(4f, _speed * 1.4f);
-        float steerDeg    = 240f;
-        float hitRadius   = 0.22f;
+        float lifeMax = 3.5f;
+        float accel = 2.5f;
+        float maxSpeed = Mathf.Max(4f, _speed * 1.4f);
+        float steerDeg = 240f;
+        float hitRadius = 0.22f;
 
         Vector3 vel = _direction * Mathf.Max(1.5f, _speed * 0.6f);
         float t = 0f;
@@ -1170,12 +1170,12 @@ public class Bullet : MonoBehaviour
             : (_direction.sqrMagnitude > 0f ? _direction.normalized : Vector3.up);
         Vector3 perp = new Vector3(-fwd.y, fwd.x, 0f);
 
-        float lateral     = 0.35f;
-        float fwdSpacing  = 0.25f;
+        float lateral = 0.35f;
+        float fwdSpacing = 0.25f;
         float backSpacing = 0.35f;
-        float smallLat    = 0.20f;
-        float bigLat      = 0.35f;
-        float backDelay   = 0.08f;
+        float smallLat = 0.20f;
+        float bigLat = 0.35f;
+        float backDelay = 0.08f;
 
         var shots = new List<(Vector3 pos, float delay)>();
         if (count == 2)
@@ -1196,16 +1196,16 @@ public class Bullet : MonoBehaviour
         {
             var (pos, delay) = shots[i];
             var go = Instantiate(gameObject, pos, Quaternion.identity);
-            var b  = go.GetComponent<Bullet>();
+            var b = go.GetComponent<Bullet>();
             b.attackType = AttackType.Wizard_WizStone;
-            b._damage    = _damage;
-            b._speed     = _speed;
+            b._damage = _damage;
+            b._speed = _speed;
             b.chainCount = 1;
 
             bool isMainStone = (i == 0);
 
             if (delay > 0f) b.StartCoroutine(b.DelayStartWizardStone(delay, isMainStone));
-            else            b.StartCoroutine(b.WizardStoneSingleRoutine(isMainStone));
+            else b.StartCoroutine(b.WizardStoneSingleRoutine(isMainStone));
         }
 
         Destroy(gameObject);
@@ -1220,7 +1220,7 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator WizardStoneSingleRoutine(bool isMainStone)
     {
-        Transform hitVFX  = transform.Find("hit_vfx");
+        Transform hitVFX = transform.Find("hit_vfx");
         if (hitVFX) hitVFX.gameObject.SetActive(false);
 
         var enemies = FindObjectsOfType<EnemyBehaviour>();
@@ -1229,10 +1229,10 @@ public class Bullet : MonoBehaviour
         {
             var pool = new List<Transform>();
             foreach (var e in enemies) if (e && e.gameObject.activeInHierarchy) pool.Add(e.transform);
-            if (pool.Count == 1)      strike = pool[0].position;
+            if (pool.Count == 1) strike = pool[0].position;
             else if (pool.Count >= 2)
             {
-                pool.Sort((a,b) =>
+                pool.Sort((a, b) =>
                     (a.position - transform.position).sqrMagnitude.CompareTo(
                     (b.position - transform.position).sqrMagnitude));
                 strike = (pool[0].position + pool[1].position) * 0.5f;
@@ -1240,27 +1240,27 @@ public class Bullet : MonoBehaviour
         }
         strike += new Vector3(Random.Range(-0.25f, 0.25f), Random.Range(-0.15f, 0.15f), 0f);
 
-        Vector3 startPos  = transform.position;
-        Vector3 endPos    = strike;
-        float   arcHeight = 2.2f;
-        Vector3 ctrlPos   = (startPos + endPos) * 0.5f + Vector3.up * arcHeight;
+        Vector3 startPos = transform.position;
+        Vector3 endPos = strike;
+        float arcHeight = 2.2f;
+        Vector3 ctrlPos = (startPos + endPos) * 0.5f + Vector3.up * arcHeight;
 
-        float flightTime  = 1.4f;
+        float flightTime = 1.4f;
         Vector3 startScale = transform.localScale;
-        Vector3 midScale   = startScale * 1.10f;
+        Vector3 midScale = startScale * 1.10f;
 
         float t = 0f;
         while (t < 1f)
         {
             t += Time.deltaTime / flightTime;
-            float u  = Mathf.Clamp01(t);
+            float u = Mathf.Clamp01(t);
             float eu = u * u * (3f - 2f * u);
 
-            Vector3 p = (1-eu)*(1-eu)*startPos + 2*(1-eu)*eu*ctrlPos + eu*eu*endPos;
-            transform.position   = p;
+            Vector3 p = (1 - eu) * (1 - eu) * startPos + 2 * (1 - eu) * eu * ctrlPos + eu * eu * endPos;
+            transform.position = p;
             transform.localScale = Vector3.Lerp(startScale, midScale, Mathf.Sin(eu * Mathf.PI));
 
-            Vector3 deriv = 2*(1-eu)*(ctrlPos - startPos) + 2*eu*(endPos - ctrlPos);
+            Vector3 deriv = 2 * (1 - eu) * (ctrlPos - startPos) + 2 * eu * (endPos - ctrlPos);
             if (deriv.sqrMagnitude > 1e-4f)
             {
                 float ang = Mathf.Atan2(deriv.y, deriv.x) * Mathf.Rad2Deg;
@@ -1327,7 +1327,7 @@ public class Bullet : MonoBehaviour
     private static Vector3 FindDirectionToClosestEnemy(Vector3 origin)
     {
         Vector3 dir = Vector3.up;
-        float best = GameManager.Instance.bulletInterval;
+        float best = float.MaxValue;
         foreach (var e in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             if (!e.activeInHierarchy) continue;
@@ -1340,7 +1340,7 @@ public class Bullet : MonoBehaviour
     private Transform FindClosestEnemyTransform()
     {
         var enemies = FindObjectsOfType<EnemyBehaviour>();
-        float minSqr = GameManager.Instance.bulletInterval;
+        float minSqr = float.MaxValue;
         Transform best = null;
         foreach (var eb in enemies)
         {
@@ -1367,7 +1367,7 @@ public class Bullet : MonoBehaviour
 
     private void MoveWithWiggle(Vector3 targetPos, float amp, float freq, ref float time, float moveSpeed)
     {
-        Vector3 dir  = (targetPos - transform.position).normalized;
+        Vector3 dir = (targetPos - transform.position).normalized;
         Vector3 perp = new Vector3(-dir.y, dir.x, 0f);
         float wig = Mathf.Sin(time * freq * Mathf.PI * 2f) * amp;
         transform.position += (dir * moveSpeed + perp * wig) * Time.deltaTime;

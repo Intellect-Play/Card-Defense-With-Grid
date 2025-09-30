@@ -249,8 +249,10 @@ MonoBehaviour:
   BulletPos: {fileID: 4860015435620449465}
   icon: {fileID: 820881262726117109}
   icon2: {fileID: 8149765087698639949}
+  WeaponSpawned: {fileID: 0}
   placedWeapon: {fileID: 0}
   mainCamera: {fileID: 0}
+  cardDeckAnimator: {fileID: 0}
 --- !u!1001 &5250333507235370487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -316,9 +318,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8518299118502219869, guid: 726a66cedfa70db4fa307f01606ce8f2,
         type: 3}
+      propertyPath: deckType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518299118502219869, guid: 726a66cedfa70db4fa307f01606ce8f2,
+        type: 3}
       propertyPath: cards.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 631873dd26503a64f874650d1ecc403f,
+      objectReference: {fileID: 11400000, guid: eb41ab71461dd0c4fb81a80834d43155,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2398,12 +2397,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3677,6 +3676,8 @@ MonoBehaviour:
   enemySpawnYMin: 5.5
   enemySpawnYMax: 6
   checkInterval: 1
+  checkIntervalGroup: 0.1
+  IntervalWave: 0.1
   bulletInterval: 0.1
   health: 1000
   midpointY: 0
@@ -4132,6 +4133,29 @@ MonoBehaviour:
   FightButton: {fileID: 489587143}
   BuyButton: {fileID: 492286687}
   ShuffleButton: {fileID: 189478102}
+  weaponSettings:
+  - WeaponType: 0
+    slotWeaponsSO: {fileID: 11400000, guid: 7fe50bb6b12ada340bc34c34438b03d4, type: 2}
+    Unlocked: 0
+    Level: 1
+    Countdawn: 1
+  - WeaponType: 1
+    slotWeaponsSO: {fileID: 11400000, guid: 4c31e29534076db46a52e81cd91c898c, type: 2}
+    Unlocked: 0
+    Level: 1
+    Countdawn: 1
+  - WeaponType: 2
+    slotWeaponsSO: {fileID: 11400000, guid: 8a429f3245b43c343a62a11fedb3580a, type: 2}
+    Unlocked: 1
+    Level: 1
+    Countdawn: 1
+  - WeaponType: 3
+    slotWeaponsSO: {fileID: 11400000, guid: 149fc4bda6bd6f6458dc0c79477b1776, type: 2}
+    Unlocked: 0
+    Level: 1
+    Countdawn: 1
+  weaponUnlockedSettings: []
+  weaponLockedSettings: []
 --- !u!4 &1119506945
 Transform:
   m_ObjectHideFlags: 0
@@ -4159,6 +4183,7 @@ GameObject:
   - component: {fileID: 1133852710}
   - component: {fileID: 1133852709}
   - component: {fileID: 1133852711}
+  - component: {fileID: 1133852712}
   m_Layer: 5
   m_Name: TetrisWeaponPanel
   m_TagString: Untagged
@@ -4253,6 +4278,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1133852712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133852707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab746d1dad6194dbee3a5cd6c1fe9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1163052421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5141,6 +5178,7 @@ MonoBehaviour:
   levels:
   - waves:
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
         count: 3
@@ -5173,6 +5211,7 @@ MonoBehaviour:
         healthAmount: 25
         overrideArtwork: {fileID: 0}
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
         count: 3
@@ -5186,7 +5225,7 @@ MonoBehaviour:
         newLevel: 0
         healthAmount: 25
         overrideArtwork: {fileID: 0}
-      - type: 0
+      - type: 4
         deckName: 
         targetCard: {fileID: 0}
         targetDeckName: 
@@ -5205,6 +5244,7 @@ MonoBehaviour:
         healthAmount: 25
         overrideArtwork: {fileID: 0}
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
         count: 1
@@ -5213,6 +5253,7 @@ MonoBehaviour:
       roguelikeOptions: []
   - waves:
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
         count: 5
@@ -5226,7 +5267,7 @@ MonoBehaviour:
         newLevel: 0
         healthAmount: 250
         overrideArtwork: {fileID: 0}
-      - type: 0
+      - type: 4
         deckName: 
         targetCard: {fileID: 0}
         targetDeckName: 
@@ -5245,6 +5286,7 @@ MonoBehaviour:
         healthAmount: 25
         overrideArtwork: {fileID: 0}
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
         count: 6
@@ -5258,7 +5300,7 @@ MonoBehaviour:
         newLevel: 0
         healthAmount: 25
         overrideArtwork: {fileID: 0}
-      - type: 0
+      - type: 4
         deckName: 
         targetCard: {fileID: 0}
         targetDeckName: 
@@ -5277,6 +5319,7 @@ MonoBehaviour:
         healthAmount: 25
         overrideArtwork: {fileID: 0}
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
         count: 5
@@ -5292,7 +5335,7 @@ MonoBehaviour:
         newLevel: 0
         healthAmount: 25
         overrideArtwork: {fileID: 0}
-      - type: 2
+      - type: 4
         deckName: 
         targetCard: {fileID: 0}
         targetDeckName: 
@@ -5311,6 +5354,7 @@ MonoBehaviour:
         healthAmount: 25
         overrideArtwork: {fileID: 0}
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
         count: 5
@@ -5319,11 +5363,12 @@ MonoBehaviour:
       roguelikeOptions: []
   - waves:
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
         count: 10
       roguelikeOptions:
-      - type: 0
+      - type: 4
         deckName: 
         targetCard: {fileID: 0}
         targetDeckName: 
@@ -5351,11 +5396,12 @@ MonoBehaviour:
         healthAmount: 25
         overrideArtwork: {fileID: 0}
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
         count: 8
       roguelikeOptions:
-      - type: 0
+      - type: 4
         deckName: 
         targetCard: {fileID: 0}
         targetDeckName: 
@@ -5383,6 +5429,7 @@ MonoBehaviour:
         healthAmount: 25
         overrideArtwork: {fileID: 0}
     - goldAmountMultiplier: 1
+      RoguelikeBool: 0
       enemies:
       - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
         count: 6
@@ -21250,7 +21297,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 5445635596059443381, guid: 61c2f02e89883f24faee3e447485828a,
     type: 3}
   spawnedWeapons: []
-  inventoryManager: {fileID: 0}
+  inventoryManager: {fileID: 8634742202875163930}
   Conteiner: {fileID: 2462975653403588259}
   mainCamera: {fileID: 519420031}
 --- !u!114 &5195784749677776042
@@ -23724,6 +23771,9 @@ MonoBehaviour:
   - {fileID: 380982778855153007, guid: a61f02691b1678347b600f8996f603b7, type: 3}
   - {fileID: 380982778855153007, guid: af39f47aeea5e0e48b6550168e1e0ec2, type: 3}
   - {fileID: 380982778855153007, guid: 3672f1ff4f2b13440917c587c1357f07, type: 3}
+  - {fileID: 380982778855153007, guid: f3e102b17ad8cdf438587ab0a38fa015, type: 3}
+  - {fileID: 380982778855153007, guid: a24e7e21f5a02fe44a5ff4565c7de0ee, type: 3}
+  - {fileID: 380982778855153007, guid: 04bd9dd42e571e7478ef8ac896afb4ab, type: 3}
   spawnButton: {fileID: 6921931702322622542}
   draggablePrefab: {fileID: 380982778855153007, guid: af0e071d2add4324990714acbe3aaf2c,
     type: 3}

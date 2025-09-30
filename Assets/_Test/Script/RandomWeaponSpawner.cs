@@ -13,6 +13,7 @@ public class RandomWeaponSpawner : MonoBehaviour
     public Transform Conteiner;
     PlacedWeapon[,] placedWeapons;
     public Camera mainCamera;
+    TetrisWeaponManager tetrisWeaponManager;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -24,6 +25,7 @@ public class RandomWeaponSpawner : MonoBehaviour
     }
     private void Start()
     {
+        tetrisWeaponManager = TetrisWeaponManager.instance;
         inventoryManager = InventoryManager.instance;
         SpawnRandomWeapons();
     }
@@ -38,6 +40,13 @@ public class RandomWeaponSpawner : MonoBehaviour
             Shuffle();
         }
     }
+    public void ChangePosWeapons()
+    {
+        foreach (var w in spawnedWeapons)
+        {
+            w.ChangePosWeapon();
+        }
+    }
     public void SpawnRandomWeapons()
     {
 
@@ -46,7 +55,7 @@ public class RandomWeaponSpawner : MonoBehaviour
             InventorySlot emptySlots = inventoryManager.GetRandomEmptyCell();
             if (emptySlots == null) break;
 
-            SlotWeaponsSO randomWeapon = possibleWeapons[Random.Range(0, possibleWeapons.Count)];
+            SlotWeaponsSO randomWeapon = tetrisWeaponManager.GetSlotWeapon();
             GameObject go = Instantiate(weaponPrefab, emptySlots.transform);
             go.transform.localPosition = Vector3.zero;
             go.transform.SetParent(Conteiner);

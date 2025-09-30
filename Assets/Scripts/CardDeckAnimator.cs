@@ -225,6 +225,7 @@ public class CardDeckAnimator : MonoBehaviour
     private void FireChosen()
     {
         var chosen = _currentCycleCard ?? PickRandomCard();
+        Debug.Log("_currentCycleCard "+_currentCycleCard);
         if (chosen == null) return;
 
         if (revertMaterialAfterFire && defaultBackSprite)

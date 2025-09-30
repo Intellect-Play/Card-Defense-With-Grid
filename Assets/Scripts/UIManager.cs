@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
 
         ForceAnimatorsUnscaled(winBoard);
         ForceAnimatorsUnscaled(loseBoard);
-        ForceAnimatorsUnscaled(roguelikeBoard);
+        //ForceAnimatorsUnscaled(roguelikeBoard);
     }
 
     void ScaleBackgroundSpriteToFullScreen()

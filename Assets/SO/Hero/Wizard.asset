@@ -21,3 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be20549d0349ecf41a4d1b46c6d385e9, type: 2}
   - {fileID: 11400000, guid: 8854384f6ddcbee42b313e2bc4cb963c, type: 2}
   - {fileID: 11400000, guid: 181a978c9cca0da4ab9925f740e6b305, type: 2}
+  heroCarcd: {fileID: 11400000, guid: d3f9d7cd2b6a64aba87385036144b370, type: 2}

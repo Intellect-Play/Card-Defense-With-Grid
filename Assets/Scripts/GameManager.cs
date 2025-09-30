@@ -109,8 +109,8 @@ public class GameManager : MonoBehaviour
         uIManager.SetLoseBoardActive(false);
 
         DeactivateAllDecks();
-
-        StartCoroutine(InitialHeroSelectionAndThenStart());
+        InitialHeroSelectionAndThenStart();
+        //StartCoroutine(InitialHeroSelectionAndThenStart());
     }
 
     void Update()
@@ -245,7 +245,7 @@ public class GameManager : MonoBehaviour
 
     // =================== Intro / Lose ===================
 
-    private IEnumerator InitialHeroSelectionAndThenStart()
+    private void InitialHeroSelectionAndThenStart()
     {
         roguelikeManager.InitializeHeroSelection();
         uIManager.SetRougelikeText("Pick a hero");
@@ -255,12 +255,12 @@ public class GameManager : MonoBehaviour
             uIManager.SetRoguelikeOption(i, heroOptions[i]);
         uIManager.DisableSlotsWithoutImage();
 
-        uIManager.SetRougelikeBoardActive(true);
-        PauseGameForRoguelike();
+        uIManager.SetRougelikeBoardActive(false);
+        //PauseGameForRoguelike();
 
-        yield return new WaitUntil(() => !uIManager.roguelikeBoard.activeSelf);
 
-        ResumeGameAfterRoguelike();
+
+        //ResumeGameAfterRoguelike();
         ActivateDecksFromPrefs();
 
         StartCoroutine(RunLevel());
@@ -445,6 +445,7 @@ public class GameManager : MonoBehaviour
             _roguelikeShown[wi] = true;
             if (waves[wi].RoguelikeBool)
             {
+                Debug.Log($"[GameManager] Starting roguelike after wave {wi + 1}.");
                 PauseGameForRoguelike();
                 yield return roguelikeManager.RunRoguelike(wi + 1, waves[wi].roguelikeOptions);
                 if (uIManager.roguelikeBoard.activeSelf)

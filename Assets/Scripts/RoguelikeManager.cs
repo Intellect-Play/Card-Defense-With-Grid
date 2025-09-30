@@ -71,7 +71,11 @@ public class RoguelikeManager : MonoBehaviour
         var keys = cardPrefKeys[deckName];
         return (idx < keys.Length) ? keys[idx] : null;
     }
-
+    private void Awake()
+    {
+        PlayerPrefs.SetInt("Deck_Inventor_Active", 1);
+        Debug.Log("RoguelikeManager: Awake - Set Deck_Inventor_Active to 1");
+    }
     void Start()
     {
         if (!gameManager) gameManager = FindObjectOfType<GameManager>();
@@ -88,7 +92,7 @@ public class RoguelikeManager : MonoBehaviour
     public void InitializeHeroSelection()
     {
         // Reset active flags only; DO NOT touch card unlock keys or levels here.
-        PlayerPrefs.SetInt("Deck_Inventor_Active", 0);
+        PlayerPrefs.SetInt("Deck_Inventor_Active", 1);
         PlayerPrefs.SetInt("Deck_Wizard_Active",   0);
         PlayerPrefs.SetInt("Deck_Samurai_Active",  0);
 
@@ -227,9 +231,10 @@ public class RoguelikeManager : MonoBehaviour
         Debug.Log($"RoguelikeManager: Running roguelike options for wave {waveNumber}.");
         // Active decks right now
         var activeDecks = new List<string>();
-        if (PlayerPrefs.GetInt("Deck_Inventor_Active", 0) == 1) activeDecks.Add("Inventor");
+        if (PlayerPrefs.GetInt("Deck_Inventor_Active", 1) == 1) activeDecks.Add("Inventor");
         if (PlayerPrefs.GetInt("Deck_Wizard_Active",   0) == 1) activeDecks.Add("Wizard");
         if (PlayerPrefs.GetInt("Deck_Samurai_Active",  0) == 1) activeDecks.Add("Samurai");
+        Debug.Log($"RoguelikeManager: Active decks: {string.Join(", ", activeDecks)}");
         if (activeDecks.Count == 0) yield break;
 
         // Unlocked cards by deck (used to choose upgrade targets)
@@ -353,7 +358,10 @@ public class RoguelikeManager : MonoBehaviour
                             AssignCooldown(ref opt);
                     }
                     break;
-
+                    case OptionType.AddPiece:
+                    Debug.Log("AddPiece RoguelikeManager: Player picked AddPiece option.");
+                    AddPiece();
+                    break;
                 case OptionType.ReduceCooldown:
                     AssignCooldown(ref opt);
                     break;
@@ -373,7 +381,10 @@ public class RoguelikeManager : MonoBehaviour
 
             options[i] = opt;
         }
-
+        void AddPiece()
+        {
+            Debug.Log("AddPiece method called in RoguelikeManager.");
+        }
         // Show UI
         CurrentOptions = options;
         uiManager.SetRougelikeText($"Wave {waveNumber} complete!\nChoose an option:");
