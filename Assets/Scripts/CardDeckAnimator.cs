@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 [DisallowMultipleComponent]
 public class CardDeckAnimator : MonoBehaviour
 {
@@ -57,6 +57,8 @@ public class CardDeckAnimator : MonoBehaviour
     private bool _pausedThisCycle = false;
     private bool _externalPause = false;
 
+    public float damage;
+    public int count;
     private Renderer _cardFaceRenderer;
 
     private static readonly int BaseMapProp = Shader.PropertyToID("_BaseMap");
@@ -71,7 +73,7 @@ public class CardDeckAnimator : MonoBehaviour
         ApplyBackToCardFace();
 
         _animPaused = false; _cooldownT = 0f; _rampingOut = false; _rampT = 0f;
-        _lastCycle = -1; _pausedThisCycle = false; _currentCycleCard = null;
+        _lastCycle = -1; _pausedThisCycle = false; _currentCycleCard = cards[0];
         if (cardAnim) cardAnim.speed = 1f;
     }
 
@@ -89,143 +91,43 @@ public class CardDeckAnimator : MonoBehaviour
     {
         float f = Mathf.Clamp01(1f - (percent / 100f));
         animCooldownSecs = Mathf.Max(0.05f, animCooldownSecs * f);
-        if (verboseLogs) Debug.Log($"[CardDeckAnimator] animCooldownSecs={animCooldownSecs:0.###}");
+        //if (verboseLogs) Debug.Log($"[CardDeckAnimator] animCooldownSecs={animCooldownSecs:0.###}");
     }
     private float timer;
     public float fireInterval = 2f; // neçə saniyədən bir işləsin
 
-    void Update()
+    void FixedUpdate()
     {
-        if(TetrisWeaponManager.isTetrisScene) return;
-        float dt = useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
+        if (TetrisWeaponManager.isTetrisScene) return;
+
+        float dt = useUnscaledTime ? Time.fixedUnscaledDeltaTime : Time.fixedDeltaTime;
 
         // Timer artır
         timer += dt;
 
+        staticWeapon.GetFireTime(timer / fireInterval);
         // Əgər vaxt çatıbsa → işlə
         if (timer >= fireInterval)
         {
             timer = 0f; // sıfırla
 
             if (!staticWeapon.isActive) return;
-            _currentCycleCard = PickRandomCard();
-            if (_currentCycleCard)
-            {
-                EnsureRendererUsesDeckMaterial();
-                if (_currentCycleCard.artwork)
-                    SetDeckMaterialFromSprite(GetDeckMaterial(), _currentCycleCard.artwork);
-                else if (defaultBackSprite)
-                    SetDeckMaterialFromSprite(GetDeckMaterial(), defaultBackSprite);
-
-                FireChosen(); // 🔹 güllə at
-            }
+            FireChosen(); // 🔹 güllə at
         }
     }
 
 
-    //void Update()
-    //{
-    //    float dt = useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
-    //    bool gate = (uiManager && uiManager.roguelikeBoard && uiManager.roguelikeBoard.activeSelf) || _externalPause;
-
-    //    if (!cardAnim || cardAnim.layerCount == 0 || !cardAnim.gameObject.activeInHierarchy) return;
-
-    //    var clipInfos = cardAnim.GetCurrentAnimatorClipInfo(0);
-    //    if (clipInfos == null || clipInfos.Length == 0) return;
-
-    //    var state = cardAnim.GetCurrentAnimatorStateInfo(0);
-    //    var clip  = clipInfos[0].clip;
-    //    if (!clip) return;
-    //    if (onlyForLoopingClips && !clip.isLooping) return;
-
-    //    _totalFrames = Mathf.Max(1, Mathf.RoundToInt(clip.length * clip.frameRate));
-    //    if (pauseOnFrame >= _totalFrames) return;
-
-    //    float normalized = state.normalizedTime;
-    //    int cycle = Mathf.FloorToInt(normalized);
-    //    float within = normalized - cycle;
-    //    int frame = Mathf.Clamp(Mathf.FloorToInt(within * _totalFrames), 0, _totalFrames - 1);
-
-    //    // --- new cycle: choose a card & set material texture ---
-    //    if (cycle != _lastCycle)
-    //    {
-    //        _lastCycle = cycle;
-    //        _pausedThisCycle = false;
-
-    //        _currentCycleCard = PickRandomCard();
-
-    //        EnsureRendererUsesDeckMaterial();
-    //        if (_currentCycleCard && _currentCycleCard.artwork)
-    //            SetDeckMaterialFromSprite(GetDeckMaterial(), _currentCycleCard.artwork);
-    //        else if (defaultBackSprite)
-    //            SetDeckMaterialFromSprite(GetDeckMaterial(), defaultBackSprite);
-
-    //        if (!_animPaused) cardAnim.speed = 1f;
-    //        if (verboseLogs && _currentCycleCard)
-    //            Debug.Log($"[CardDeckAnimator] Cycle {cycle} start → {_currentCycleCard.name}");
-    //    }
-
-    //    if (_animPaused)
-    //    {
-    //        _cooldownT -= dt;
-    //        if (_cooldownT <= 0f)
-    //        {
-    //            _animPaused = false;
-    //            StartResumeRamp();
-    //        }
-    //        return;
-    //    }
-
-    //    int framesToTarget = pauseOnFrame - frame;
-    //    if (!_pausedThisCycle && framesToTarget > 0 && framesToTarget <= Mathf.Max(1, earlyMarginFrames))
-    //    {
-    //        if (!_rampingOut) cardAnim.speed = Mathf.Min(cardAnim.speed, approachSlowSpeed);
-    //    }
-    //    else if (!_rampingOut)
-    //    {
-    //        cardAnim.speed = 1f;
-    //    }
-
-    //    int lower = Mathf.Max(0, pauseOnFrame - earlyMarginFrames);
-    //    int upper = Mathf.Min(_totalFrames - 1, pauseOnFrame + lateMarginFrames);
-    //    bool inWindow = frame >= lower && frame <= upper;
-
-    //    if (!_pausedThisCycle && inWindow)
-    //    {
-    //        _pausedThisCycle = true;
-    //        _animPaused = true;
-    //        _cooldownT = Mathf.Max(0f, animCooldownSecs);
-    //        cardAnim.speed = 0f;
-
-    //        if (!gate) FireChosen();
-    //        if (verboseLogs) Debug.Log($"[CardDeckAnimator] Pause @ frame {frame} for {_cooldownT:0.###}s");
-    //    }
-
-    //    HandleResumeRamp(dt);
-    //}
-
-    // ---------------- helpers ----------------
-
-    private void StartResumeRamp()
+    public void GetNewSetting(int _count, float _damage=10, float _fireInterval=2)
     {
-        _rampingOut = (resumeRampTime > 0f);
-        _rampT = resumeRampTime;
-        cardAnim.speed = _rampingOut ? approachSlowSpeed : 1f;
+        fireInterval = _fireInterval;
+        damage = _damage;
+        count = _count;
     }
-
-    private void HandleResumeRamp(float dt)
-    {
-        if (!_rampingOut || !cardAnim) return;
-        _rampT -= dt;
-        float t = 1f - Mathf.Clamp01(_rampT / Mathf.Max(0.0001f, resumeRampTime));
-        cardAnim.speed = Mathf.Lerp(approachSlowSpeed, 1f, t);
-        if (_rampT <= 0f) { _rampingOut = false; cardAnim.speed = 1f; }
-    }
-
     private void FireChosen()
     {
-        var chosen = _currentCycleCard ?? PickRandomCard();
-        Debug.Log("_currentCycleCard "+_currentCycleCard);
+        staticWeapon.FireChosen();
+        var chosen = _currentCycleCard;
+        //Debug.Log("_currentCycleCard "+_currentCycleCard);
         if (chosen == null) return;
 
         if (revertMaterialAfterFire && defaultBackSprite)
@@ -235,7 +137,7 @@ public class CardDeckAnimator : MonoBehaviour
             StartCoroutine(RevertDeckMaterialAfterDelay(v));
         }
 
-        Bullet.Fire(chosen, transform.position);
+        Bullet.Fire(chosen, transform.position, damage, count);
         _lastFired = chosen;
         if (verboseLogs) Debug.Log($"[CardDeckAnimator] Fired: {chosen.name}");
     }

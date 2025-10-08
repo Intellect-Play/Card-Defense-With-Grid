@@ -14,27 +14,27 @@ public class Bullet : MonoBehaviour
     public float areaRadius;
 
     private Vector3 _direction = Vector3.up;
-    private int _damage = 0;
+    private float _damage = 0;
     private float _speed = 5f;
 
     // -------------------- Fire entry --------------------
-    public static void Fire(CardSO card, Vector3 origin)
+    public static void Fire(CardSO card, Vector3 origin, float damage, int count)
     {
         Vector3 dir = FindDirectionToClosestEnemy(origin);
         var go = Instantiate(card.fireObject, origin, Quaternion.identity);
         var b = go.GetComponent<Bullet>();
         b.attackType = card.attackType;
         b.chainCount = Mathf.Max(1, card.sessionLevel);   // scale counts off session level
-        b.Initialize(dir, card.baseDmg, 3);
+        b.Initialize(dir, damage, 3, count);
     }
 
-    public void Initialize(Vector3 dir, int damage, float bulletSpeed)
+    public void Initialize(Vector3 dir, float damage, float bulletSpeed, int count)
     {
         _direction = dir.normalized;
         _damage = damage;
         _speed = bulletSpeed;
         FaceDirection();
-
+        chainCount = count;
         switch (attackType)
         {
             case AttackType.Samurai_Hammer: StartCoroutine(HammerRoutine()); break;
@@ -339,7 +339,7 @@ public class Bullet : MonoBehaviour
     // L1=4, then +1 per level, max 8
     private IEnumerator HammerRoutine()
     {
-        int count = Mathf.Clamp(chainCount + 3, 4, 8);
+        int count = chainCount;
 
         if (count > 1)
         {
@@ -638,7 +638,7 @@ public class Bullet : MonoBehaviour
         pool.Sort((a, b) =>
             (a.position - transform.position).sqrMagnitude.CompareTo((b.position - transform.position).sqrMagnitude));
 
-        int arrowCount = Mathf.Clamp(chainCount + 2, 3, 8);
+        int arrowCount = chainCount;
 
         float baseDelay = 0.05f;
         Vector3 fwd = (pool[0].position - transform.position).normalized;
@@ -765,7 +765,7 @@ public class Bullet : MonoBehaviour
     // L1=2, then +1 per level, max 5
     private IEnumerator FireBombRoutine()
     {
-        int count = Mathf.Clamp(chainCount + 1, 2, 5);
+        int count = chainCount;
 
         Transform closest = FindClosestEnemyTransform();
         Vector3 fwd = closest
@@ -1061,7 +1061,7 @@ public class Bullet : MonoBehaviour
     // L1=2, then +1 per level, max 8
     private IEnumerator MagicBallRoutine()
     {
-        int ballCount = Mathf.Clamp(chainCount + 2, 3, 8);
+        int ballCount = chainCount;
         float delay = 0.08f;
         float ringRadius = 0.25f;
 
@@ -1162,7 +1162,7 @@ public class Bullet : MonoBehaviour
     // L1=2, then +1 per level, max 5
     private IEnumerator WizardStoneRoutine()
     {
-        int count = Mathf.Clamp(chainCount + 1, 2, 5);
+        int count = chainCount;
 
         Transform closest = FindClosestEnemyTransform();
         Vector3 fwd = closest

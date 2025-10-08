@@ -135,6 +135,7 @@ public class UIManager : MonoBehaviour
                 for (int i = 0; i < offeredCardSlots.Length; i++)
                 {
                     var slot = offeredCardSlots[i];
+                    Debug.Log("[UIManager] Resetting offered slot {i} scale "+ slot != null);
                     if (slot != null)
                     {
                         slot.transform.localScale = Vector3.one;
@@ -166,6 +167,7 @@ public class UIManager : MonoBehaviour
             if (slot == null) continue;
 
             bool isActive = i < count;
+            Debug.Log("[UIManager] Setting offered slot {i} active: " + isActive);
             slot.SetActive(isActive);
 
             if (isActive)
@@ -188,8 +190,8 @@ public class UIManager : MonoBehaviour
             string label;
             switch (option.type)
             {
-                case OptionType.NewHero:
-                    label = option.deckName; break;
+                case OptionType.OpenNewWeapon:
+                    label = "OpenNewWeapon"; break;
                 case OptionType.UpgradeCard:
                     label = $"{option.oldLevel}->{option.newLevel}"; break;
                 case OptionType.ReduceCooldown:

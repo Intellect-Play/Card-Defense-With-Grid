@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9176531715138c741be07e5c4bb6edec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckType: 1
+  deckType: 2
   cards:
-  - {fileID: 11400000, guid: eb41ab71461dd0c4fb81a80834d43155, type: 2}
+  - {fileID: 11400000, guid: 0adcbc7e7cd283749998bffe6f0fdd12, type: 2}
   uiManager: {fileID: 0}
   InvCardBackMat: {fileID: 2100000, guid: 47a177330d92f4ac19dbc1edaf26f5db, type: 2}
   WizCardBackMat: {fileID: 2100000, guid: a3e65a1ff3745463aa0d9ffb4acb7173, type: 2}
@@ -67,6 +67,8 @@ MonoBehaviour:
   revertDelay: 0.25
   staticWeapon: {fileID: 0}
   verboseLogs: 0
+  damage: 0
+  count: 0
   fireInterval: 2
 --- !u!1 &7787875020771003900
 GameObject:

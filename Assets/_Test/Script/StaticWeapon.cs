@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
+using DG.Tweening; // yuxarıda olmalıdır
 
 public class StaticWeapon : MonoBehaviour
 {
+    public SlotWeaponType WeaponType;
     public RandomWeaponSpawner randomWeaponSpawner;
     public SlotWeaponsSO weaponData;
     public Vector2Int gridPosition;
@@ -29,9 +31,43 @@ public class StaticWeapon : MonoBehaviour
     {
         Init(_weaponData, Level, pos, camera, WeaponSpawned);
     }
-
-    public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera camera, GameObject weaponSpawned)
+    public void GetWeaponSetting(WeaponSetting weaponSetting)
     {
+        if(placedWeapon == null) return;
+        int level = weaponSetting.Level;
+        LevelUp(level);
+        //Debug.Log(weaponSetting.Countdawn[0]+" Time");
+        //Debug.Log("GetWeaponSetting " + placedWeapon.WeaponLevel + " " + weaponSetting.Damage[level] + " " + weaponSetting.Countdawn[level]);
+        cardDeckAnimator.GetNewSetting(placedWeapon.WeaponLevel, weaponSetting.Damage[0], weaponSetting.Countdawn[0]);
+    }
+    public void GetFireTime(float scaleTime)
+    {
+        icon.fillAmount = scaleTime;
+    }
+
+public void FireChosen()
+{
+
+    // 🔹 DOTween ilə kiçik "pop" effekti (şəkil atır kimi)
+    // Əvvəlcə obyektin ölçüsünü bir az böyüdürük və geri qaytarırıq
+    transform.DOKill(); // əvvəlki animasiyalar təmizlə
+    transform
+        .DOScale(1.15f, 0.1f)  // 0.1 saniyəyə 15% böyüt
+        .SetEase(Ease.OutBack)
+        .OnComplete(() =>
+        {
+            transform.DOScale(1f, 0.15f).SetEase(Ease.InOutSine); // yenidən ölçüyə qaytar
+        });
+
+    // 🔹 Material revert effekti (əgər aktivdirsə)
+   
+
+ 
+}
+
+public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera camera, GameObject weaponSpawned)
+    {
+        WeaponType = _weaponData.weaponName;
         gameObject.name = _weaponData.weaponName.ToString();
         weaponData = _weaponData;
         gridPosition = pos;
@@ -40,6 +76,7 @@ public class StaticWeapon : MonoBehaviour
 
         cardDeckAnimator = WeaponSpawned.GetComponentInChildren<CardDeckAnimator>();
         cardDeckAnimator.staticWeapon = this;
+        Debug.Log(weaponData.attackType);
         cardDeckAnimator.cards[0].attackType = weaponData.attackType;
         WeaponSpawned.transform.localScale = new Vector3(.5f,.5f,.5f);
         SetIcon();

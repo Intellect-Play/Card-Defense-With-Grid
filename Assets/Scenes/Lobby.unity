@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1062,7 +1061,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1271.4572, y: 2421.823}
+  m_SizeDelta: {x: 1080, y: 1645.7144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &35866910
 MonoBehaviour:
@@ -1165,24 +1164,24 @@ MonoBehaviour:
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 2421.823, z: 0}
+  FillSize: {x: 1080, y: 1645.7144, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
   TargetPosition: {x: 0, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 2421.823, z: 0}
+  TargetRectSize: {x: 1080, y: 1645.7144, z: 0}
   TransformPosition: {x: 0, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 2421.823}
+  TransformRectSize: {x: 1080, y: 1645.7144}
 --- !u!1 &36387048
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,8 +4124,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54.511536, y: 0}
-  m_SizeDelta: {x: 48.073074, y: 99.90021}
+  m_AnchoredPosition: {x: -50.20375, y: 0}
+  m_SizeDelta: {x: 39.4575, y: 67.88573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &149817337
 MonoBehaviour:
@@ -4199,28 +4198,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 789008434}
   SiblingIndex: 0
-  LayoutPosition: {x: -54.511536, y: 0, z: 0}
+  LayoutPosition: {x: -50.20375, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 320.48715, y: 99.90021, z: 0}
+  FillSize: {x: 263.05, y: 67.88573, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -54.511536, y: 0, z: 0}
+  TargetPosition: {x: -50.20375, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 48.073074, y: 99.90021, z: 0}
-  TransformPosition: {x: -54.511536, y: 0, z: 0}
+  TargetRectSize: {x: 39.4575, y: 67.88573, z: 0}
+  TransformPosition: {x: -50.20375, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 48.073074, y: 99.90021}
+  TransformRectSize: {x: 39.4575, y: 67.88573}
 --- !u!114 &149817339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5529,8 +5528,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 49.950104}
-  m_SizeDelta: {x: 286.07785, y: 466.20093}
+  m_AnchoredPosition: {x: 0, y: 33.942856}
+  m_SizeDelta: {x: 243, y: 316.80002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &230774394
 MonoBehaviour:
@@ -5629,28 +5628,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1257413143}
   SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 49.950104, z: 0}
+  LayoutPosition: {x: 0, y: 33.942856, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 49.950104, z: 0}
+  TargetPosition: {x: 0, y: 33.942856, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 286.07785, y: 466.20093, z: 0}
-  TransformPosition: {x: 0, y: 49.950104, z: 0}
+  TargetRectSize: {x: 243, y: 316.80002, z: 0}
+  TransformPosition: {x: 0, y: 33.942856, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 286.07785, y: 466.20093}
+  TransformRectSize: {x: 243, y: 316.80002}
 --- !u!114 &230774397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6230,8 +6229,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -544.91016}
-  m_SizeDelta: {x: 1271.4572, y: 1332.0027}
+  m_AnchoredPosition: {x: 0, y: -370.2857}
+  m_SizeDelta: {x: 1080, y: 905.14294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &258063309
 MonoBehaviour:
@@ -6330,28 +6329,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1559066614}
   SiblingIndex: 1
-  LayoutPosition: {x: 0, y: -544.91016, z: 0}
+  LayoutPosition: {x: 0, y: -370.2857, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 666.00134, z: 0}
+    m_Extent: {x: 540, y: 452.57147, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 666.00134, z: 0}
+    m_Extent: {x: 540, y: 452.57147, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 666.00134, z: 0}
+    m_Extent: {x: 540, y: 452.57147, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 2421.823, z: 0}
+  FillSize: {x: 1080, y: 1645.7144, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: -544.91016, z: 0}
+  TargetPosition: {x: 0, y: -370.2857, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 1332.0027, z: 0}
-  TransformPosition: {x: 0, y: -544.91016, z: 0}
+  TargetRectSize: {x: 1080, y: 905.14294, z: 0}
+  TransformPosition: {x: 0, y: -370.2857, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 1332.0027}
+  TransformRectSize: {x: 1080, y: 905.14294}
 --- !u!1 &259677957
 GameObject:
   m_ObjectHideFlags: 0
@@ -6656,8 +6655,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.51154, y: 0}
-  m_SizeDelta: {x: 48.073074, y: 99.90021}
+  m_AnchoredPosition: {x: 50.20375, y: 0}
+  m_SizeDelta: {x: 39.4575, y: 67.88573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &261874412
 MonoBehaviour:
@@ -6730,28 +6729,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 789008434}
   SiblingIndex: 2
-  LayoutPosition: {x: 54.51154, y: 0, z: 0}
+  LayoutPosition: {x: 50.20375, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 320.48715, y: 99.90021, z: 0}
+  FillSize: {x: 263.05, y: 67.88573, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 54.51154, y: 0, z: 0}
+  TargetPosition: {x: 50.20375, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 48.073074, y: 99.90021, z: 0}
-  TransformPosition: {x: 54.51154, y: 0, z: 0}
+  TargetRectSize: {x: 39.4575, y: 67.88573, z: 0}
+  TransformPosition: {x: 50.20375, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 48.073074, y: 99.90021}
+  TransformRectSize: {x: 39.4575, y: 67.88573}
 --- !u!114 &261874414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6829,7 +6828,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -472.22858, y: 0}
+  m_AnchoredPosition: {x: -376.5, y: 0}
   m_SizeDelta: {x: 227, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &266373512
@@ -6941,7 +6940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 950498737}
   SiblingIndex: 0
-  LayoutPosition: {x: -497.22858, y: 0, z: 0}
+  LayoutPosition: {x: -401.5, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -6955,11 +6954,11 @@ MonoBehaviour:
   ComponentScale: {x: 1, y: 1, z: 1}
   FillSize: {x: 0, y: 0, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -472.22858, y: 0, z: 0}
+  TargetPosition: {x: -376.5, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   TargetRectSize: {x: 227, y: 56, z: 0}
-  TransformPosition: {x: -472.22858, y: 0, z: 0}
+  TransformPosition: {x: -376.5, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
   TransformRectSize: {x: 227, y: 56}
@@ -8060,7 +8059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 420.35712}
+  m_AnchoredPosition: {x: 0, y: 280.6576}
   m_SizeDelta: {x: 0, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &320323128
@@ -8077,7 +8076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 2065999508}
   SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 420.35712, z: 0}
+  LayoutPosition: {x: 0, y: 280.6576, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -8091,11 +8090,11 @@ MonoBehaviour:
   ComponentScale: {x: 1, y: 1, z: 1}
   FillSize: {x: 0, y: 0, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 420.35712, z: 0}
+  TargetPosition: {x: 0, y: 280.6576, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   TargetRectSize: {x: 141.26001, y: 66, z: 0}
-  TransformPosition: {x: 0, y: 420.35712, z: 0}
+  TransformPosition: {x: 0, y: 280.6576, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
   TransformRectSize: {x: 141.26001, y: 66}
@@ -9138,8 +9137,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 317.8643, y: 0}
-  m_SizeDelta: {x: 635.7286, y: 666.00134}
+  m_AnchoredPosition: {x: 270, y: 0}
+  m_SizeDelta: {x: 540, y: 452.57147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &414791495
 MonoBehaviour:
@@ -9238,28 +9237,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 509516763}
   SiblingIndex: 1
-  LayoutPosition: {x: 317.8643, y: 0, z: 0}
+  LayoutPosition: {x: 270, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 317.8643, y: 0, z: 0}
+  TargetPosition: {x: 270, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 635.7286, y: 666.00134, z: 0}
-  TransformPosition: {x: 317.8643, y: 0, z: 0}
+  TargetRectSize: {x: 540, y: 452.57147, z: 0}
+  TransformPosition: {x: 270, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 635.7286, y: 666.00134}
+  TransformRectSize: {x: 540, y: 452.57147}
 --- !u!1 &418698591
 GameObject:
   m_ObjectHideFlags: 0
@@ -10495,15 +10494,15 @@ MonoBehaviour:
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1412.7301, z: 0}
+    m_Extent: {x: 540, y: 960, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1412.7301, z: 0}
+    m_Extent: {x: 540, y: 960, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1412.7301, z: 0}
+    m_Extent: {x: 540, y: 960, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 2825.4602, z: 0}
+  FillSize: {x: 1080, y: 1920, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
   TargetPosition: {x: 0, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -10550,8 +10549,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -333.00067}
-  m_SizeDelta: {x: 1271.4572, y: 666.00134}
+  m_AnchoredPosition: {x: 0, y: -226.28574}
+  m_SizeDelta: {x: 1080, y: 452.57147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &509516764
 MonoBehaviour:
@@ -10650,28 +10649,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 258063308}
   SiblingIndex: 1
-  LayoutPosition: {x: 0, y: -333.00067, z: 0}
+  LayoutPosition: {x: 0, y: -226.28574, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 333.00067, z: 0}
+    m_Extent: {x: 540, y: 226.28574, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 333.00067, z: 0}
+    m_Extent: {x: 540, y: 226.28574, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 333.00067, z: 0}
+    m_Extent: {x: 540, y: 226.28574, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 666.00134, z: 0}
+  FillSize: {x: 1080, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: -333.00067, z: 0}
+  TargetPosition: {x: 0, y: -226.28574, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 666.00134, z: 0}
-  TransformPosition: {x: 0, y: -333.00067, z: 0}
+  TargetRectSize: {x: 1080, y: 452.57147, z: 0}
+  TransformPosition: {x: 0, y: -226.28574, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 666.00134}
+  TransformRectSize: {x: 1080, y: 452.57147}
 --- !u!1 &521389238
 GameObject:
   m_ObjectHideFlags: 0
@@ -12600,12 +12599,12 @@ PrefabInstance:
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 381.43716
+      value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 99.90021
+      value: 67.88573
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -12650,7 +12649,7 @@ PrefabInstance:
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -233.10046
+      value: -158.40002
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -12710,7 +12709,7 @@ PrefabInstance:
     - target: {fileID: 4198261249273729667, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0000019073486
+      value: -0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 4198261249273729667, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -12783,7 +12782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 596514295}
   SiblingIndex: 1
-  LayoutPosition: {x: 0.0000019073486, y: 0, z: 0}
+  LayoutPosition: {x: -0.0000019073486, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -12797,11 +12796,11 @@ MonoBehaviour:
   ComponentScale: {x: 1, y: 1, z: 1}
   FillSize: {x: 0, y: 0, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0.0000019073486, y: 0, z: 0}
+  TargetPosition: {x: -0.0000019073486, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   TargetRectSize: {x: 60.95, y: 62.57, z: 0}
-  TransformPosition: {x: 0.0000019073486, y: 0, z: 0}
+  TransformPosition: {x: -0.0000019073486, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
   TransformRectSize: {x: 60.95, y: 62.57}
@@ -12902,28 +12901,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1937795636}
   SiblingIndex: 1
-  LayoutPosition: {x: 0, y: -233.10046, z: 0}
+  LayoutPosition: {x: 0, y: -158.40002, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.5715, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: -233.10046, z: 0}
+  TargetPosition: {x: 0, y: -158.40002, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 381.43716, y: 99.90021, z: 0}
-  TransformPosition: {x: 0, y: -233.10046, z: 0}
+  TargetRectSize: {x: 324, y: 67.88573, z: 0}
+  TransformPosition: {x: 0, y: -158.40002, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 381.43716, y: 99.90021}
+  TransformRectSize: {x: 324, y: 67.88573}
 --- !u!1 &607388982
 GameObject:
   m_ObjectHideFlags: 0
@@ -14617,7 +14616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 333.21213}
+  m_AnchoredPosition: {x: 0, y: 193.51259}
   m_SizeDelta: {x: 373.12, y: 108.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662100159
@@ -14634,7 +14633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 2065999508}
   SiblingIndex: 1
-  LayoutPosition: {x: 0, y: 333.21213, z: 0}
+  LayoutPosition: {x: 0, y: 193.51259, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -14648,11 +14647,11 @@ MonoBehaviour:
   ComponentScale: {x: 1, y: 1, z: 1}
   FillSize: {x: 0, y: 0, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 333.21213, z: 0}
+  TargetPosition: {x: 0, y: 193.51259, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   TargetRectSize: {x: 373.12, y: 108.29, z: 0}
-  TransformPosition: {x: 0, y: 333.21213, z: 0}
+  TransformPosition: {x: 0, y: 193.51259, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
   TransformRectSize: {x: 373.12, y: 108.29}
@@ -16957,7 +16956,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1271.4572, y: 2421.823}
+  m_SizeDelta: {x: 1080, y: 1645.7144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &753644731
 MonoBehaviour:
@@ -17060,24 +17059,24 @@ MonoBehaviour:
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 2421.823, z: 0}
+  FillSize: {x: 1080, y: 1645.7144, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
   TargetPosition: {x: 0, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 2421.823, z: 0}
+  TargetRectSize: {x: 1080, y: 1645.7144, z: 0}
   TransformPosition: {x: 0, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 2421.823}
+  TransformRectSize: {x: 1080, y: 1645.7144}
 --- !u!114 &753644734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17231,8 +17230,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1278.1844}
-  m_SizeDelta: {x: 1271.4572, y: 269.09146}
+  m_AnchoredPosition: {x: 0, y: -868.5714}
+  m_SizeDelta: {x: 1080, y: 182.85715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768056812
 MonoBehaviour:
@@ -17369,28 +17368,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 502609387}
   SiblingIndex: 2
-  LayoutPosition: {x: 0, y: -1278.1844, z: 0}
+  LayoutPosition: {x: 0, y: -868.5714, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 134.54573, z: 0}
+    m_Extent: {x: 540, y: 91.42857, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 134.54573, z: 0}
+    m_Extent: {x: 540, y: 91.42857, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 134.54573, z: 0}
+    m_Extent: {x: 540, y: 91.42857, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 2690.9146, z: 0}
+  FillSize: {x: 1080, y: 1828.5714, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: -1278.1844, z: 0}
+  TargetPosition: {x: 0, y: -868.5714, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 269.09146, z: 0}
-  TransformPosition: {x: 0, y: -1278.1844, z: 0}
+  TargetRectSize: {x: 1080, y: 182.85715, z: 0}
+  TransformPosition: {x: 0, y: -868.5714, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 269.09146}
+  TransformRectSize: {x: 1080, y: 182.85715}
 --- !u!1 &779406841
 GameObject:
   m_ObjectHideFlags: 0
@@ -17507,12 +17506,12 @@ PrefabInstance:
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 381.43716
+      value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 99.90021
+      value: 67.88573
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -17557,7 +17556,7 @@ PrefabInstance:
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -233.10046
+      value: -158.40002
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -17617,7 +17616,7 @@ PrefabInstance:
     - target: {fileID: 4198261249273729667, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0000019073486
+      value: -0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 4198261249273729667, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -17690,7 +17689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 789008434}
   SiblingIndex: 1
-  LayoutPosition: {x: 0.0000019073486, y: 0, z: 0}
+  LayoutPosition: {x: -0.0000019073486, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -17704,11 +17703,11 @@ MonoBehaviour:
   ComponentScale: {x: 1, y: 1, z: 1}
   FillSize: {x: 0, y: 0, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0.0000019073486, y: 0, z: 0}
+  TargetPosition: {x: -0.0000019073486, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   TargetRectSize: {x: 60.95, y: 62.57, z: 0}
-  TransformPosition: {x: 0.0000019073486, y: 0, z: 0}
+  TransformPosition: {x: -0.0000019073486, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
   TransformRectSize: {x: 60.95, y: 62.57}
@@ -17809,28 +17808,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1727527245}
   SiblingIndex: 1
-  LayoutPosition: {x: 0, y: -233.10046, z: 0}
+  LayoutPosition: {x: 0, y: -158.40002, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.5715, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: -233.10046, z: 0}
+  TargetPosition: {x: 0, y: -158.40002, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 381.43716, y: 99.90021, z: 0}
-  TransformPosition: {x: 0, y: -233.10046, z: 0}
+  TargetRectSize: {x: 324, y: 67.88573, z: 0}
+  TransformPosition: {x: 0, y: -158.40002, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 381.43716, y: 99.90021}
+  TransformRectSize: {x: 324, y: 67.88573}
 --- !u!1 &804407086
 GameObject:
   m_ObjectHideFlags: 0
@@ -18884,12 +18883,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &832964715
 GameObject:
   m_ObjectHideFlags: 0
@@ -19096,8 +19095,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54.511536, y: 0}
-  m_SizeDelta: {x: 48.073074, y: 99.90021}
+  m_AnchoredPosition: {x: -50.20375, y: 0}
+  m_SizeDelta: {x: 39.4575, y: 67.88573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &833048045
 MonoBehaviour:
@@ -19170,28 +19169,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 906978540}
   SiblingIndex: 0
-  LayoutPosition: {x: -54.511536, y: 0, z: 0}
+  LayoutPosition: {x: -50.20375, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 320.48715, y: 99.90021, z: 0}
+  FillSize: {x: 263.05, y: 67.88573, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -54.511536, y: 0, z: 0}
+  TargetPosition: {x: -50.20375, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 48.073074, y: 99.90021, z: 0}
-  TransformPosition: {x: -54.511536, y: 0, z: 0}
+  TargetRectSize: {x: 39.4575, y: 67.88573, z: 0}
+  TransformPosition: {x: -50.20375, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 48.073074, y: 99.90021}
+  TransformRectSize: {x: 39.4575, y: 67.88573}
 --- !u!114 &833048047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20773,12 +20772,12 @@ PrefabInstance:
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 381.43716
+      value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 99.90021
+      value: 67.88573
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -20823,7 +20822,7 @@ PrefabInstance:
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -233.10046
+      value: -158.40002
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -20883,7 +20882,7 @@ PrefabInstance:
     - target: {fileID: 4198261249273729667, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0000019073486
+      value: -0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 4198261249273729667, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -20956,7 +20955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 906978540}
   SiblingIndex: 1
-  LayoutPosition: {x: 0.0000019073486, y: 0, z: 0}
+  LayoutPosition: {x: -0.0000019073486, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -20970,11 +20969,11 @@ MonoBehaviour:
   ComponentScale: {x: 1, y: 1, z: 1}
   FillSize: {x: 0, y: 0, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0.0000019073486, y: 0, z: 0}
+  TargetPosition: {x: -0.0000019073486, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   TargetRectSize: {x: 60.95, y: 62.57, z: 0}
-  TransformPosition: {x: 0.0000019073486, y: 0, z: 0}
+  TransformPosition: {x: -0.0000019073486, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
   TransformRectSize: {x: 60.95, y: 62.57}
@@ -21075,28 +21074,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 414791494}
   SiblingIndex: 1
-  LayoutPosition: {x: 0, y: -233.10046, z: 0}
+  LayoutPosition: {x: 0, y: -158.40002, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.5715, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: -233.10046, z: 0}
+  TargetPosition: {x: 0, y: -158.40002, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 381.43716, y: 99.90021, z: 0}
-  TransformPosition: {x: 0, y: -233.10046, z: 0}
+  TargetRectSize: {x: 324, y: 67.88573, z: 0}
+  TransformPosition: {x: 0, y: -158.40002, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 381.43716, y: 99.90021}
+  TransformRectSize: {x: 324, y: 67.88573}
 --- !u!1 &914205994
 GameObject:
   m_ObjectHideFlags: 0
@@ -21210,8 +21209,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 49.950104}
-  m_SizeDelta: {x: 286.07785, y: 466.20093}
+  m_AnchoredPosition: {x: 0, y: 33.942856}
+  m_SizeDelta: {x: 243, y: 316.80002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &917230019
 MonoBehaviour:
@@ -21284,28 +21283,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1727527245}
   SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 49.950104, z: 0}
+  LayoutPosition: {x: 0, y: 33.942856, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 49.950104, z: 0}
+  TargetPosition: {x: 0, y: 33.942856, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 286.07785, y: 466.20093, z: 0}
-  TransformPosition: {x: 0, y: 49.950104, z: 0}
+  TargetRectSize: {x: 243, y: 316.80002, z: 0}
+  TransformPosition: {x: 0, y: 33.942856, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 286.07785, y: 466.20093}
+  TransformRectSize: {x: 243, y: 316.80002}
 --- !u!114 &917230021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21456,7 +21455,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 143.03893, y: 143.03893}
+  m_SizeDelta: {x: 121.5, y: 121.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &919720132
 MonoBehaviour:
@@ -21571,24 +21570,24 @@ MonoBehaviour:
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 71.51946, y: 71.51946, z: 0}
+    m_Extent: {x: 60.75, y: 60.75, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 71.51946, y: 71.51946, z: 0}
+    m_Extent: {x: 60.75, y: 60.75, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 71.51946, y: 71.51946, z: 0}
+    m_Extent: {x: 60.75, y: 60.75, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 286.07785, y: 466.20093, z: 0}
+  FillSize: {x: 243, y: 316.80002, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
   TargetPosition: {x: 0, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 143.03893, y: 143.03893, z: 0}
+  TargetRectSize: {x: 121.5, y: 121.5, z: 0}
   TransformPosition: {x: 0, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 143.03893, y: 143.03893}
+  TransformRectSize: {x: 121.5, y: 121.5}
 --- !u!1 &922617237
 GameObject:
   m_ObjectHideFlags: 0
@@ -21760,8 +21759,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.51154, y: 0}
-  m_SizeDelta: {x: 48.073074, y: 99.90021}
+  m_AnchoredPosition: {x: 50.20375, y: 0}
+  m_SizeDelta: {x: 39.4575, y: 67.88573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &923081606
 MonoBehaviour:
@@ -21834,28 +21833,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 596514295}
   SiblingIndex: 2
-  LayoutPosition: {x: 54.51154, y: 0, z: 0}
+  LayoutPosition: {x: 50.20375, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 320.48715, y: 99.90021, z: 0}
+  FillSize: {x: 263.05, y: 67.88573, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 54.51154, y: 0, z: 0}
+  TargetPosition: {x: 50.20375, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 48.073074, y: 99.90021, z: 0}
-  TransformPosition: {x: 54.51154, y: 0, z: 0}
+  TargetRectSize: {x: 39.4575, y: 67.88573, z: 0}
+  TransformPosition: {x: 50.20375, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 48.073074, y: 99.90021}
+  TransformRectSize: {x: 39.4575, y: 67.88573}
 --- !u!114 &923081608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22262,7 +22261,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1271.4572, y: 134.54573}
+  m_SizeDelta: {x: 1080, y: 91.42857}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &950498738
 MonoBehaviour:
@@ -22339,24 +22338,24 @@ MonoBehaviour:
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 67.272865, z: 0}
+    m_Extent: {x: 540, y: 45.714287, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 67.272865, z: 0}
+    m_Extent: {x: 540, y: 45.714287, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 67.272865, z: 0}
+    m_Extent: {x: 540, y: 45.714287, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 134.54573, z: 0}
+  FillSize: {x: 1080, y: 91.42857, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
   TargetPosition: {x: 0, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 134.54573, z: 0}
+  TargetRectSize: {x: 1080, y: 91.42857, z: 0}
   TransformPosition: {x: 0, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 134.54573}
+  TransformRectSize: {x: 1080, y: 91.42857}
 --- !u!114 &950498740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22770,18 +22769,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959330621}
   m_CullTransparentMesh: 1
---- !u!114 &964563427 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3601665712905668842, guid: 7a453222f30ad1c459183e2ae8b312b3,
-    type: 3}
-  m_PrefabInstance: {fileID: 808669746}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &973222144
 GameObject:
   m_ObjectHideFlags: 0
@@ -25012,8 +24999,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54.511536, y: 0}
-  m_SizeDelta: {x: 48.073074, y: 99.90021}
+  m_AnchoredPosition: {x: -50.20375, y: 0}
+  m_SizeDelta: {x: 39.4575, y: 67.88573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1102139360
 MonoBehaviour:
@@ -25086,28 +25073,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1839613617}
   SiblingIndex: 0
-  LayoutPosition: {x: -54.511536, y: 0, z: 0}
+  LayoutPosition: {x: -50.20375, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 320.48715, y: 99.90021, z: 0}
+  FillSize: {x: 263.05, y: 67.88573, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -54.511536, y: 0, z: 0}
+  TargetPosition: {x: -50.20375, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 48.073074, y: 99.90021, z: 0}
-  TransformPosition: {x: -54.511536, y: 0, z: 0}
+  TargetRectSize: {x: 39.4575, y: 67.88573, z: 0}
+  TransformPosition: {x: -50.20375, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 48.073074, y: 99.90021}
+  TransformRectSize: {x: 39.4575, y: 67.88573}
 --- !u!114 &1102139362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25388,7 +25375,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.3
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -26791,7 +26778,8 @@ MonoBehaviour:
   - {fileID: 1664812959}
   coinsTxt: {fileID: 501548622}
   gemsTxt: {fileID: 131452122}
-  areaTxt: {fileID: 964563427}
+  areaTxt:
+  - {fileID: 0}
   rankingButtonImage: {fileID: 1402907729}
   heroesButtonImage: {fileID: 1157110118}
   battleButtonImage: {fileID: 1967221972}
@@ -26850,6 +26838,8 @@ MonoBehaviour:
   popPeakScale: 1.12
   popInTime: 0.18
   popSettleTime: 0.12
+  samuraiButton: {fileID: 0}
+  samuraiBG: {fileID: 0}
 --- !u!4 &1147476640
 Transform:
   m_ObjectHideFlags: 0
@@ -27026,8 +27016,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 423.8191, y: 0}
-  m_SizeDelta: {x: 423.81906, y: 269.09146}
+  m_AnchoredPosition: {x: 360, y: 0}
+  m_SizeDelta: {x: 360, y: 182.85715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1157110114
 MonoBehaviour:
@@ -27126,28 +27116,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 768056811}
   SiblingIndex: 2
-  LayoutPosition: {x: 423.8191, y: 0, z: 0}
+  LayoutPosition: {x: 360, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 211.90953, y: 134.54573, z: 0}
+    m_Extent: {x: 180, y: 91.42857, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 211.90953, y: 134.54573, z: 0}
+    m_Extent: {x: 180, y: 91.42857, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 211.90953, y: 134.54573, z: 0}
+    m_Extent: {x: 180, y: 91.42857, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 423.81906, y: 269.09146, z: 0}
+  FillSize: {x: 360, y: 182.85715, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 423.8191, y: 0, z: 0}
+  TargetPosition: {x: 360, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 423.81906, y: 269.09146, z: 0}
-  TransformPosition: {x: 423.8191, y: 0, z: 0}
+  TargetRectSize: {x: 360, y: 182.85715, z: 0}
+  TransformPosition: {x: 360, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 423.81906, y: 269.09146}
+  TransformRectSize: {x: 360, y: 182.85715}
 --- !u!114 &1157110117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27598,8 +27588,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 49.950104}
-  m_SizeDelta: {x: 286.07785, y: 466.20093}
+  m_AnchoredPosition: {x: 0, y: 33.942856}
+  m_SizeDelta: {x: 243, y: 316.80002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187325859
 MonoBehaviour:
@@ -27672,28 +27662,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 414791494}
   SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 49.950104, z: 0}
+  LayoutPosition: {x: 0, y: 33.942856, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 49.950104, z: 0}
+  TargetPosition: {x: 0, y: 33.942856, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 286.07785, y: 466.20093, z: 0}
-  TransformPosition: {x: 0, y: 49.950104, z: 0}
+  TargetRectSize: {x: 243, y: 316.80002, z: 0}
+  TransformPosition: {x: 0, y: 33.942856, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 286.07785, y: 466.20093}
+  TransformRectSize: {x: 243, y: 316.80002}
 --- !u!114 &1187325861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29273,8 +29263,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317.8643, y: 0}
-  m_SizeDelta: {x: 635.7286, y: 666.00134}
+  m_AnchoredPosition: {x: -270, y: 0}
+  m_SizeDelta: {x: 540, y: 452.57147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1257413144
 MonoBehaviour:
@@ -29373,28 +29363,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1809561151}
   SiblingIndex: 0
-  LayoutPosition: {x: -317.8643, y: 0, z: 0}
+  LayoutPosition: {x: -270, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -317.8643, y: 0, z: 0}
+  TargetPosition: {x: -270, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 635.7286, y: 666.00134, z: 0}
-  TransformPosition: {x: -317.8643, y: 0, z: 0}
+  TargetRectSize: {x: 540, y: 452.57147, z: 0}
+  TransformPosition: {x: -270, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 635.7286, y: 666.00134}
+  TransformRectSize: {x: 540, y: 452.57147}
 --- !u!1 &1257790244
 GameObject:
   m_ObjectHideFlags: 0
@@ -30333,7 +30323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 86.658936, y: 165.17047}
+  m_AnchoredPosition: {x: 65.12001, y: 90.47002}
   m_SizeDelta: {x: 43.96, y: 90.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1324035021
@@ -30350,7 +30340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 230774393}
   SiblingIndex: 0
-  LayoutPosition: {x: 103.85893, y: 176.57547, z: 0}
+  LayoutPosition: {x: 82.32001, y: 101.875015, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -30364,11 +30354,11 @@ MonoBehaviour:
   ComponentScale: {x: 1, y: 1, z: 1}
   FillSize: {x: 0, y: 0, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 86.658936, y: 165.17047, z: 0}
+  TargetPosition: {x: 65.12001, y: 90.47002, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   TargetRectSize: {x: 43.96, y: 90.24, z: 0}
-  TransformPosition: {x: 86.658936, y: 165.17047, z: 0}
+  TransformPosition: {x: 65.12001, y: 90.47002, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
   TransformRectSize: {x: 43.96, y: 90.24}
@@ -31920,8 +31910,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -423.81903, y: 0}
-  m_SizeDelta: {x: 423.81906, y: 269.09146}
+  m_AnchoredPosition: {x: -360, y: 0}
+  m_SizeDelta: {x: 360, y: 182.85715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1402907725
 MonoBehaviour:
@@ -32076,28 +32066,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 768056811}
   SiblingIndex: 0
-  LayoutPosition: {x: -423.81903, y: 0, z: 0}
+  LayoutPosition: {x: -360, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 211.90953, y: 134.54573, z: 0}
+    m_Extent: {x: 180, y: 91.42857, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 211.90953, y: 134.54573, z: 0}
+    m_Extent: {x: 180, y: 91.42857, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 211.90953, y: 134.54573, z: 0}
+    m_Extent: {x: 180, y: 91.42857, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 423.81906, y: 269.09146, z: 0}
+  FillSize: {x: 360, y: 182.85715, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -423.81903, y: 0, z: 0}
+  TargetPosition: {x: -360, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 423.81906, y: 269.09146, z: 0}
-  TransformPosition: {x: -423.81903, y: 0, z: 0}
+  TargetRectSize: {x: 360, y: 182.85715, z: 0}
+  TransformPosition: {x: -360, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 423.81906, y: 269.09146}
+  TransformRectSize: {x: 360, y: 182.85715}
 --- !u!114 &1402907729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32248,7 +32238,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -87.145}
-  m_SizeDelta: {x: 1271.4572, y: 732.42426}
+  m_SizeDelta: {x: 1080, y: 453.02515}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1465377176
 MonoBehaviour:
@@ -32321,28 +32311,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 2065999508}
   SiblingIndex: 2
-  LayoutPosition: {x: 0, y: -87.14502, z: 0}
+  LayoutPosition: {x: 0, y: -87.14499, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 366.21213, z: 0}
+    m_Extent: {x: 540, y: 226.51257, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 366.21213, z: 0}
+    m_Extent: {x: 540, y: 226.51257, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 366.21213, z: 0}
+    m_Extent: {x: 540, y: 226.51257, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 915.53033, z: 0}
+  FillSize: {x: 1080, y: 566.28143, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: -87.14502, z: 0}
+  TargetPosition: {x: 0, y: -87.14499, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 732.42426, z: 0}
-  TransformPosition: {x: 0, y: -87.14502, z: 0}
+  TargetRectSize: {x: 1080, y: 453.02515, z: 0}
+  TransformPosition: {x: 0, y: -87.145, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 732.42426}
+  TransformRectSize: {x: 1080, y: 453.02515}
 --- !u!114 &1465377178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33028,8 +33018,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 67.27283}
-  m_SizeDelta: {x: 1271.4572, y: 2421.823}
+  m_AnchoredPosition: {x: 0, y: 45.714294}
+  m_SizeDelta: {x: 1080, y: 1645.7144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559066615
 MonoBehaviour:
@@ -33128,28 +33118,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 502609387}
   SiblingIndex: 1
-  LayoutPosition: {x: 0, y: 67.27283, z: 0}
+  LayoutPosition: {x: 0, y: 45.714294, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 2690.9146, z: 0}
+  FillSize: {x: 1080, y: 1828.5715, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 67.27283, z: 0}
+  TargetPosition: {x: 0, y: 45.714294, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 2421.823, z: 0}
-  TransformPosition: {x: 0, y: 67.27283, z: 0}
+  TargetRectSize: {x: 1080, y: 1645.7144, z: 0}
+  TransformPosition: {x: 0, y: 45.714294, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 2421.823}
+  TransformRectSize: {x: 1080, y: 1645.7144}
 --- !u!114 &1559066618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33312,8 +33302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54.511536, y: 0}
-  m_SizeDelta: {x: 48.073074, y: 99.90021}
+  m_AnchoredPosition: {x: -50.20375, y: 0}
+  m_SizeDelta: {x: 39.4575, y: 67.88573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1607000446
 MonoBehaviour:
@@ -33386,28 +33376,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 596514295}
   SiblingIndex: 0
-  LayoutPosition: {x: -54.511536, y: 0, z: 0}
+  LayoutPosition: {x: -50.20375, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 320.48715, y: 99.90021, z: 0}
+  FillSize: {x: 263.05, y: 67.88573, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -54.511536, y: 0, z: 0}
+  TargetPosition: {x: -50.20375, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 48.073074, y: 99.90021, z: 0}
-  TransformPosition: {x: -54.511536, y: 0, z: 0}
+  TargetRectSize: {x: 39.4575, y: 67.88573, z: 0}
+  TransformPosition: {x: -50.20375, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 48.073074, y: 99.90021}
+  TransformRectSize: {x: 39.4575, y: 67.88573}
 --- !u!114 &1607000448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35666,7 +35656,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 143.03893, y: 143.03893}
+  m_SizeDelta: {x: 121.5, y: 121.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1633732375
 MonoBehaviour:
@@ -35781,24 +35771,24 @@ MonoBehaviour:
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 71.51946, y: 71.51946, z: 0}
+    m_Extent: {x: 60.75, y: 60.75, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 71.51946, y: 71.51946, z: 0}
+    m_Extent: {x: 60.75, y: 60.75, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 71.51946, y: 71.51946, z: 0}
+    m_Extent: {x: 60.75, y: 60.75, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 286.07785, y: 466.20093, z: 0}
+  FillSize: {x: 243, y: 316.80002, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
   TargetPosition: {x: 0, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 143.03893, y: 143.03893, z: 0}
+  TargetRectSize: {x: 121.5, y: 121.5, z: 0}
   TransformPosition: {x: 0, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 143.03893, y: 143.03893}
+  TransformRectSize: {x: 121.5, y: 121.5}
 --- !u!1 &1639371248
 GameObject:
   m_ObjectHideFlags: 0
@@ -36630,8 +36620,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317.8643, y: 0}
-  m_SizeDelta: {x: 635.7286, y: 666.00134}
+  m_AnchoredPosition: {x: -270, y: 0}
+  m_SizeDelta: {x: 540, y: 452.57147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727527246
 MonoBehaviour:
@@ -36730,28 +36720,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 509516763}
   SiblingIndex: 0
-  LayoutPosition: {x: -317.8643, y: 0, z: 0}
+  LayoutPosition: {x: -270, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -317.8643, y: 0, z: 0}
+  TargetPosition: {x: -270, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 635.7286, y: 666.00134, z: 0}
-  TransformPosition: {x: -317.8643, y: 0, z: 0}
+  TargetRectSize: {x: 540, y: 452.57147, z: 0}
+  TransformPosition: {x: -270, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 635.7286, y: 666.00134}
+  TransformRectSize: {x: 540, y: 452.57147}
 --- !u!1 &1744425316
 GameObject:
   m_ObjectHideFlags: 0
@@ -37338,7 +37328,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1271.4572, y: 2421.823}
+  m_SizeDelta: {x: 1080, y: 1645.7144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1778793084
 MonoBehaviour:
@@ -37415,24 +37405,24 @@ MonoBehaviour:
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 1210.9115, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 2421.823, z: 0}
+  FillSize: {x: 1080, y: 1645.7144, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
   TargetPosition: {x: 0, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 2421.823, z: 0}
+  TargetRectSize: {x: 1080, y: 1645.7144, z: 0}
   TransformPosition: {x: 0, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 2421.823}
+  TransformRectSize: {x: 1080, y: 1645.7144}
 --- !u!114 &1778793086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37643,8 +37633,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 333.00067}
-  m_SizeDelta: {x: 1271.4572, y: 666.00134}
+  m_AnchoredPosition: {x: 0, y: 226.28574}
+  m_SizeDelta: {x: 1080, y: 452.57147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1809561152
 MonoBehaviour:
@@ -37743,28 +37733,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 258063308}
   SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 333.00067, z: 0}
+  LayoutPosition: {x: 0, y: 226.28574, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 333.00067, z: 0}
+    m_Extent: {x: 540, y: 226.28574, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 333.00067, z: 0}
+    m_Extent: {x: 540, y: 226.28574, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 333.00067, z: 0}
+    m_Extent: {x: 540, y: 226.28574, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 666.00134, z: 0}
+  FillSize: {x: 1080, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 333.00067, z: 0}
+  TargetPosition: {x: 0, y: 226.28574, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 666.00134, z: 0}
-  TransformPosition: {x: 0, y: 333.00067, z: 0}
+  TargetRectSize: {x: 1080, y: 452.57147, z: 0}
+  TransformPosition: {x: 0, y: 226.28574, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 666.00134}
+  TransformRectSize: {x: 1080, y: 452.57147}
 --- !u!1 &1816564996
 GameObject:
   m_ObjectHideFlags: 0
@@ -37803,8 +37793,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 49.950104}
-  m_SizeDelta: {x: 286.07785, y: 466.20093}
+  m_AnchoredPosition: {x: 0, y: 33.942856}
+  m_SizeDelta: {x: 243, y: 316.80002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1816564998
 MonoBehaviour:
@@ -37877,28 +37867,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1937795636}
   SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 49.950104, z: 0}
+  LayoutPosition: {x: 0, y: 33.942856, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 143.03893, y: 233.10046, z: 0}
+    m_Extent: {x: 121.5, y: 158.40001, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 49.950104, z: 0}
+  TargetPosition: {x: 0, y: 33.942856, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 286.07785, y: 466.20093, z: 0}
-  TransformPosition: {x: 0, y: 49.950104, z: 0}
+  TargetRectSize: {x: 243, y: 316.80002, z: 0}
+  TransformPosition: {x: 0, y: 33.942856, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 286.07785, y: 466.20093}
+  TransformRectSize: {x: 243, y: 316.80002}
 --- !u!114 &1816565000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38109,7 +38099,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 143.03893, y: 143.03893}
+  m_SizeDelta: {x: 121.5, y: 121.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1830854359
 MonoBehaviour:
@@ -38224,24 +38214,24 @@ MonoBehaviour:
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 71.51946, y: 71.51946, z: 0}
+    m_Extent: {x: 60.75, y: 60.75, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 71.51946, y: 71.51946, z: 0}
+    m_Extent: {x: 60.75, y: 60.75, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 71.51946, y: 71.51946, z: 0}
+    m_Extent: {x: 60.75, y: 60.75, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 286.07785, y: 466.20093, z: 0}
+  FillSize: {x: 243, y: 316.80002, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
   TargetPosition: {x: 0, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 143.03893, y: 143.03893, z: 0}
+  TargetRectSize: {x: 121.5, y: 121.5, z: 0}
   TransformPosition: {x: 0, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 143.03893, y: 143.03893}
+  TransformRectSize: {x: 121.5, y: 121.5}
 --- !u!1 &1837934026
 GameObject:
   m_ObjectHideFlags: 0
@@ -38480,12 +38470,12 @@ PrefabInstance:
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 381.43716
+      value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 99.90021
+      value: 67.88573
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -38530,7 +38520,7 @@ PrefabInstance:
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -233.10046
+      value: -158.40002
       objectReference: {fileID: 0}
     - target: {fileID: 4198261248303232632, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -38590,7 +38580,7 @@ PrefabInstance:
     - target: {fileID: 4198261249273729667, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0000019073486
+      value: -0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 4198261249273729667, guid: 598d806e9275c4f8d96fec5b9ed5ad7c,
         type: 3}
@@ -38663,7 +38653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1839613617}
   SiblingIndex: 1
-  LayoutPosition: {x: 0.0000019073486, y: 0, z: 0}
+  LayoutPosition: {x: -0.0000019073486, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -38677,11 +38667,11 @@ MonoBehaviour:
   ComponentScale: {x: 1, y: 1, z: 1}
   FillSize: {x: 0, y: 0, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0.0000019073486, y: 0, z: 0}
+  TargetPosition: {x: -0.0000019073486, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   TargetRectSize: {x: 60.95, y: 62.57, z: 0}
-  TransformPosition: {x: 0.0000019073486, y: 0, z: 0}
+  TransformPosition: {x: -0.0000019073486, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
   TransformRectSize: {x: 60.95, y: 62.57}
@@ -38782,28 +38772,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1257413143}
   SiblingIndex: 1
-  LayoutPosition: {x: 0, y: -233.10046, z: 0}
+  LayoutPosition: {x: 0, y: -158.40002, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 190.71858, y: 49.950104, z: 0}
+    m_Extent: {x: 162, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.5715, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: -233.10046, z: 0}
+  TargetPosition: {x: 0, y: -158.40002, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 381.43716, y: 99.90021, z: 0}
-  TransformPosition: {x: 0, y: -233.10046, z: 0}
+  TargetRectSize: {x: 324, y: 67.88573, z: 0}
+  TransformPosition: {x: 0, y: -158.40002, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 381.43716, y: 99.90021}
+  TransformRectSize: {x: 324, y: 67.88573}
 --- !u!1 &1840210634
 GameObject:
   m_ObjectHideFlags: 0
@@ -38843,7 +38833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -161.12857, y: 0}
+  m_AnchoredPosition: {x: -65.399994, y: 0}
   m_SizeDelta: {x: 175.2, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840210636
@@ -38955,7 +38945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 950498737}
   SiblingIndex: 1
-  LayoutPosition: {x: -216.12857, y: 0, z: 0}
+  LayoutPosition: {x: -120.399994, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -38969,11 +38959,11 @@ MonoBehaviour:
   ComponentScale: {x: 1, y: 1, z: 1}
   FillSize: {x: 0, y: 0, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -161.12857, y: 0, z: 0}
+  TargetPosition: {x: -65.399994, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   TargetRectSize: {x: 175.2, y: 56, z: 0}
-  TransformPosition: {x: -161.12857, y: 0, z: 0}
+  TransformPosition: {x: -65.399994, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
   TransformRectSize: {x: 175.2, y: 56}
@@ -39346,8 +39336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.51154, y: 0}
-  m_SizeDelta: {x: 48.073074, y: 99.90021}
+  m_AnchoredPosition: {x: 50.20375, y: 0}
+  m_SizeDelta: {x: 39.4575, y: 67.88573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1852507474
 MonoBehaviour:
@@ -39420,28 +39410,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 906978540}
   SiblingIndex: 2
-  LayoutPosition: {x: 54.51154, y: 0, z: 0}
+  LayoutPosition: {x: 50.20375, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 320.48715, y: 99.90021, z: 0}
+  FillSize: {x: 263.05, y: 67.88573, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 54.51154, y: 0, z: 0}
+  TargetPosition: {x: 50.20375, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 48.073074, y: 99.90021, z: 0}
-  TransformPosition: {x: 54.51154, y: 0, z: 0}
+  TargetRectSize: {x: 39.4575, y: 67.88573, z: 0}
+  TransformPosition: {x: 50.20375, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 48.073074, y: 99.90021}
+  TransformRectSize: {x: 39.4575, y: 67.88573}
 --- !u!114 &1852507476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40726,8 +40716,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 317.8643, y: 0}
-  m_SizeDelta: {x: 635.7286, y: 666.00134}
+  m_AnchoredPosition: {x: 270, y: 0}
+  m_SizeDelta: {x: 540, y: 452.57147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1937795637
 MonoBehaviour:
@@ -40826,28 +40816,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1809561151}
   SiblingIndex: 1
-  LayoutPosition: {x: 317.8643, y: 0, z: 0}
+  LayoutPosition: {x: 270, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 317.8643, y: 333.00067, z: 0}
+    m_Extent: {x: 270, y: 226.28574, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 635.7286, y: 666.00134, z: 0}
+  FillSize: {x: 540, y: 452.57147, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 317.8643, y: 0, z: 0}
+  TargetPosition: {x: 270, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 635.7286, y: 666.00134, z: 0}
-  TransformPosition: {x: 317.8643, y: 0, z: 0}
+  TargetRectSize: {x: 540, y: 452.57147, z: 0}
+  TransformPosition: {x: 270, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 635.7286, y: 666.00134}
+  TransformRectSize: {x: 540, y: 452.57147}
 --- !u!1 &1947166352
 GameObject:
   m_ObjectHideFlags: 0
@@ -41099,8 +41089,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
-  m_SizeDelta: {x: 423.81906, y: 269.09146}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 360, y: 182.85715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967221968
 MonoBehaviour:
@@ -41199,28 +41189,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 768056811}
   SiblingIndex: 1
-  LayoutPosition: {x: 0.000015258789, y: 0, z: 0}
+  LayoutPosition: {x: 0, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 211.90953, y: 134.54573, z: 0}
+    m_Extent: {x: 180, y: 91.42857, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 211.90953, y: 134.54573, z: 0}
+    m_Extent: {x: 180, y: 91.42857, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 211.90953, y: 134.54573, z: 0}
+    m_Extent: {x: 180, y: 91.42857, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 423.81906, y: 269.09146, z: 0}
+  FillSize: {x: 360, y: 182.85715, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0.000015258789, y: 0, z: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 423.81906, y: 269.09146, z: 0}
-  TransformPosition: {x: 0.000015258789, y: 0, z: 0}
+  TargetRectSize: {x: 360, y: 182.85715, z: 0}
+  TransformPosition: {x: 0, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 423.81906, y: 269.09146}
+  TransformRectSize: {x: 360, y: 182.85715}
 --- !u!114 &1967221971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41609,8 +41599,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.51154, y: 0}
-  m_SizeDelta: {x: 48.073074, y: 99.90021}
+  m_AnchoredPosition: {x: 50.20375, y: 0}
+  m_SizeDelta: {x: 39.4575, y: 67.88573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2001114597
 MonoBehaviour:
@@ -41683,28 +41673,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1839613617}
   SiblingIndex: 2
-  LayoutPosition: {x: 54.51154, y: 0, z: 0}
+  LayoutPosition: {x: 50.20375, y: 0, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 24.036537, y: 49.950104, z: 0}
+    m_Extent: {x: 19.72875, y: 33.942863, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 320.48715, y: 99.90021, z: 0}
+  FillSize: {x: 263.05, y: 67.88573, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 54.51154, y: 0, z: 0}
+  TargetPosition: {x: 50.20375, y: 0, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 48.073074, y: 99.90021, z: 0}
-  TransformPosition: {x: 54.51154, y: 0, z: 0}
+  TargetRectSize: {x: 39.4575, y: 67.88573, z: 0}
+  TransformPosition: {x: 50.20375, y: 0, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 48.073074, y: 99.90021}
+  TransformRectSize: {x: 39.4575, y: 67.88573}
 --- !u!114 &2001114599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42431,8 +42421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1345.4573}
-  m_SizeDelta: {x: 1271.4572, y: 134.54573}
+  m_AnchoredPosition: {x: 0, y: 914.2857}
+  m_SizeDelta: {x: 1080, y: 91.42857}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043116190
 MonoBehaviour:
@@ -42531,28 +42521,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 502609387}
   SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 1345.4573, z: 0}
+  LayoutPosition: {x: 0, y: 914.2857, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 67.272865, z: 0}
+    m_Extent: {x: 540, y: 45.714287, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 67.272865, z: 0}
+    m_Extent: {x: 540, y: 45.714287, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 67.272865, z: 0}
+    m_Extent: {x: 540, y: 45.714287, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 2690.9146, z: 0}
+  FillSize: {x: 1080, y: 1828.5714, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 1345.4573, z: 0}
+  TargetPosition: {x: 0, y: 914.2857, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 134.54573, z: 0}
-  TransformPosition: {x: 0, y: 1345.4573, z: 0}
+  TargetRectSize: {x: 1080, y: 91.42857, z: 0}
+  TransformPosition: {x: 0, y: 914.2857, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 134.54573}
+  TransformRectSize: {x: 1080, y: 91.42857}
 --- !u!114 &2043116193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42764,8 +42754,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 666.00134}
-  m_SizeDelta: {x: 1271.4572, y: 1089.8203}
+  m_AnchoredPosition: {x: 0, y: 452.57147}
+  m_SizeDelta: {x: 1080, y: 740.5714}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065999509
 MonoBehaviour:
@@ -42864,28 +42854,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1559066614}
   SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 666.00134, z: 0}
+  LayoutPosition: {x: 0, y: 452.57147, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 544.91016, z: 0}
+    m_Extent: {x: 540, y: 370.2857, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 544.91016, z: 0}
+    m_Extent: {x: 540, y: 370.2857, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 635.7286, y: 544.91016, z: 0}
+    m_Extent: {x: 540, y: 370.2857, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1271.4572, y: 2421.823, z: 0}
+  FillSize: {x: 1080, y: 1645.7142, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 666.00134, z: 0}
+  TargetPosition: {x: 0, y: 452.57147, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1271.4572, y: 1089.8203, z: 0}
-  TransformPosition: {x: 0, y: 666.00134, z: 0}
+  TargetRectSize: {x: 1080, y: 740.5714, z: 0}
+  TransformPosition: {x: 0, y: 452.57147, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1271.4572, y: 1089.8203}
+  TransformRectSize: {x: 1080, y: 740.5714}
 --- !u!1001 &2068458505
 PrefabInstance:
   m_ObjectHideFlags: 0

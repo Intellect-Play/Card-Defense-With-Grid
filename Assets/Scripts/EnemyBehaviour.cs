@@ -9,7 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public Transform EnemyParent;
     [Header("Stats")]
-    public int health;
+    public float health;
     public int attack;
     public int rewardGold;
 
@@ -288,11 +288,11 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     // ── Damage ─────────────────────────────────────────────────────────────────────
-    public void ApplyDamage(int amount)
+    public void ApplyDamage(float amount)
     {
         if (_dead || _dying) return;
 
-        int newHealth = health - amount;
+        float newHealth = health - amount;
         if (newHealth <= 0)
         {
             _dying = true;
@@ -439,7 +439,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     // ── Feedback ───────────────────────────────────────────────────────────────────
-    private void ShowDamage(int amount)
+    private void ShowDamage(float amount)
     {
         if (damageTextPrefab == null) return;
 

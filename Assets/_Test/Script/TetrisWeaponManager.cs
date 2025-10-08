@@ -18,8 +18,11 @@ public class TetrisWeaponManager : MonoBehaviour
     [SerializeField] private Button ShuffleButton;
 
     public List<WeaponSetting> weaponSettings;
+    public Dictionary<int,WeaponSetting> weaponSettingsD;
+
     public List<WeaponSetting> weaponUnlockedSettings;
     public List<WeaponSetting> weaponLockedSettings;
+    public List<StaticWeapon> spawnedWeapons = new List<StaticWeapon>();
 
     public static bool isTetrisScene = false;
 
@@ -43,6 +46,44 @@ public class TetrisWeaponManager : MonoBehaviour
 
         AnimatorController.SetBool("UpTetrisBool", true);
     }
+    public void StartTetrisWawe()
+    {
+        AnimatorController.SetBool("UpTetrisBool", true);
+
+    }
+    public void GetStaticWeapons(StaticWeapon staticWeapon)
+    {
+        spawnedWeapons.Add(staticWeapon);
+    }
+    #region Roguelike
+    public void OpenNewWeapon()
+    {
+
+    }
+    public void UpgradeWeapon()
+    {
+
+    }
+    public void ReduceCooldown()
+    {
+
+    }
+    #endregion
+    public void WeaponsSettingCheck()
+    {
+        foreach (var w in spawnedWeapons)
+        {
+            for (int i = 0; i < weaponSettings.Count; i++)
+            {
+                if (w.WeaponType == weaponSettings[i].WeaponType)
+                {
+                    //Debug.Log("WeaponsSettingCheck " +i+" "+ w.WeaponType + " " + weaponSettings[i].Level+" "+ weaponSettings[i].Countdawn);
+                    w.GetWeaponSetting(weaponSettings[i]);
+                    continue;
+                }
+            }
+        }
+    }
     public IEnumerator TetrisScene()
     {
         TetrisCancas.sortingOrder = 4;
@@ -51,7 +92,6 @@ public class TetrisWeaponManager : MonoBehaviour
         isTetrisScene = true;
         Time.timeScale = 0;
         yield return new WaitUntil(() => !isTetrisScene);
-        Debug.Log("Fight");
         Time.timeScale = 1;
         StartCoroutine(WaitForAnimation());
     }
@@ -61,6 +101,7 @@ public class TetrisWeaponManager : MonoBehaviour
         weaponLockedSettings.Clear();
         foreach (var w in weaponSettings)
         {
+            w.defaultDamage = PlayerPrefs.GetFloat(w.WeaponType.ToString() + "_Damage", w.defaultDamage);
             if (w.Unlocked)
             {
                 weaponUnlockedSettings.Add(w);
@@ -74,25 +115,26 @@ public class TetrisWeaponManager : MonoBehaviour
 
     public SlotWeaponsSO GetSlotWeapon()
     {
-        return weaponUnlockedSettings[UnityEngine.Random.Range(0, weaponUnlockedSettings.Count)].slotWeaponsSO;
+        int num = UnityEngine.Random.Range(0, weaponUnlockedSettings.Count);
+        return weaponUnlockedSettings[num].slotWeaponsSO;
     }
     IEnumerator WaitForAnimation()
     {
         AnimatorStateInfo stateInfo = AnimatorController.GetCurrentAnimatorStateInfo(0);
-        Debug.Log("WaitForAnimation 1 "+stateInfo);
+        //Debug.Log("WaitForAnimation 1 "+stateInfo);
         while (!stateInfo.IsName("TetrisDown"))
         {
             yield return null;
             stateInfo = AnimatorController.GetCurrentAnimatorStateInfo(0);
         }
-        Debug.Log("WaitForAnimation 2 " + stateInfo);
+        //Debug.Log("WaitForAnimation 2 " + stateInfo);
 
         while (stateInfo.normalizedTime < 1f)
         {
             yield return null;
             stateInfo = AnimatorController.GetCurrentAnimatorStateInfo(0);
         }
-        Debug.Log("WaitForAnimation 3 " + stateInfo);
+        //Debug.Log("WaitForAnimation 3 " + stateInfo);
 
         randomWeaponSpawner.GetPossforWeapons();
     }
@@ -101,7 +143,7 @@ public class TetrisWeaponManager : MonoBehaviour
     {
         AnimatorController.SetBool("UpTetrisBool", false);
         TetrisCancas.sortingOrder = 2;
-
+        WeaponsSettingCheck();
         isTetrisScene = false;
     }
     public void Buy()
@@ -115,16 +157,12 @@ public class TetrisWeaponManager : MonoBehaviour
 [Serializable]
 public class WeaponSetting
 {
-    public WeaponsType WeaponType;
+    public SlotWeaponType WeaponType;
     public SlotWeaponsSO slotWeaponsSO;
     public bool Unlocked=false;
     public int Level=1;
-    public float Countdawn=1;
-}
-public enum WeaponsType
-{
-    Arrow,
-    Bomb,
-    Axe,
-    Stone
+    public float defaultDamage;
+    public List<float> Damage;
+    public List<float> Countdawn;
+    public Sprite icon;
 }

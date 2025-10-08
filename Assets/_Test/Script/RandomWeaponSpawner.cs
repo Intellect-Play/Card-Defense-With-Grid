@@ -64,10 +64,12 @@ public class RandomWeaponSpawner : MonoBehaviour
             staticW.Init(randomWeapon,1, emptySlots.gridPosition, mainCamera);
 
             spawnedWeapons.Add(staticW);
+            tetrisWeaponManager.GetStaticWeapons(staticW);
         }
         ActivatesWeapons();
 
     }
+  
     public void GetPossforWeapons()
     {
         foreach (var w in spawnedWeapons)

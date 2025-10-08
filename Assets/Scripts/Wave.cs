@@ -13,18 +13,18 @@ public class EnemyCount
 
 public enum OptionType
 {
+    OpenNewWeapon,
     UpgradeCard,
     ReduceCooldown,
-    NewHero,
     HealthUp,
-    AddPiece
+    
 }
 
 [Serializable]
 public class RoguelikeOption
 {
-    public OptionType type;
     public string     deckName;
+    public OptionType type;
 
     // for UpgradeCard & ReduceCooldown
     [HideInInspector] public CardSO targetCard;
@@ -49,15 +49,7 @@ public class RoguelikeOption
         if (overrideArtwork != null)
             return overrideArtwork;
 
-        switch (type)
-        {
-            case OptionType.NewHero:
-                return targetHero?.cardImg;
-            // For HealthUp we typically provide an overrideArtwork (heart).
-            // If not assigned, this will return null (safe), so the slot shows just the label.
-            default:
-                return targetCard?.artwork;
-        }
+        return targetCard?.artwork;
     }
 }
 

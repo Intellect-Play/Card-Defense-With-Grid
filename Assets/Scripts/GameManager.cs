@@ -247,12 +247,10 @@ public class GameManager : MonoBehaviour
 
     private void InitialHeroSelectionAndThenStart()
     {
-        roguelikeManager.InitializeHeroSelection();
-        uIManager.SetRougelikeText("Pick a hero");
+   
+      
 
-        var heroOptions = roguelikeManager.GetUnlockedHeroOptions();
-        for (int i = 0; i < heroOptions.Count && i < uIManager.offeredCardSlots.Length; i++)
-            uIManager.SetRoguelikeOption(i, heroOptions[i]);
+       
         uIManager.DisableSlotsWithoutImage();
 
         uIManager.SetRougelikeBoardActive(false);
@@ -357,7 +355,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(0f); // safety
             yield return new WaitUntil(() => _waveSpawnFinished[wi]);
             //yield return new WaitUntil(() => FrontMostBelowMidpoint(wi) || WaveIsFullyDeadByCumulative(wi));
-
+            TetrisWeaponManager.instance.StartTetrisWawe();
             int next = wi + 1;
             if (!_waveSpawned[next])
             {
@@ -452,6 +450,11 @@ public class GameManager : MonoBehaviour
                     yield return new WaitUntil(() => !uIManager.roguelikeBoard.activeSelf);
                 ResumeGameAfterRoguelike();
                 ActivateDecksFromPrefs();
+                TetrisWeaponManager.instance.StartTetrisWawe();
+            }
+            else
+            {
+                TetrisWeaponManager.instance.StartTetrisWawe();
             }
 
 

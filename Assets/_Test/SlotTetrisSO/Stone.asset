@@ -23,6 +23,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cc58a08e06a59414e935d22cb62be98c, type: 3}
   levelWeapon: 1
   levelToIconIndex: 0000000001000000010000000200000002000000
-  attackType: 0
+  attackType: 1
   weaponType: {fileID: 7787875020771003900, guid: 8655791197cf2c34db6638996301c773,
     type: 3}
