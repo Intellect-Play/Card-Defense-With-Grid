@@ -17,6 +17,7 @@ public class InventoryManager : MonoBehaviour
 
     [Header("Weapons")]
     [SerializeField] private List<GameObject> availableWeapons = new List<GameObject>();
+    [SerializeField] private List<GameObject> selectedWeapons = new List<GameObject>();
 
     [Header("UI")]
     [SerializeField] private Button spawnButton;
@@ -39,7 +40,7 @@ public class InventoryManager : MonoBehaviour
             Debug.LogError("GridInventory reference required.");
             return;
         }
-
+        SelectRandomWeapons();
         // tell gridInventory which prefab to use for placed items
         gridInventory.placedPrefab = draggablePrefab;
 
@@ -60,6 +61,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         if (spawnButton != null) spawnButton.onClick.AddListener(SpawnWeapons);
+       
         //SpawnWeapons();
     }
     private void Update()
@@ -69,6 +71,28 @@ public class InventoryManager : MonoBehaviour
             SpawnWeapons();
 
         }
+    }
+
+    private void SelectRandomWeapons()
+    {
+        selectedWeapons.Clear();
+
+        // Əgər availableWeapons 4-dən azdırsa, hamısını götürür
+        int count = Mathf.Min(4, availableWeapons.Count);
+
+        // Siyahını qarışdırır
+        List<GameObject> shuffled = new List<GameObject>(availableWeapons);
+        for (int i = 0; i < shuffled.Count; i++)
+        {
+            int randomIndex = Random.Range(i, shuffled.Count);
+            (shuffled[i], shuffled[randomIndex]) = (shuffled[randomIndex], shuffled[i]);
+        }
+
+        // İlk 4 elementi seçilmiş siyahıya atır
+        for (int i = 0; i < count; i++)
+            selectedWeapons.Add(shuffled[i]);
+
+        Debug.Log($"Selected {count} random weapons.");
     }
     public void ActiveWeaponsRay(bool isActive)
     {
@@ -97,6 +121,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void SpawnWeapons()
     {
+        Debug.Log("Spawning weapons in slots.");
         foreach (var slot in spawnSlots)
         {
             // Clear existing children
@@ -109,7 +134,7 @@ public class InventoryManager : MonoBehaviour
             }
 
             // pick random
-            GameObject randomWeapon = availableWeapons[Random.Range(0, availableWeapons.Count)];
+            GameObject randomWeapon = selectedWeapons[Random.Range(0, selectedWeapons.Count)];
             // instantiate draggable prefab under the spawn slot
             var go = Instantiate(randomWeapon, slot.transform);
             go.transform.localPosition = Vector3.zero;

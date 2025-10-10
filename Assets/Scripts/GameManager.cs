@@ -355,10 +355,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(0f); // safety
             yield return new WaitUntil(() => _waveSpawnFinished[wi]);
             //yield return new WaitUntil(() => FrontMostBelowMidpoint(wi) || WaveIsFullyDeadByCumulative(wi));
-            TetrisWeaponManager.instance.StartTetrisWawe();
+            
             int next = wi + 1;
             if (!_waveSpawned[next])
             {
+                //TetrisWeaponManager.instance.StartTetrisWawe();
                 _waveSpawned[next] = true;
                 yield return SpawnWave(next, _waveCountsDeclared[next], waves[next], _waveRoots[next]);
                 _waveSpawnFinished[next] = true;

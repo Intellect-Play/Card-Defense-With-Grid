@@ -16,9 +16,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d7b4996e402b1f74180bd3b07fe18f73, type: 3}
   levelWeapon: 1
   nextLevelWeapon: {fileID: 0}
-  size: {x: 1, y: 4}
+  size: {x: 1, y: 2}
   shapeOffsets:
   - {x: 0, y: 0}
   - {x: 0, y: 1}
-  - {x: 0, y: 2}
-  - {x: 0, y: 3}

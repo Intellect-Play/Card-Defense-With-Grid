@@ -52,6 +52,7 @@ public class TetrisWeaponManager : MonoBehaviour
     public void StartTetrisWawe()
     {
         isTetrisScene = true;
+        TetrisCancas.sortingOrder = 10;
         AnimatorController.SetBool("UpTetrisBool", true);
         inventoryManager.SpawnWeapons();
     }
@@ -110,17 +111,17 @@ public class TetrisWeaponManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator TetrisScene()
-    {
-        TetrisCancas.sortingOrder = 4;
-        inventoryManager.SpawnWeapons();
-        AnimatorController.SetBool("UpTetrisBool", true);
+    //public IEnumerator TetrisScene()
+    //{
+    //    TetrisCancas.sortingOrder = 4;
+    //    //inventoryManager.SpawnWeapons();
+    //    AnimatorController.SetBool("UpTetrisBool", true);
         
-        //Time.timeScale = 0;
-        yield return new WaitUntil(() => !isTetrisScene);
+    //    //Time.timeScale = 0;
+    //    yield return new WaitUntil(() => !isTetrisScene);
         
-        StartCoroutine(WaitForAnimation());
-    }
+    //    StartCoroutine(WaitForAnimation());
+    //}
     public void UnlockedWeapons()
     {
         weaponUnlockedSettings.Clear();
