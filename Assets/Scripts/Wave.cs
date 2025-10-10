@@ -43,7 +43,7 @@ public class RoguelikeOption
 
     // Optional override sprite (e.g., a heart icon)
     public Sprite overrideArtwork;
-
+    public string description;
     public Sprite GetArtwork()
     {
         if (overrideArtwork != null)

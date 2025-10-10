@@ -60,7 +60,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         if (spawnButton != null) spawnButton.onClick.AddListener(SpawnWeapons);
-        SpawnWeapons();
+        //SpawnWeapons();
     }
     private void Update()
     {

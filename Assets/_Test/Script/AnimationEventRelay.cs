@@ -14,7 +14,7 @@ public class AnimationEventRelay : MonoBehaviour
     public void OnAttackFrame()
     {
         RandomWeaponSpawner.instance.ChangePosWeapons();
-        Debug.Log("Animation event gəldi, indi başqa scriptə ötürürəm");
+        //Debug.Log("Animation event gəldi, indi başqa scriptə ötürürəm");
         //if (otherScript != null)
         //{
         //    otherScript.DoDamage(); // başqa scriptdəki funksiyanı çağır

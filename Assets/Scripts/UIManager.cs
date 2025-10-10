@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameManager gameManager;
     public RoguelikeManager roguelikeManager;
 
+
     [Header("Background")]
     public GameObject bgObject;
 
@@ -31,7 +32,7 @@ public class UIManager : MonoBehaviour
     [Header("RogueLike Board and elements")]
     public GameObject roguelikeBoard;
     public TextMeshProUGUI roguelikeText;
-    public GameObject[] offeredCardSlots;
+    public RoguelikeButton[] offeredroguelikes;
     public TextMeshProUGUI[] offeredCardSlotTxt;
 
     [Header("Empty Slot Sprite")]
@@ -45,7 +46,7 @@ public class UIManager : MonoBehaviour
     private Slider _sliderComponent;
     private bool[] _offeredEnlarged;
     private int _selectedOfferedIndex = -1;
-
+    string label;
     public int selectedRoguelikeIndex => _selectedOfferedIndex;
 
     void Start()
@@ -53,7 +54,7 @@ public class UIManager : MonoBehaviour
         if (slider != null)
             _sliderComponent = slider.GetComponent<Slider>();
 
-        _offeredEnlarged = new bool[(offeredCardSlots != null) ? offeredCardSlots.Length : 0];
+        _offeredEnlarged = new bool[(offeredroguelikes != null) ? offeredroguelikes.Length : 0];
         ScaleBackgroundSpriteToFullScreen();
 
         InitPanelState(winBoard);
@@ -130,11 +131,11 @@ public class UIManager : MonoBehaviour
         if (active)
         {
             _selectedOfferedIndex = -1;
-            if (offeredCardSlots != null)
+            if (offeredroguelikes != null)
             {
-                for (int i = 0; i < offeredCardSlots.Length; i++)
+                for (int i = 0; i < offeredroguelikes.Length; i++)
                 {
-                    var slot = offeredCardSlots[i];
+                    var slot = offeredroguelikes[i];
                     Debug.Log("[UIManager] Resetting offered slot {i} scale "+ slot != null);
                     if (slot != null)
                     {
@@ -159,16 +160,16 @@ public class UIManager : MonoBehaviour
                     offeredCardSlotTxt[t].text = string.Empty;
         }
 
-        if (offeredCardSlots == null) return;
+        if (offeredroguelikes == null) return;
 
-        for (int i = 0; i < offeredCardSlots.Length; i++)
+        for (int i = 0; i < offeredroguelikes.Length; i++)
         {
-            var slot = offeredCardSlots[i];
+            var slot = offeredroguelikes[i];
             if (slot == null) continue;
 
             bool isActive = i < count;
             Debug.Log("[UIManager] Setting offered slot {i} active: " + isActive);
-            slot.SetActive(isActive);
+            slot.gameObject.SetActive(isActive);
 
             if (isActive)
                 SetRoguelikeOption(i, options[i]);
@@ -177,17 +178,16 @@ public class UIManager : MonoBehaviour
 
     public void SetRoguelikeOption(int index, RoguelikeOption option)
     {
-        if (offeredCardSlots == null || index < 0 || index >= offeredCardSlots.Length) return;
-        var slot = offeredCardSlots[index];
+        if (offeredroguelikes == null || index < 0 || index >= offeredroguelikes.Length) return;
+        var slot = offeredroguelikes[index];
         if (slot == null || option == null) return;
 
         Sprite art = option.GetArtwork() ?? emptyOfferedSprite;
         var img = slot.GetComponentInChildren<Image>();
         if (img != null) img.sprite = art;
-
         if (offeredCardSlotTxt != null && index < offeredCardSlotTxt.Length && offeredCardSlotTxt[index] != null)
         {
-            string label;
+            
             switch (option.type)
             {
                 case OptionType.OpenNewWeapon:
@@ -204,6 +204,7 @@ public class UIManager : MonoBehaviour
             offeredCardSlotTxt[index].text = label;
         }
 
+        offeredroguelikes[index].GetSetting(option.overrideArtwork, option.oldLevel, label);
         slot.transform.localScale = Vector3.one;
         if (_offeredEnlarged != null && index < _offeredEnlarged.Length)
             _offeredEnlarged[index] = false;
@@ -246,14 +247,14 @@ public class UIManager : MonoBehaviour
 
     public void DisableSlotsWithoutImage()
     {
-        if (offeredCardSlots == null) return;
+        if (offeredroguelikes == null) return;
 
-        foreach (var slot in offeredCardSlots)
+        foreach (var slot in offeredroguelikes)
         {
             if (slot == null) continue;
             var img = slot.GetComponentInChildren<Image>();
             if (img == null || img.sprite == null)
-                slot.SetActive(false);
+                slot.gameObject.SetActive(false);
         }
     }
 
@@ -330,4 +331,16 @@ public class UIManager : MonoBehaviour
             if (a != null) a.updateMode = AnimatorUpdateMode.UnscaledTime;
         }
     }
+}
+
+public class WeaponRoguelikeSprites
+{
+    public SlotWeaponType WeaponType;
+
+    public Sprite openNewWeaponSprite;
+    public Sprite upgradeWeaponSprite;
+    public Sprite reduceCooldownSprite;
+
+    public int level = 1;
+    public int levelCooldown = 1;
 }

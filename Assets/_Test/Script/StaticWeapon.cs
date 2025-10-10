@@ -38,7 +38,10 @@ public class StaticWeapon : MonoBehaviour
         LevelUp(level);
         //Debug.Log(weaponSetting.Countdawn[0]+" Time");
         //Debug.Log("GetWeaponSetting " + placedWeapon.WeaponLevel + " " + weaponSetting.Damage[level] + " " + weaponSetting.Countdawn[level]);
-        cardDeckAnimator.GetNewSetting(placedWeapon.WeaponLevel, weaponSetting.Damage[0], weaponSetting.Countdawn[0]);
+        cardDeckAnimator.GetNewSetting(
+            placedWeapon.WeaponLevel, 
+            weaponSetting.slotWeaponsSO.Damage[0], 
+            weaponSetting.slotWeaponsSO.Countdawn[0]);
     }
     public void GetFireTime(float scaleTime)
     {

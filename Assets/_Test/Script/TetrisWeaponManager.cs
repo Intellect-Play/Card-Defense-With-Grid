@@ -25,6 +25,9 @@ public class TetrisWeaponManager : MonoBehaviour
     public List<StaticWeapon> spawnedWeapons = new List<StaticWeapon>();
 
     public static bool isTetrisScene = false;
+    private int unlockWeaponR = 0;
+    private int upgradeWeaponR = 0;
+    private int upgradeCooldownWeaponR = 0;
 
     private void Awake()
     {
@@ -44,29 +47,52 @@ public class TetrisWeaponManager : MonoBehaviour
     {
         isTetrisScene = true;
 
-        AnimatorController.SetBool("UpTetrisBool", true);
+        StartTetrisWawe();
     }
     public void StartTetrisWawe()
     {
+        isTetrisScene = true;
         AnimatorController.SetBool("UpTetrisBool", true);
-
+        inventoryManager.SpawnWeapons();
     }
     public void GetStaticWeapons(StaticWeapon staticWeapon)
     {
         spawnedWeapons.Add(staticWeapon);
     }
     #region Roguelike
+    public WeaponSetting SelectWeaponforUnlock()
+    {
+        unlockWeaponR = UnityEngine.Random.Range(0, weaponLockedSettings.Count);
+        //weaponLockedSettings[num].Unlocked = true;
+        return weaponLockedSettings[unlockWeaponR];
+    }
+    public WeaponSetting SelectWeaponforUpgrade()
+    {
+        upgradeWeaponR = UnityEngine.Random.Range(0, weaponUnlockedSettings.Count);
+        //weaponUnlockedSettings[num].Level++;
+        return weaponUnlockedSettings[upgradeWeaponR];
+    }
+    public WeaponSetting SelectWeaponforReduceCooldown()
+    {
+        upgradeCooldownWeaponR = UnityEngine.Random.Range(0, weaponUnlockedSettings.Count);
+        //weaponUnlockedSettings[num].LevelCountdawn++;
+        return weaponUnlockedSettings[upgradeCooldownWeaponR];
+    }
     public void OpenNewWeapon()
     {
-
+        weaponLockedSettings[unlockWeaponR].Unlocked = true;
+        UnlockedWeapons();
+        WeaponsSettingCheck();
     }
     public void UpgradeWeapon()
     {
-
+        weaponUnlockedSettings[upgradeWeaponR].Level++;
+        WeaponsSettingCheck();
     }
     public void ReduceCooldown()
     {
-
+        weaponUnlockedSettings[upgradeCooldownWeaponR].LevelCountdawn++;
+        WeaponsSettingCheck();
     }
     #endregion
     public void WeaponsSettingCheck()
@@ -89,10 +115,10 @@ public class TetrisWeaponManager : MonoBehaviour
         TetrisCancas.sortingOrder = 4;
         inventoryManager.SpawnWeapons();
         AnimatorController.SetBool("UpTetrisBool", true);
-        isTetrisScene = true;
-        Time.timeScale = 0;
+        
+        //Time.timeScale = 0;
         yield return new WaitUntil(() => !isTetrisScene);
-        Time.timeScale = 1;
+        
         StartCoroutine(WaitForAnimation());
     }
     public void UnlockedWeapons()
@@ -135,8 +161,10 @@ public class TetrisWeaponManager : MonoBehaviour
             stateInfo = AnimatorController.GetCurrentAnimatorStateInfo(0);
         }
         //Debug.Log("WaitForAnimation 3 " + stateInfo);
-
+        isTetrisScene = true;
+        Time.timeScale = 1;
         randomWeaponSpawner.GetPossforWeapons();
+        //GameManager.Instance.ResumeGameAfterRoguelike();
     }
 
     public void Fight()
@@ -161,8 +189,8 @@ public class WeaponSetting
     public SlotWeaponsSO slotWeaponsSO;
     public bool Unlocked=false;
     public int Level=1;
+    public int LevelCountdawn = 1;
     public float defaultDamage;
-    public List<float> Damage;
-    public List<float> Countdawn;
-    public Sprite icon;
+
+
 }

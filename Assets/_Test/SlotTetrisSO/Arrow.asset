@@ -21,8 +21,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6e3e7f1d7e59e1240b9aef33df5be859, type: 3}
   - {fileID: 21300000, guid: aa58df41c2e43f94f989397810468e40, type: 3}
   - {fileID: 21300000, guid: 277a220e29df86a42a750c5f76d40d61, type: 3}
-  levelWeapon: 1
+  icon: {fileID: 21300000, guid: abc6c3d98abcc764792269f0b4ceadb8, type: 3}
+  openNewWeaponSprite: {fileID: 21300000, guid: abc6c3d98abcc764792269f0b4ceadb8,
+    type: 3}
+  upgradeWeaponSprite: {fileID: 0}
+  reduceCooldownSprite: {fileID: 0}
   levelToIconIndex: 0000000001000000010000000200000002000000
+  Damage:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  Countdawn:
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  description: 
   attackType: 10
   weaponType: {fileID: 7787875020771003900, guid: 68690f8cf8ac74e4a85174c7202a30d3,
     type: 3}

@@ -229,7 +229,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void ResumeGameAfterRoguelike()
+    public void ResumeGameAfterRoguelike()
     {
         _pauseDepth = Mathf.Max(0, _pauseDepth - 1);
         if (_pauseDepth == 0)
@@ -448,13 +448,18 @@ public class GameManager : MonoBehaviour
                 yield return roguelikeManager.RunRoguelike(wi + 1, waves[wi].roguelikeOptions);
                 if (uIManager.roguelikeBoard.activeSelf)
                     yield return new WaitUntil(() => !uIManager.roguelikeBoard.activeSelf);
-                ResumeGameAfterRoguelike();
+                //
                 ActivateDecksFromPrefs();
                 TetrisWeaponManager.instance.StartTetrisWawe();
+                yield return new WaitUntil(() => !TetrisWeaponManager.isTetrisScene);
+                ResumeGameAfterRoguelike();
             }
             else
             {
+                PauseGameForRoguelike();
                 TetrisWeaponManager.instance.StartTetrisWawe();
+                yield return new WaitUntil(() => !TetrisWeaponManager.isTetrisScene);
+                ResumeGameAfterRoguelike();
             }
 
 

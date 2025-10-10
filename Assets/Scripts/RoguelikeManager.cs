@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoguelikeManager : MonoBehaviour
 {
     [Header("UI & Deck References")]
-    public UIManager          uiManager;
+    public UIManager uiManager;
 
     [Header("Hero Definitions")]
     public HeroSO inventorSO;
@@ -37,32 +38,17 @@ public class RoguelikeManager : MonoBehaviour
     // runtime state
     public string ActiveHeroDeckName { get; private set; }
     public List<RoguelikeOption> CurrentOptions;
+    public List<Image> SelectedSprites;
+    public int SelectedCount=0;
+    private WeaponSetting weaponSetting;
 
-    
-
-
-    private static string LevelKey(string k) => $"{k}_level";
-    private static bool   IsUnlocked(string unlockKey) =>true;
-
-
-
-
-    private void Awake()
-    {
-
-        Debug.Log("RoguelikeManager: Awake - Set Deck_Inventor_Active to 1");
-    }
     void Start()
     {
         if (!gameManager) gameManager = FindObjectOfType<GameManager>();
 
-        // initialize every card’s sessionLevel from PlayerPrefs (for unlocked cards)
-        InitAllCardsSessionLevelsFromPrefs();
-
-        // Build card lists strictly from PlayerPrefs at scene start
     }
 
-    // --------------------- Setup / Hero pick ---------------------
+
 
 
 
@@ -78,27 +64,7 @@ public class RoguelikeManager : MonoBehaviour
        
     }
 
-  
 
- 
-
-   
-
-    /// Rewrite animators strictly from unlocked prefs.
-   
-
-    private void ApplyUnlockedToAnimator(CardDeckAnimator anim, string deckName)
-    {
-   
- 
-    }
-
-    // --------------------- session-level initialization ---------------------
-
-    private void InitAllCardsSessionLevelsFromPrefs()
-    {
-      
-    }
 
 
 
@@ -120,7 +86,7 @@ public class RoguelikeManager : MonoBehaviour
 
        
 
-        bool TryAssignUpgrade(ref RoguelikeOption opt)
+        void TryAssignUpgrade(ref RoguelikeOption opt)
         {
             var decks = new List<string>();
            
@@ -134,17 +100,29 @@ public class RoguelikeManager : MonoBehaviour
             
 
           
-            return true;
+          
         }
+        void AssignNewWeapon(ref RoguelikeOption opt)
+        {
 
+            opt.oldLevel = 0;
+            opt.newLevel = 0;
+            opt.overrideArtwork = weaponSetting.slotWeaponsSO.openNewWeaponSprite;
+        }
+        void AssignUpgrade(ref RoguelikeOption opt)
+        {
+
+            opt.oldLevel = weaponSetting.Level;
+            opt.newLevel = weaponSetting.Level+1;
+            opt.overrideArtwork = weaponSetting.slotWeaponsSO.GetNewIcon(opt.newLevel);
+        }
         void AssignCooldown(ref RoguelikeOption opt)
         {
-           
-            //opt.type           = OptionType.ReduceCooldown;
-          
 
+            opt.oldLevel = weaponSetting.LevelCountdawn;
+            opt.newLevel = weaponSetting.LevelCountdawn + 1;
+            opt.overrideArtwork = weaponSetting.slotWeaponsSO.openNewWeaponSprite;
         }
-
         bool TryAssignHealthUp(ref RoguelikeOption opt)
         {
             if (!enableHealthUp) return false;
@@ -166,34 +144,32 @@ public class RoguelikeManager : MonoBehaviour
         for (int i = 0; i < options.Count; i++)
         {
             var opt = options[i];
-            Debug.Log(opt.type + " Type");
+            //Debug.Log(opt.type + " Type");
             switch (opt.type)
             {
                 case OptionType.OpenNewWeapon:
-                    TetrisWeaponManager.instance.OpenNewWeapon();
+                    weaponSetting = TetrisWeaponManager.instance.SelectWeaponforUnlock();
+                    AssignNewWeapon(ref opt);
                     break;
                 case OptionType.UpgradeCard:
-                    TetrisWeaponManager.instance.UpgradeWeapon();
+                    weaponSetting = TetrisWeaponManager.instance.SelectWeaponforUpgrade();
+                    AssignUpgrade(ref opt);
                     break;
                   
                
                 case OptionType.ReduceCooldown:
-                    TetrisWeaponManager.instance.ReduceCooldown();
-
+                    weaponSetting = TetrisWeaponManager.instance.SelectWeaponforReduceCooldown();
                     AssignCooldown(ref opt);
                     break;
 
                 case OptionType.HealthUp:
-                    AssignCooldown(ref opt);
+                    TryAssignHealthUp(ref opt);
                     break;
             }
 
             options[i] = opt;
         }
-        void AddPiece()
-        {
-            Debug.Log("AddPiece method called in RoguelikeManager.");
-        }
+ 
         // Show UI
         CurrentOptions = options;
         uiManager.SetRougelikeText($"Wave {waveNumber} complete!\nChoose an option:");
@@ -219,16 +195,28 @@ public class RoguelikeManager : MonoBehaviour
         int idx = picked.deckName == "Inventor" ? 0
                 : picked.deckName == "Wizard"   ? 1
                                                 : 2;
+        SelectedSprites[SelectedCount].color = new Color(1, 1, 1, 1);
+        SelectedSprites[SelectedCount].sprite=picked.GetArtwork();
+        SelectedCount++;
+        switch (picked.type)
+        {
+            case OptionType.OpenNewWeapon:
+                TetrisWeaponManager.instance.OpenNewWeapon();
+                break;
+            case OptionType.UpgradeCard:
+                TetrisWeaponManager.instance.UpgradeWeapon();
+                break;
 
-       if (picked.type == OptionType.UpgradeCard)
-        {
-            //int prev = picked.targetCard.sessionLevel;
-            //picked.targetCard.IncrementSessionLevel();
-            //picked.oldLevel = prev;
-            //picked.newLevel = picked.targetCard.sessionLevel;
-        }
-        else // ReduceCooldown
-        {
+
+            case OptionType.ReduceCooldown:
+                TetrisWeaponManager.instance.ReduceCooldown();
+
+
+                break;
+
+            case OptionType.HealthUp:
+               
+                break;
         }
     }
 }

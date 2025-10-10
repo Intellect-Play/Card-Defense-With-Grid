@@ -25,7 +25,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         shapeContainer = GetComponent<RectTransform>();
     }
 
-    // Initialize sprite and slot reference (used both for spawn and when creating placed item)
+    // Initialize sprite and slot reference (used both for spawn and when creating placed item)Walkable
     public void Init(WeaponSO weapon, InventorySlot slot, Transform conteiner)
     {
         weaponData = weapon;
