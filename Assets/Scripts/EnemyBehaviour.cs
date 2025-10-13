@@ -454,6 +454,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (_dead || _dying) return;
 
+        Debug.Log("PlayHitFeedback");
         _isProcessingHit = true;
         StopYBob(); // hit zamanı bob dursun
 

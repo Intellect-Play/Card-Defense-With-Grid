@@ -157,7 +157,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Time: 1
   m_PreviewTimeScale: 1
   m_Parameters:
@@ -476,7 +476,6 @@ MonoBehaviour:
   attackType: 0
   chainCount: 0
   areaRadius: 0
-  _damage: 0
 --- !u!1 &8687196759425837072
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +549,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 4
   m_Time: 2
   m_PreviewTimeScale: 1
   m_Parameters:

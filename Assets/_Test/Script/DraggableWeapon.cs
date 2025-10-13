@@ -12,13 +12,15 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     [SerializeField] private RectTransform shapeContainer; // boş GameObject (RectTransform) slotları burda yaranacaq
     [SerializeField] private Image shapePrefab; // sadə Image prefab (bir hüceyrəni göstərir)
-
+    public Sprite SelectedSprite;
     public CanvasGroup canvasGroup;
     public Transform originalParent;
     public InventorySlot originalParentSlot;
     public Transform canvas;
+    public UIShake uIShake;
     private void Awake()
     {
+        uIShake = GetComponent<UIShake>();
         placedWeapon = GetComponent<PlacedWeapon>();
         canvasGroup = GetComponent<CanvasGroup>();
         //canvas = GetComponentInParent<Canvas>();
@@ -54,7 +56,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         foreach (Vector2Int offset in offsets)
         {
             Image cell = Instantiate(shapePrefab, shapeContainer);
-            cell.sprite = weapon.icon;
+            cell.sprite = SelectedSprite;
             cell.enabled = true;
 
             RectTransform rt = cell.GetComponent<RectTransform>();
@@ -74,6 +76,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         if (weaponData == null || !TetrisWeaponManager.isTetrisScene) return;
 
+        InventoryManager.instance.SameSelected(placedWeapon);
         //originalParent = transform.parent;
         originalParentSlot = parentSlot;
 

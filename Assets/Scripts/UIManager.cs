@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -126,6 +126,7 @@ public class UIManager : MonoBehaviour
 
     public void SetRougelikeBoardActive(bool active)
     {
+        Debug.Log("[UIManager] SetRougelikeBoardActive: " + active);
         AnimatePanel(roguelikeBoard, active);
 
         if (active)
@@ -145,7 +146,9 @@ public class UIManager : MonoBehaviour
                     }
                 }
             }
+            AnimateRoguelikeCardsEntrance();
         }
+
     }
 
     public void ShowRoguelikeOptions()
@@ -218,30 +221,110 @@ public class UIManager : MonoBehaviour
             btn.onClick.AddListener(() =>
             {
                 _selectedOfferedIndex = capturedIndex;
-                OnOfferedCardClicked(deckName);
+                OnOfferedCardClicked(btn.gameObject);
             });
         }
     }
 
-    private void OnOfferedCardClicked(string deckName)
+    private void OnOfferedCardClicked(GameObject deckName)
     {
+        Debug.Log("[UIManager] OnOfferedCardClicked: " + deckName.name);
         int deckIdx;
-        switch (deckName)
+        //switch (deckName)
+        //{
+        //    case "Inventor": deckIdx = 0; break;
+        //    case "Wizard": deckIdx = 1; break;
+        //    case "Samurai": deckIdx = 2; break;
+        //    default:
+        //        SetRougelikeBoardActive(false);
+        //        return;
+        //}
+        //Debug.Log("[UIManager] Activating deck index: " + deckIdx);
+        //if (gameManager != null)
+        //    gameManager.ActivateDeckAnimatorParent(deckIdx);
+
+        //PlayerPrefs.SetInt($"Deck_{deckName}_Active", 1);
+        //PlayerPrefs.Save();
+        roguelikeManager.ContinueRog();
+
+        // 🔹 Yeni əlavə
+        AnimateSelectedRoguelike(deckName);
+        StartCoroutine(RoguelikeTime());
+    }
+    IEnumerator RoguelikeTime()
+    {
+        roguelikeManager.ContinueRog();
+        yield return new WaitForSecondsRealtime(2); // timeScale-dən asılı deyil
+        SetRougelikeBoardActive(false);
+    }
+
+    // 🔹 Roguelike kartlarının popup effekti (ardıcıl görünmə)
+    public void AnimateRoguelikeCardsEntrance()
+    {
+        if (offeredroguelikes == null) return;
+
+        float delayStep = 0.15f; // ardıcıl gəlmə aralığı
+        for (int i = 0; i < offeredroguelikes.Length; i++)
         {
-            case "Inventor": deckIdx = 0; break;
-            case "Wizard":   deckIdx = 1; break;
-            case "Samurai":  deckIdx = 2; break;
-            default:
-                SetRougelikeBoardActive(false);
-                return;
+            var slot = offeredroguelikes[i];
+            if (slot == null || !slot.gameObject.activeSelf) continue;
+
+            slot.transform.localScale = Vector3.zero; // başlanğıcda gizli
+            slot.gameObject.SetActive(true);
+
+            // ardıcıl popup
+            LeanTween.scale(slot.gameObject, Vector3.one * 1.15f, 0.25f)
+                .setEaseOutBack()
+                .setDelay(i * delayStep)
+                .setIgnoreTimeScale(true)
+                .setOnComplete(() =>
+                {
+                    LeanTween.scale(slot.gameObject, Vector3.one, 0.15f)
+                        .setEaseInOutSine()
+                        .setIgnoreTimeScale(true);
+                });
+        }
+    }
+
+    // 🔹 Kart seçildikdə animasiya
+    public void AnimateSelectedRoguelike(GameObject selected)
+    {
+        if (selected == null) return;
+
+        // Seçilən kart bir az böyüyür, sonra geri qayıdır
+        LeanTween.scale(selected, Vector3.one * 1.15f, 0.15f)
+            .setEaseOutBack()
+            .setIgnoreTimeScale(true)
+            .setOnComplete(() =>
+            {
+                LeanTween.scale(selected, Vector3.one * 1.1f, 0.15f)
+                    .setEaseInOutSine()
+                    .setIgnoreTimeScale(true);
+
+                // 🔸 Digər kartları ardıcıl bağla
+                StartCoroutine(HideRoguelikeCardsSequentially(selected));
+            });
+    }
+
+    // 🔹 Kartların ardıcıl balacalaşaraq yox olması
+    private IEnumerator HideRoguelikeCardsSequentially(GameObject selected)
+    {
+        if (offeredroguelikes == null) yield break;
+        yield return new WaitForSecondsRealtime(.7f);
+        float delayStep = 0.1f;
+        for (int i = 0; i < offeredroguelikes.Length; i++)
+        {
+            var slot = offeredroguelikes[i];
+            if (slot == null) continue;
+
+            LeanTween.scale(slot.gameObject, Vector3.zero, 0.15f)
+                .setEaseInBack()
+                .setIgnoreTimeScale(true);
+            yield return new WaitForSecondsRealtime(delayStep);
         }
 
-        if (gameManager != null)
-            gameManager.ActivateDeckAnimatorParent(deckIdx);
-
-        PlayerPrefs.SetInt($"Deck_{deckName}_Active", 1);
-        PlayerPrefs.Save();
-
+        // Sonda paneli bağla
+        yield return new WaitForSecondsRealtime(0.2f);
         SetRougelikeBoardActive(false);
     }
 

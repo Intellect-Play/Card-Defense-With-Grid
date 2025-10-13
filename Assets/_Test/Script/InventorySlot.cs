@@ -61,7 +61,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             }
             else
             {
-                //Debug.Log("_Placing new object from prefab.");
+                Debug.Log("_Placing new object from prefab.");
                 Destroy(dragged.gameObject);
                 var newPlaced = inventory.CreatePlacedWeaponFromPrefab(inventory.placedPrefab, weapon, pos, this);
                 if (highlightImage != null) highlightImage.sprite = newPlaced.weaponData.icon;

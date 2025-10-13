@@ -18,10 +18,11 @@ public class InventoryManager : MonoBehaviour
     [Header("Weapons")]
     [SerializeField] private List<GameObject> availableWeapons = new List<GameObject>();
     [SerializeField] private List<GameObject> selectedWeapons = new List<GameObject>();
+    [SerializeField] private List<Sprite> selectedIcons;
 
     [Header("UI")]
     [SerializeField] private Button spawnButton;
-    [SerializeField] private GameObject draggablePrefab; // prefab that contains Image + CanvasGroup + DraggableWeapon + PlacedWeapon
+    [SerializeField] private GameObject draggablePrefab; 
 
     public List<DraggableWeapon> AllWeapons = new List<DraggableWeapon>();
 
@@ -72,7 +73,21 @@ public class InventoryManager : MonoBehaviour
 
         }
     }
+    public void SameSelected(PlacedWeapon weaponData)
+    {
+        foreach (DraggableWeapon draggableWeapon1 in AllWeapons) {
+            PlacedWeapon _weaponData = draggableWeapon1.placedWeapon;
+            if (weaponData != _weaponData && 
+                weaponData.name == _weaponData.name && 
+                weaponData.WeaponLevel == _weaponData.WeaponLevel&& _weaponData.inventory!=null)
+            {
+                draggableWeapon1.uIShake.ShakeRect();
+                Debug.Log("Eyni növ tapıldı: " + draggableWeapon1.weaponData.name);
+                // Burada istədiyiniz əməliyyatları edə bilərsiniz, məsələn, onları birləşdirmək və ya silmək.
+            }
+        }
 
+    }
     private void SelectRandomWeapons()
     {
         selectedWeapons.Clear();
@@ -86,12 +101,17 @@ public class InventoryManager : MonoBehaviour
         {
             int randomIndex = Random.Range(i, shuffled.Count);
             (shuffled[i], shuffled[randomIndex]) = (shuffled[randomIndex], shuffled[i]);
+            Debug.Log($"Shuffled weapon {i}: {shuffled[i].name}");
+            
         }
 
         // İlk 4 elementi seçilmiş siyahıya atır
         for (int i = 0; i < count; i++)
+        {
             selectedWeapons.Add(shuffled[i]);
-
+            selectedWeapons[i].GetComponent<DraggableWeapon>().SelectedSprite = selectedIcons[i];
+        }
+    
         Debug.Log($"Selected {count} random weapons.");
     }
     public void ActiveWeaponsRay(bool isActive)

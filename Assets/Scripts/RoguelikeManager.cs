@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class RoguelikeManager : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class RoguelikeManager : MonoBehaviour
 
     [Tooltip("Prevents more than one Health Up from spawning in the same pick screen.")]
     public bool limitOneHealthUpPerScreen = true;
-
+    List<RoguelikeOption> mainOptions;
     // runtime state
     public string ActiveHeroDeckName { get; private set; }
     public List<RoguelikeOption> CurrentOptions;
@@ -114,14 +115,14 @@ public class RoguelikeManager : MonoBehaviour
 
             opt.oldLevel = weaponSetting.Level;
             opt.newLevel = weaponSetting.Level+1;
-            opt.overrideArtwork = weaponSetting.slotWeaponsSO.GetNewIcon(opt.newLevel);
+            opt.overrideArtwork = weaponSetting.slotWeaponsSO.GetNewIcon(opt.newLevel-1);
         }
         void AssignCooldown(ref RoguelikeOption opt)
         {
 
             opt.oldLevel = weaponSetting.LevelCountdawn;
             opt.newLevel = weaponSetting.LevelCountdawn + 1;
-            opt.overrideArtwork = weaponSetting.slotWeaponsSO.openNewWeaponSprite;
+            opt.overrideArtwork = weaponSetting.slotWeaponsSO.GetNewIcon(opt.oldLevel-1);
         }
         bool TryAssignHealthUp(ref RoguelikeOption opt)
         {
@@ -176,27 +177,32 @@ public class RoguelikeManager : MonoBehaviour
         uiManager.ShowRoguelikeOptions();
         uiManager.DisableSlotsWithoutImage();
         uiManager.SetRougelikeBoardActive(true);
-
+        mainOptions = options;
         // Wait for selection
         yield return new WaitUntil(() => !uiManager.roguelikeBoard.activeSelf);
 
+        
+        //yield return new WaitForSeconds(2);
+    }
+    public void ContinueRog()
+    {
         int choice = uiManager.selectedRoguelikeIndex;
-        if (choice < 0 || choice >= options.Count) yield break;
+        //if (choice < 0 || choice >= mainOptions.Count) break;
 
-        var picked = options[choice];
+        var picked = mainOptions[choice];
 
         // Health Up is handled right here and returns
         if (picked.type == OptionType.HealthUp)
         {
-            if (gameManager) gameManager.HealFortress(Mathf.Max(1, picked.healthAmount));
-            yield break;
+            
+            // break;
         }
 
         int idx = picked.deckName == "Inventor" ? 0
-                : picked.deckName == "Wizard"   ? 1
+                : picked.deckName == "Wizard" ? 1
                                                 : 2;
         SelectedSprites[SelectedCount].color = new Color(1, 1, 1, 1);
-        SelectedSprites[SelectedCount].sprite=picked.GetArtwork();
+        SelectedSprites[SelectedCount].sprite = picked.GetArtwork();
         SelectedCount++;
         switch (picked.type)
         {
@@ -215,7 +221,7 @@ public class RoguelikeManager : MonoBehaviour
                 break;
 
             case OptionType.HealthUp:
-               
+                if (gameManager) gameManager.HealFortress(Mathf.Max(1, picked.healthAmount));
                 break;
         }
     }

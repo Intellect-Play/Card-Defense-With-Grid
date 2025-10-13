@@ -23,6 +23,7 @@ public class SlotWeaponsSO : ScriptableObject
 
     public Sprite GetNewIcon(int level)
     {
+        Debug.Log("GetNewIcon " + level);
         if (levelToIconIndex.Length > level)
         {
             return icons[levelToIconIndex[level]];

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2745c3b9fffebf4cb7dfeaa501f7b86, type: 3}
   m_Name: O Weapon SO 3
   m_EditorClassIdentifier: 
-  weaponName: v
+  weaponName: O
   icon: {fileID: 21300000, guid: 1014854f3989a9246a85a3b0ba434b5a, type: 3}
   levelWeapon: 1
   nextLevelWeapon: {fileID: 0}

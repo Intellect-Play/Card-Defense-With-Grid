@@ -102,7 +102,7 @@ public class GridInventory : MonoBehaviour
             var p = grid[x, y];
             //Debug.Log($" - cell {x},{y} has " + (p != null ? p.weaponData.name : "null"));
             //if (p == null || p.weaponData != weapon.weaponData || p.WeaponLevel != weapon.WeaponLevel) return false;
-            if (p == null || p.weaponData != weapon.weaponData) return false;
+            if (p == null || p.weaponData != weapon.weaponData || p.WeaponLevel != weapon.WeaponLevel) return false;
             //Debug.Log($"Checking cell {x},{y} for merge, found: " + p.WeaponLevel + " " + weapon.WeaponLevel);
 
             placedOut.Add(p);

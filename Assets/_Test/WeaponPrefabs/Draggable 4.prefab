@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3961599684458615923}
   - component: {fileID: 8724479235748835152}
   - component: {fileID: 8678293697464437297}
+  - component: {fileID: 5967944267281045791}
   m_Layer: 5
   m_Name: Draggable 4
   m_TagString: Untagged
@@ -112,6 +113,7 @@ MonoBehaviour:
   originalParent: {fileID: 0}
   originalParentSlot: {fileID: 0}
   canvas: {fileID: 0}
+  uIShake: {fileID: 0}
 --- !u!114 &8678293697464437297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +131,28 @@ MonoBehaviour:
   origin: {x: -1, y: -1}
   inventory: {fileID: 0}
   originSlot: {fileID: 0}
+  Name: 
   WeaponLevel: 0
   firstPlaced: 0
   ChildDrags: []
+--- !u!114 &5967944267281045791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380982778855153007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4619e75f217434d4f8b8be34023b39b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.45
+  shakeStrength: 18
+  shakeVibrato: 20
+  shakeRandomness: 90
+  pulseScale: 1.18
+  pulseDuration: 0.18
+  pulseLoops: 1
+  pulseEaseOvershoot: 1.3
+  usePunchScale: 1

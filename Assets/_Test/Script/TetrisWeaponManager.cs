@@ -14,6 +14,7 @@ public class TetrisWeaponManager : MonoBehaviour
     [SerializeField] private RandomWeaponSpawner randomWeaponSpawner;
 
     [SerializeField] private Button FightButton;
+    [SerializeField] private Button RerollButton;
     [SerializeField] private Button BuyButton;
     [SerializeField] private Button ShuffleButton;
 
@@ -38,6 +39,7 @@ public class TetrisWeaponManager : MonoBehaviour
             return;
         }
         FightButton.onClick.AddListener(Fight);
+        RerollButton.onClick.AddListener(Reroll);
         BuyButton.onClick.AddListener(Buy);
         ShuffleButton.onClick.AddListener(Shuffle);
         
@@ -168,6 +170,16 @@ public class TetrisWeaponManager : MonoBehaviour
         //GameManager.Instance.ResumeGameAfterRoguelike();
     }
 
+    public void Reroll()
+    {
+        if(PriceCheck.instance.priceSO.RerollPrice > PlayerPrefs.GetInt("gold", 0)) return;
+        int g = PlayerPrefs.GetInt("gold", 0) - PriceCheck.instance.priceSO.RerollPrice;
+        PlayerPrefs.SetInt("gold", g);
+        PlayerPrefs.Save();
+        GameManager.Instance.uIManager.SetCoins(g);
+        inventoryManager.SpawnWeapons();
+
+    }
     public void Fight()
     {
         AnimatorController.SetBool("UpTetrisBool", false);
