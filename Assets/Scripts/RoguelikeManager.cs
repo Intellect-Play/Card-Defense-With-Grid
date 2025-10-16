@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class RoguelikeManager : MonoBehaviour
 {
@@ -197,12 +196,25 @@ public class RoguelikeManager : MonoBehaviour
             
             // break;
         }
-
+        Debug.Log($"RoguelikeManager: Player picked option {choice} of type {picked.type}.");
         int idx = picked.deckName == "Inventor" ? 0
                 : picked.deckName == "Wizard" ? 1
                                                 : 2;
         SelectedSprites[SelectedCount].color = new Color(1, 1, 1, 1);
         SelectedSprites[SelectedCount].sprite = picked.GetArtwork();
+        var target = SelectedSprites[SelectedCount].gameObject; // <-- referens saxla
+
+        LeanTween.scale(target, Vector3.one * 1.15f, 0.25f)
+            .setEaseOutBack()
+            .setDelay(0.2f)
+            .setIgnoreTimeScale(true)
+            .setOnComplete(() =>
+            {
+                LeanTween.scale(target, Vector3.one, 0.15f)
+                    .setEaseInOutSine()
+                    .setIgnoreTimeScale(true);
+            });
+
         SelectedCount++;
         switch (picked.type)
         {

@@ -87,7 +87,7 @@ public class LeaderboardManager : MonoBehaviour
                     cups  = UnityEngine.Random.Range(0, 500)
                 };
                 var it = lBoardItems[i];
-                Debug.Log($"  {it.index}: {it.name} – {it.cups} cups");
+                Debug.Log($"  {it.index}: {it.name} – {it.cups} cups"); 
             }
 
             var outData = new LeaderboardData { items = lBoardItems };

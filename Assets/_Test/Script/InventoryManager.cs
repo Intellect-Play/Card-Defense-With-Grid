@@ -16,6 +16,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<InventorySlot> spawnSlots = new List<InventorySlot>();
 
     [Header("Weapons")]
+    [SerializeField] private List<WeaponSO> availableweaponDatas = new List<WeaponSO>();
+    [SerializeField] private GameObject availableWeapon;
+
     [SerializeField] private List<GameObject> availableWeapons = new List<GameObject>();
     [SerializeField] private List<GameObject> selectedWeapons = new List<GameObject>();
     [SerializeField] private List<Sprite> selectedIcons;
@@ -81,17 +84,30 @@ public class InventoryManager : MonoBehaviour
                 weaponData.name == _weaponData.name && 
                 weaponData.WeaponLevel == _weaponData.WeaponLevel&& _weaponData.inventory!=null)
             {
-                draggableWeapon1.uIShake.ShakeRect();
+                draggableWeapon1.uIShake.StartBreathing();
                 Debug.Log("Eyni növ tapıldı: " + draggableWeapon1.weaponData.name);
                 // Burada istədiyiniz əməliyyatları edə bilərsiniz, məsələn, onları birləşdirmək və ya silmək.
             }
         }
 
     }
+    public void FinishSelectedSame()
+    {
+        foreach (DraggableWeapon draggableWeapon1 in AllWeapons)
+        {
+            draggableWeapon1.uIShake.StopBreathing();
+        }
+
+    }
+
     private void SelectRandomWeapons()
     {
         selectedWeapons.Clear();
-
+        foreach (WeaponSO child in availableweaponDatas)
+        {
+            availableWeapon.GetComponent<DraggableWeapon>().weaponData = child;
+            availableWeapons.Add(Instantiate(availableWeapon));
+        }
         // Əgər availableWeapons 4-dən azdırsa, hamısını götürür
         int count = Mathf.Min(4, availableWeapons.Count);
 

@@ -85,12 +85,7 @@ public class LobbyManager : MonoBehaviour
     private const string PrefBattlesCompleted = "battlesCompleted";
     private const string PrefBattlesTotal = "battlesTotal";
 
-    private readonly Dictionary<string, string[]> cardPrefKeys = new()
-    {
-        { "Inventor", new[]{ "inv_bee", "inv_cog", "inv_sword", "inv_bomb" } },
-        { "Wizard",   new[]{ "wiz_dagger", "wiz_stone", "wiz_ring", "wiz_feather" } },
-        { "Samurai",  new[]{ "sam_knife", "sam_hammer", "sam_arrow", "sam_shuriken" } },
-    };
+    private readonly SlotWeaponType[] cardPrefKeys = new[] { SlotWeaponType.Arrow, SlotWeaponType.Axe, SlotWeaponType.Bomb, SlotWeaponType.Stone };
 
     // Track the currently-open hero page to place messages at its center.
     private RectTransform _activePageRT;
@@ -103,6 +98,8 @@ public class LobbyManager : MonoBehaviour
     // =================== Unity ===================
     void Start()
     {
+        PlayerPrefs.SetInt("gold", 1000);
+
         EnsurePriceArrays();
         EnsureDefaults_OnlyFirstUnlocked();
         EnsureProgressDefaults();
@@ -127,15 +124,14 @@ public class LobbyManager : MonoBehaviour
     }
 
     // =================== PlayerPrefs helpers (cards) ===================
-    static string LevelKey(string k) => $"{k}_level";
-    static string UnlockKey(string k) => k;
+    public static string LevelKey(SlotWeaponType k) => $"{k.ToString()}_level";
+    public static string UnlockKey(SlotWeaponType k) => k.ToString();
 
-    static int GetLevel(string k, int fallback = 0) => PlayerPrefs.GetInt(LevelKey(k), fallback);
-    static void SetLevel(string k, int level) => PlayerPrefs.SetInt(LevelKey(k), Mathf.Max(0, level));
-    static bool IsUnlocked(string k) => PlayerPrefs.GetInt(UnlockKey(k), 0) == 1;
-    static void SetUnlocked(string k, bool v) => PlayerPrefs.SetInt(UnlockKey(k), v ? 1 : 0);
+    public static int GetLevel(SlotWeaponType k, int fallback = 1) => PlayerPrefs.GetInt(LevelKey(k), fallback);
+    public static void SetLevel(SlotWeaponType k, int level) => PlayerPrefs.SetInt(LevelKey(k), Mathf.Max(0, level));
+    public static bool IsUnlocked(SlotWeaponType k) => PlayerPrefs.GetInt(UnlockKey(k), 1) == 1;
+    public static void SetUnlocked(SlotWeaponType k, bool v) => PlayerPrefs.SetInt(UnlockKey(k), v ? 1 : 1);
 
-    // =================== Coins / Gems ===================
     private int Coins
     {
         get => PlayerPrefs.GetInt(PrefGold, 0);
@@ -429,36 +425,37 @@ public class LobbyManager : MonoBehaviour
         }
         _activePageRT = pageGO ? pageGO.GetComponent<RectTransform>() : null;
 
-        UICard[] ui = deckName == "Inventor" ? inventorCards : deckName == "Wizard" ? wizardCards : samuraiCards;
-        if (!cardPrefKeys.TryGetValue(deckName, out var keys) || ui == null) { FocusButton(heroesButtonImage); return; }
+       
+       // if (!cardPrefKeys.TryGetValue(out var keys) || ui == null) { FocusButton(heroesButtonImage); return; }
 
-        int n = Mathf.Min(ui.Length, keys.Length);
+        int n = wizardCards.Length;
         for (int i = 0; i < n; i++)
         {
-            string key = keys[i];
+            Debug.Log("Processing card " + i + " for deck " + deckName);
+            SlotWeaponType key = cardPrefKeys[i];
             bool unlocked = IsUnlocked(key);
-            int level = GetLevel(key, 0);
+            int level = GetLevel(key, 1);
 
             bool isPlayable = unlocked && level >= 1;
 
-            if (ui[i].lockIcon) ui[i].lockIcon.SetActive(!isPlayable);
-
+            if (wizardCards[i].lockIcon) wizardCards[i].lockIcon.SetActive(!isPlayable);
+                                    
             // Dim card art when locked, but NEVER the button (handled by affordability)
-            ApplyCardUnlockedVisual(ui[i], isPlayable);
+            ApplyCardUnlockedVisual(wizardCards[i], isPlayable);
 
             // ---- LEVEL BADGE: always refresh if playable ----
-            if (ui[i].lvlTxt)
+            if (wizardCards[i].lvlTxt)
             {
-                ui[i].lvlTxt.gameObject.SetActive(isPlayable);
+                wizardCards[i].lvlTxt.gameObject.SetActive(isPlayable);
                 if (isPlayable)
                 {
-                    ui[i].lvlTxt.alpha = 1f;                    // ensure fully visible
-                    ui[i].lvlTxt.enabled = true;
-                    ui[i].lvlTxt.text = Mathf.Max(1, level).ToString(); // number only
+                    wizardCards[i].lvlTxt.alpha = 1f;                    // ensure fully visible
+                    wizardCards[i].lvlTxt.enabled = true;
+                    wizardCards[i].lvlTxt.text = Mathf.Max(1, level).ToString(); // number only
                 }
             }
 
-            var buttonGO = ui[i].upgradeBtn;
+            var buttonGO = wizardCards[i].upgradeBtn;
             var btn = buttonGO ? buttonGO.GetComponent<Button>() : null;
             var label = FindTMPOnButton(buttonGO);
             if (!btn || !label) continue;
@@ -477,20 +474,21 @@ public class LobbyManager : MonoBehaviour
                 label.text = price.ToString();
                 btn.interactable = affordable;
                 SetButtonAffordabilityVisual(buttonGO, affordable);
-
+                Debug.Log("Setting unlock for " + key + " price " + price + " affordable: " + affordable);
                 int captured = i;
                 btn.onClick.AddListener(() =>
                 {
+                    Debug.Log("Unlock clicked for " + key);
                     if (!HasEnough(price))
                     {
                         Pulse(btn.transform);
                         ShowMessage("Not enough coins!", redWarn);
                         return;
                     }
-
+                    Debug.Log("Unlocking " + key);
                     Spend(price);
-                    SetUnlocked(keys[captured], true);
-                    SetLevel(keys[captured], 1);
+                    SetUnlocked(cardPrefKeys[captured], true);
+                    SetLevel(cardPrefKeys[captured], 1);
                     PlayerPrefs.Save();
 
                     ShowHeroPage(deckName);
@@ -520,7 +518,7 @@ public class LobbyManager : MonoBehaviour
                     }
 
                     Spend(price);
-                    SetLevel(keys[captured], level + 1);
+                    SetLevel(cardPrefKeys[captured], level + 1);
                     PlayerPrefs.Save();
 
                     ShowHeroPage(deckName);
@@ -687,36 +685,37 @@ public class LobbyManager : MonoBehaviour
     // =================== Card defaults ===================
     private void EnsureDefaults_OnlyFirstUnlocked()
     {
-        foreach (var kv in cardPrefKeys)
-        {
-            var keys = kv.Value;
-            if (keys == null || keys.Length == 0) continue;
+        //foreach (var kv in cardPrefKeys)
+        //{
+        //    var keys = kv.Value;
+        //    if (keys == null || keys.Length == 0) continue;
 
-            // First card: unlocked & at least level 1
-            if (!IsUnlocked(keys[0])) SetUnlocked(keys[0], true);
-            if (GetLevel(keys[0], 0) < 1) SetLevel(keys[0], 1);
+        //    // First card: unlocked & at least level 1
+        //    if (!IsUnlocked(keys[0])) SetUnlocked(keys[0], true);
+        //    if (GetLevel(keys[0], 0) < 1) SetLevel(keys[0], 1);
 
-            // Others: initialize if missing (preserve existing)
-            for (int i = 1; i < keys.Length; i++)
-            {
-                if (!PlayerPrefs.HasKey(UnlockKey(keys[i]))) SetUnlocked(keys[i], false);
-                if (!PlayerPrefs.HasKey(LevelKey(keys[i]))) SetLevel(keys[i], 0);
-            }
-        }
-        PlayerPrefs.Save();
+        //    // Others: initialize if missing (preserve existing)
+        //    for (int i = 1; i < keys.Length; i++)
+        //    {
+        //        if (!PlayerPrefs.HasKey(UnlockKey(keys[i]))) SetUnlocked(keys[i], false);
+        //        if (!PlayerPrefs.HasKey(LevelKey(keys[i]))) SetLevel(keys[i], 0);
+        //    }
+        //}
+        //PlayerPrefs.Save();
     }
 
     // =================== Optional direct card hooks ===================
     public void UnlockCard(string deckName, int index)
     {
-        if (!cardPrefKeys.TryGetValue(deckName, out var keys) || index < 0 || index >= keys.Length) return;
-        if (IsUnlocked(keys[index])) return;
+        Debug.Log("UnlockCard: " + deckName + " index " + index);
+        if ( index < 0 || index >= cardPrefKeys.Length) return;
+        if (IsUnlocked(cardPrefKeys[index])) return;
         int price = GetUnlockPrice(deckName, index);
         if (!HasEnough(price)) { ShowMessage("Not enough coins!", redWarn); return; }
 
         Spend(price);
-        SetUnlocked(keys[index], true);
-        SetLevel(keys[index], 1);
+        SetUnlocked(cardPrefKeys[index], true);
+        SetLevel(cardPrefKeys[index], 1);
         PlayerPrefs.Save();
         ShowHeroPage(deckName);
 
@@ -727,15 +726,16 @@ public class LobbyManager : MonoBehaviour
 
     public void UpgradeCard(string deckName, int index)
     {
-        if (!cardPrefKeys.TryGetValue(deckName, out var keys) || index < 0 || index >= keys.Length) return;
-        if (!IsUnlocked(keys[index])) return;
+        Debug.Log("UpgradeCard: " + deckName + " index " + index);
+        if (index < 0 || index >= cardPrefKeys.Length) return;
+        if (!IsUnlocked(cardPrefKeys[index])) return;
 
-        int cur = Mathf.Max(1, GetLevel(keys[index], 1));
+        int cur = Mathf.Max(1, GetLevel(cardPrefKeys[index], 1));
         int price = GetUpgradePrice(cur);
         if (!HasEnough(price)) { ShowMessage("Not enough coins!", redWarn); return; }
 
         Spend(price);
-        SetLevel(keys[index], cur + 1);
+        SetLevel(cardPrefKeys[index], cur + 1);
         PlayerPrefs.Save();
         ShowHeroPage(deckName);
 
@@ -816,4 +816,12 @@ public class LobbyManager : MonoBehaviour
         if (!cg) cg = buttonGO.AddComponent<CanvasGroup>();
         cg.alpha = affordable ? 1f : 0.45f;
     }
+}    
+
+public enum cardPrefKeys
+{
+    inv_arrow,
+    inv_axe,
+    inv_bomb,
+    inv_stone
 }

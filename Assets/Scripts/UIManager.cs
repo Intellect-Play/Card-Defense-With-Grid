@@ -253,7 +253,7 @@ public class UIManager : MonoBehaviour
     }
     IEnumerator RoguelikeTime()
     {
-        roguelikeManager.ContinueRog();
+        //roguelikeManager.ContinueRog();
         yield return new WaitForSecondsRealtime(2); // timeScale-dən asılı deyil
         SetRougelikeBoardActive(false);
     }
