@@ -153,6 +153,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowRoguelikeOptions()
     {
+        Debug.Log("[UIManager] ShowRoguelikeOptions called");
         var options = roguelikeManager != null ? roguelikeManager.CurrentOptions : null;
         int count = (options != null) ? options.Count : 0;
 
@@ -181,6 +182,7 @@ public class UIManager : MonoBehaviour
 
     public void SetRoguelikeOption(int index, RoguelikeOption option)
     {
+        Debug.Log("SetRoguelikeOption");
         if (offeredroguelikes == null || index < 0 || index >= offeredroguelikes.Length) return;
         var slot = offeredroguelikes[index];
         if (slot == null || option == null) return;
@@ -232,6 +234,8 @@ public class UIManager : MonoBehaviour
 
     private void OnOfferedCardClicked(GameObject deckName)
     {
+        if(roguelikeManager.SelectedRoguelikeOption)
+            return;
         Debug.Log("[UIManager] OnOfferedCardClicked: " + deckName.name);
         int deckIdx;
         //switch (deckName)
@@ -294,6 +298,7 @@ public class UIManager : MonoBehaviour
     public void AnimateSelectedRoguelike(GameObject selected)
     {
         if (selected == null) return;
+        roguelikeManager.SelectedRoguelikeOption = true;
 
         // Seçilən kart bir az böyüyür, sonra geri qayıdır
         LeanTween.scale(selected, Vector3.one * 1.15f, 0.15f)

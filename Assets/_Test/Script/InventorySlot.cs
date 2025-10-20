@@ -27,9 +27,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
     public void UnlockButtondActive()
     {
+        Time.timeScale = 1f;
         if (!TetrisWeaponManager.isTetrisScene) return;
         if (PriceCheck.instance.priceSO.UnlockSlotPrice > PlayerPrefs.GetInt("gold", 0)) return;
-
+        Debug.Log("UnlockButtondActive " + gridPosition);
         // DOTween animasiyası üçün RectTransform
         RectTransform buttonRect = slotUnlockButton.GetComponent<RectTransform>();
         if (buttonRect != null)
@@ -38,9 +39,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             float scaleDuration = 0.2f;
 
             // Böyüdüb sonra kiçildək
-            buttonRect.DOScale(scaleUp, scaleDuration).SetEase(Ease.OutBack).OnComplete(() =>
+            buttonRect.DOScale(scaleUp, scaleDuration).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() =>
             {
-                buttonRect.DOScale(1f, scaleDuration).SetEase(Ease.InBack).OnComplete(() =>
+                buttonRect.DOScale(1f, scaleDuration).SetEase(Ease.InBack).SetUpdate(true).OnComplete(() =>
                 {
                     slotUnlockButton.gameObject.SetActive(false);
                     Unlocked = true;
@@ -68,9 +69,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (SlotSpawn)
         {
 
-            Debug.Log("Placing in spawn slot. "+dragged.gameObject.name);
+            //Debug.Log("Placing in spawn slot. "+dragged.gameObject.name);
 
-            Debug.Log(this.transform.childCount);
+            //Debug.Log(this.transform.childCount);
             if (this.transform.childCount != 0) return;
             dragged.placedWeapon.Unplace();
             InventoryManager.instance.RemoveDraggable(dragged);
@@ -79,6 +80,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             Destroy(dragged.gameObject);
             InventoryManager.instance.SpawnSelectedWeapon(this, dragged).GetLevel(dragged.placedWeapon.WeaponLevel - 1);
 
+            TetrisWeaponManager.instance.WeaponsSettingCheck();
 
             return;
             dragged.transform.SetParent(transform, false);
@@ -106,9 +108,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             int level=0;
             foreach (var p in placedList)
             {
-                Debug.Log("Merging weapons into next level: " + dragged.gameObject.name + " " +p.gameObject.name);
+                //Debug.Log("Merging weapons into next level: " + dragged.gameObject.name + " " +p.gameObject.name);
 
-                Debug.Log("Merging weapon at " + p.origin + " level " + p.WeaponLevel);
+                //Debug.Log("Merging weapon at " + p.origin + " level " + p.WeaponLevel);
                 p.Unplace();
                 InventoryManager.instance.RemoveDraggable(p.GetComponent<DraggableWeapon>());
                 level = p.WeaponLevel;
@@ -150,6 +152,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 var newPlaced = inventory.CreatePlacedWeaponFromPrefab(inventory.placedPrefab, weapon, pos, this);
                 if (highlightImage != null) highlightImage.sprite = newPlaced.weaponData.icon;
             }
+
             return;
         }
         else

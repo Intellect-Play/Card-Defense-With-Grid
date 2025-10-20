@@ -65,9 +65,9 @@ public class PlacedWeapon : MonoBehaviour
             float scaleDuration = 0.2f;
 
             // Böyüdüb sonra kiçildək
-            buttonRect.DOScale(scaleUp, scaleDuration).SetEase(Ease.OutBack).OnComplete(() =>
+            buttonRect.DOScale(scaleUp, scaleDuration).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() =>
             {
-                buttonRect.DOScale(1f, scaleDuration).SetEase(Ease.InBack);
+                buttonRect.DOScale(1f, scaleDuration).SetEase(Ease.InBack).SetUpdate(true);
             });
         }
         //Sequence seq = DOTween.Sequence();

@@ -41,7 +41,7 @@ public class RoguelikeManager : MonoBehaviour
     public List<Image> SelectedSprites;
     public int SelectedCount=0;
     private WeaponSetting weaponSetting;
-
+    public bool SelectedRoguelikeOption = false;
     void Start()
     {
         if (!gameManager) gameManager = FindObjectOfType<GameManager>();
@@ -169,7 +169,8 @@ public class RoguelikeManager : MonoBehaviour
 
             options[i] = opt;
         }
- 
+        SelectedRoguelikeOption = false;
+        Debug.Log("RoguelikeManager: Prepared roguelike options for display.");
         // Show UI
         CurrentOptions = options;
         uiManager.SetRougelikeText($"Wave {waveNumber} complete!\nChoose an option:");

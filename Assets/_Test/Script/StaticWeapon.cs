@@ -31,17 +31,32 @@ public class StaticWeapon : MonoBehaviour
     {
         Init(_weaponData, Level, pos, camera, WeaponSpawned);
     }
-    public void GetWeaponSetting(WeaponSetting weaponSetting)
+    public float GetWeaponSetting(WeaponSetting weaponSetting)
     {
-        if(placedWeapon == null) return;
+        if(placedWeapon == null) return 0;
         int level = weaponSetting.Level;
+        Debug.Log("GetWeaponSetting Level " + level);
         LevelUp(level);
         //Debug.Log(weaponSetting.Countdawn[0]+" Time");
         //Debug.Log("GetWeaponSetting " + placedWeapon.WeaponLevel + " " + weaponSetting.Damage[level] + " " + weaponSetting.Countdawn[level]);
         cardDeckAnimator.GetNewSetting(
             placedWeapon.WeaponLevel, 
-            weaponSetting.slotWeaponsSO.Damage[0], 
+            weaponSetting.slotWeaponsSO.Damage[level - 1], 
+            weaponSetting.slotWeaponsSO.Countdawn[level - 1]);
+        return placedWeapon.WeaponLevel * weaponSetting.slotWeaponsSO.Damage[level-1];
+    }
+    public float GetWeaponPower(WeaponSetting weaponSetting)
+    {
+        if (placedWeapon == null) return 0;
+        int level = weaponSetting.Level;
+        LevelUp(level);
+        //Debug.Log(weaponSetting.Countdawn[0]+" Time");
+        //Debug.Log("GetWeaponSetting " + placedWeapon.WeaponLevel + " " + weaponSetting.Damage[level] + " " + weaponSetting.Countdawn[level]);
+        cardDeckAnimator.GetNewSetting(
+            placedWeapon.WeaponLevel,
+            weaponSetting.slotWeaponsSO.Damage[0],
             weaponSetting.slotWeaponsSO.Countdawn[0]);
+        return placedWeapon.WeaponLevel * weaponSetting.slotWeaponsSO.Damage[0];
     }
     public void GetFireTime(float scaleTime)
     {
@@ -107,7 +122,11 @@ public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera ca
         {
             placedWeapon = placedWeapons[gridPosition.x, gridPosition.y];
         }
-        SetIcon();
+        else
+        {
+            placedWeapon = null;
+        }
+            SetIcon();
     }
     public void LevelUp(int SpotWeaponLevel)
     {

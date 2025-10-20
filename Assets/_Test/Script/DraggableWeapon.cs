@@ -131,8 +131,12 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         InventoryManager.instance.ActiveWeaponsRay(true);
         //canvasGroup.blocksRaycasts = true;
-        //Debug.Log("OnEndDrag called.");
-        if (placedWeapon.originSlot != null && placedWeapon.originSlot.SlotSpawn) return;
+        if (placedWeapon.originSlot != null && placedWeapon.originSlot.SlotSpawn) {
+            //TetrisWeaponManager.instance.WeaponsSettingCheck();
+            return;
+
+        }
+        Debug.Log("OnEndDrag called.");
         if (transform.parent == canvas)
         {
             transform.SetParent(originalParent);
@@ -141,9 +145,15 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             //Debug.Log("Resetting dragged object to original slot.");
         }
         transform.SetParent(parentSlot.inventory.placedWeaponsContainer);
-        if (!(parentSlot == parentSlotMain && originalParentSlot == null)) { } 
+       
         if (placedWeapon.firstPlaced)
             placedWeapon.Place(parentSlot);
+        if ((parentSlotMain.transform == originalParent))
+        {
+            transform.SetParent(parentSlotMain.transform);
+        }
+        TetrisWeaponManager.instance.WeaponsSettingCheck();
+
         //Debug.Log("OnEndDrag: " + (parentSlot != null ? parentSlot.name : "no slot")); canvasGroup.blocksRaycasts = true;
     }
 }

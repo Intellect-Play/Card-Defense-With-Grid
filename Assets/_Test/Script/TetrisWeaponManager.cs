@@ -32,6 +32,8 @@ public class TetrisWeaponManager : MonoBehaviour
     private int unlockWeaponR = 0;
     private int upgradeWeaponR = 0;
     private int upgradeCooldownWeaponR = 0;
+    public float Power;
+    public TextMeshProUGUI PowerText;
 
     private void Awake()
     {
@@ -48,6 +50,12 @@ public class TetrisWeaponManager : MonoBehaviour
         ShuffleButton.onClick.AddListener(Shuffle);
         
         UnlockedWeapons();
+    }
+    public void PowerFunc(float power, bool restore = false)
+    {
+        if (restore) Power = 0;
+        Power += power;
+        PowerText.text = ((int)Power).ToString();
     }
     private void Start()
     {
@@ -106,6 +114,8 @@ public class TetrisWeaponManager : MonoBehaviour
     #endregion
     public void WeaponsSettingCheck()
     {
+        PowerFunc(0, true);
+        randomWeaponSpawner.ActivatesWeapons();
         foreach (var w in spawnedWeapons)
         {
             for (int i = 0; i < weaponSettings.Count; i++)
@@ -113,7 +123,8 @@ public class TetrisWeaponManager : MonoBehaviour
                 if (w.WeaponType == weaponSettings[i].WeaponType)
                 {
                     //Debug.Log("WeaponsSettingCheck " +i+" "+ w.WeaponType + " " + weaponSettings[i].Level+" "+ weaponSettings[i].Countdawn);
-                    w.GetWeaponSetting(weaponSettings[i]);
+                    PowerFunc(w.GetWeaponSetting(weaponSettings[i]));
+                    
                     continue;
                 }
             }
@@ -196,11 +207,12 @@ public class TetrisWeaponManager : MonoBehaviour
     public void Buy()
     {
         if (PriceCheck.instance.priceSO.BuyPrice > PlayerPrefs.GetInt("gold", 0)) return;
+        if (!randomWeaponSpawner.SpawnRandomWeapons()) return;
         int g = PlayerPrefs.GetInt("gold", 0) - PriceCheck.instance.priceSO.RerollPrice;
         PlayerPrefs.SetInt("gold", g);
         PlayerPrefs.Save();
         GameManager.Instance.uIManager.SetCoins(g);
-        randomWeaponSpawner.SpawnRandomWeapons();
+        
         UIRefleshGame();
     }
     public void UIRefleshGame()

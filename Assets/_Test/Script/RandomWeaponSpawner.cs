@@ -58,13 +58,13 @@ public class RandomWeaponSpawner : MonoBehaviour
             emptySlots.LockSlot();
         }
     }
-    public void SpawnRandomWeapons()
+    public bool SpawnRandomWeapons()
     {
 
         for (int i = 0; i < spawnCount; i++)
         {
             InventorySlot emptySlots = inventoryManager.GetRandomEmptyCell();
-            if (emptySlots == null) break;
+            if (emptySlots == null) return false;
 
             SlotWeaponsSO randomWeapon = tetrisWeaponManager.GetSlotWeapon();
             GameObject go = Instantiate(weaponPrefab, emptySlots.transform);
@@ -78,7 +78,8 @@ public class RandomWeaponSpawner : MonoBehaviour
             tetrisWeaponManager.GetStaticWeapons(staticW);
         }
         ActivatesWeapons();
-
+        tetrisWeaponManager.WeaponsSettingCheck();
+        return true;
     }
   
     public void GetPossforWeapons()
