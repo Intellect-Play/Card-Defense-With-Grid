@@ -20,6 +20,8 @@ public class TetrisWeaponManager : MonoBehaviour
     [SerializeField] private Button ShuffleButton;
     [SerializeField] private TextMeshProUGUI RerollButtonPrice;
     [SerializeField] private TextMeshProUGUI BuyButtonPrice;
+    public static bool IsUnlockedT(SlotWeaponType k) => PlayerPrefs.GetInt(UnlockKeyT(k), SlotWeaponType.Arrow == k ? 1 : 0) == 1;
+    public static string UnlockKeyT(SlotWeaponType k) => k.ToString();
 
     public List<WeaponSetting> weaponSettings;
     public Dictionary<int,WeaponSetting> weaponSettingsD;
@@ -148,8 +150,9 @@ public class TetrisWeaponManager : MonoBehaviour
         foreach (var w in weaponSettings)
         {
             w.defaultDamage = PlayerPrefs.GetFloat(w.WeaponType.ToString() + "_Damage", w.defaultDamage);
-            if (w.Unlocked)
+            if (IsUnlockedT(w.WeaponType))
             {
+                w.Unlocked = true;
                 weaponUnlockedSettings.Add(w);
             }
             else

@@ -129,7 +129,7 @@ public class LobbyManager : MonoBehaviour
 
     public static int GetLevel(SlotWeaponType k, int fallback = 1) => PlayerPrefs.GetInt(LevelKey(k), fallback);
     public static void SetLevel(SlotWeaponType k, int level) => PlayerPrefs.SetInt(LevelKey(k), Mathf.Max(0, level));
-    public static bool IsUnlocked(SlotWeaponType k) => PlayerPrefs.GetInt(UnlockKey(k), 1) == 1;
+    public static bool IsUnlocked(SlotWeaponType k) => PlayerPrefs.GetInt(UnlockKey(k), SlotWeaponType.Arrow == k ?1: 0) == 1;
     public static void SetUnlocked(SlotWeaponType k, bool v) => PlayerPrefs.SetInt(UnlockKey(k), v ? 1 : 1);
 
     private int Coins
