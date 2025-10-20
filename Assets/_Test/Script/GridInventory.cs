@@ -33,7 +33,7 @@ public class GridInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             int z = 0;
-            Debug.Log("Grid state:");
+            //Debug.Log("Grid state:");
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
@@ -41,7 +41,7 @@ public class GridInventory : MonoBehaviour
                     if (grid[x, y] != null)
                     {
                         line = z + " " + grid[x, y].name.ToString() + x + " " + y;
-                        Debug.Log(line);
+                        //Debug.Log(line);
                         ++z;
                     }
 
@@ -62,8 +62,8 @@ public class GridInventory : MonoBehaviour
             int x = pos.x + offset.x;
             int y = pos.y + offset.y;
             if (!InBounds(x, y)) return false;
-            Debug.Log($"CanPlace check at {x},{y}");
-            Debug.Log($"CanPlace check at {x},{y}, found: " + (grid[x, y] != null ? grid[x, y].weaponData.name : "null"));
+            //Debug.Log($"CanPlace check at {x},{y}");
+            //Debug.Log($"CanPlace check at {x},{y}, found: " + (grid[x, y] != null ? grid[x, y].weaponData.name : "null"));
             if (grid[x, y] != null) return false;
             //Debug.Log($"Cell {x},{y} is free.");
         }
@@ -73,7 +73,7 @@ public class GridInventory : MonoBehaviour
     // Place the PlacedWeapon reference into all cells described by its weaponData
     public void PlacePlacedWeapon(PlacedWeapon placed, Vector2Int pos)
     {
-        Debug.Log("Placing weapon: " + placed.name + " at " + pos);
+        //Debug.Log("Placing weapon: " + placed.name + " at " + pos);
         foreach (var offset in placed.weaponData.shapeOffsets)
         {
             int x = pos.x + offset.x;
@@ -86,7 +86,7 @@ public class GridInventory : MonoBehaviour
     // Remove references to this PlacedWeapon in grid cells
     public void RemovePlacedWeapon(PlacedWeapon placed)
     {
-        Debug.Log("Removing placed weapon: " + placed.name);
+        //Debug.Log("Removing placed weapon: " + placed.name);
         for (int x = 0; x < height; x++)
             for (int y = 0; y < width; y++)
                 if (grid[x, y] == placed)
@@ -95,7 +95,7 @@ public class GridInventory : MonoBehaviour
                     //Debug.Log($" - cleared cell {x},{y}");
                 }
         int z = 0;
-        Debug.Log("Grid state:");
+        //Debug.Log("Grid state:");
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)

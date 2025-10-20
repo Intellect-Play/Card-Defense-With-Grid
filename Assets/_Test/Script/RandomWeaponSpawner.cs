@@ -28,7 +28,7 @@ public class RandomWeaponSpawner : MonoBehaviour
         tetrisWeaponManager = TetrisWeaponManager.instance;
         inventoryManager = InventoryManager.instance;
         SpawnRandomWeapons();
-       // SpawnLockSlots();
+        SpawnLockSlots();
     }
     private void Update()
     {

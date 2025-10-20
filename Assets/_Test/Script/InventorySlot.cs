@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -28,9 +29,32 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         if (!TetrisWeaponManager.isTetrisScene) return;
         if (PriceCheck.instance.priceSO.UnlockSlotPrice > PlayerPrefs.GetInt("gold", 0)) return;
-        slotUnlockButton.gameObject.SetActive(false);
-        Unlocked = true;
-        inventory.grid[gridPosition.x, gridPosition.y] = null;
+
+        // DOTween animasiyası üçün RectTransform
+        RectTransform buttonRect = slotUnlockButton.GetComponent<RectTransform>();
+        if (buttonRect != null)
+        {
+            float scaleUp = 1.2f;
+            float scaleDuration = 0.2f;
+
+            // Böyüdüb sonra kiçildək
+            buttonRect.DOScale(scaleUp, scaleDuration).SetEase(Ease.OutBack).OnComplete(() =>
+            {
+                buttonRect.DOScale(1f, scaleDuration).SetEase(Ease.InBack).OnComplete(() =>
+                {
+                    slotUnlockButton.gameObject.SetActive(false);
+                    Unlocked = true;
+                    inventory.grid[gridPosition.x, gridPosition.y] = null;
+                });
+            });
+        }
+        else
+        {
+            // Əgər RectTransform yoxdursa, sadəcə deactivate və update et
+            slotUnlockButton.gameObject.SetActive(false);
+            Unlocked = true;
+            inventory.grid[gridPosition.x, gridPosition.y] = null;
+        }
     }
     public void OnDrop(PointerEventData eventData)
 {
@@ -90,7 +114,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 level = p.WeaponLevel;
                 Destroy(p.gameObject);
             }
-            dragged.placedWeapon.Merge(level);
+            dragged.placedWeapon.Merge(level-1);
             //Destroy(dragged.gameObject);
             dragged.placedWeapon.Place(this);
             dragged.parentSlot = this;

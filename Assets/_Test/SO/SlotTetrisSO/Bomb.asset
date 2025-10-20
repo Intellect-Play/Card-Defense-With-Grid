@@ -29,10 +29,10 @@ MonoBehaviour:
   levelToIconIndex: 0000000001000000010000000200000002000000
   Damage:
   - 6
-  - 6
-  - 6
-  - 6
-  - 6
+  - 7
+  - 8
+  - 9
+  - 10
   Countdawn:
   - 3
   - 5

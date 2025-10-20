@@ -2324,7 +2324,7 @@ MonoBehaviour:
   - {fileID: 7083059821466246711}
   - {fileID: 947815865}
   - {fileID: 1044538140}
-  emptyOfferedSprite: {fileID: 21300000, guid: 7567be472c616a346b0548773968022c, type: 3}
+  emptyOfferedSprite: {fileID: 21300000, guid: 29bdb75a9863a48d2ae08b345389a74a, type: 3}
   panelTweenTime: 0.35
   bounceScale: 1.2
   squashScale: 0.85
@@ -3615,7 +3615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &492286686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11214,6 +11214,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fight Button
       objectReference: {fileID: 0}
+    - target: {fileID: 2393096047277780042, guid: d368cc200e30eca4d8252b44c75bd7ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4486489695393160837, guid: d368cc200e30eca4d8252b44c75bd7ec,
         type: 3}
       propertyPath: m_fontSize
@@ -13546,6 +13551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Reroll Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089579101931802103, guid: 4c42656af94e6154aa93c95ceb9ca2df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2471301143917359459, guid: 4c42656af94e6154aa93c95ceb9ca2df,
         type: 3}
@@ -27057,7 +27067,6 @@ MonoBehaviour:
   height: 5
   placedPrefab: {fileID: 0}
   placedWeaponsContainer: {fileID: 3166449012098895517}
-  placedWeapons: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

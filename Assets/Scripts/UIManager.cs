@@ -200,7 +200,11 @@ public class UIManager : MonoBehaviour
                 case OptionType.ReduceCooldown:
                     label = "Reduce CD -20%"; break;
                 case OptionType.HealthUp:
-                    label = $"Health +{Mathf.Max(1, option.healthAmount)}"; break;
+                    {
+                        option.overrideArtwork = emptyOfferedSprite;
+                        label = $"Health +{Mathf.Max(1, option.healthAmount)}"; break;
+
+                    }
                 default:
                     label = option.deckName; break;
             }

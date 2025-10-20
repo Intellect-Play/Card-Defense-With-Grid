@@ -28,11 +28,11 @@ MonoBehaviour:
   reduceCooldownSprite: {fileID: 0}
   levelToIconIndex: 0000000001000000010000000200000002000000
   Damage:
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
   Countdawn:
   - 1
   - 1

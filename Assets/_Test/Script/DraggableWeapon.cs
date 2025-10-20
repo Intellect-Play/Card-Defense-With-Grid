@@ -76,7 +76,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         placedWeapon.weaponData = weaponData;
         originalParent = transform.parent;
         ActiveChilds(false);
-        Debug.Log(placedWeapon.name);
+        //Debug.Log(placedWeapon.name);
     }
     public void ActiveChilds(bool active)
     {
@@ -90,7 +90,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (weaponData == null || !TetrisWeaponManager.isTetrisScene) return;
-        Debug.Log("Eyni növ tapıldı: placedWeapon " + weaponData.name);
+        //Debug.Log("Eyni növ tapıldı: placedWeapon " + weaponData.name);
 
         InventoryManager.instance.SameSelected(placedWeapon);
         //originalParent = transform.parent;
@@ -131,19 +131,19 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         InventoryManager.instance.ActiveWeaponsRay(true);
         //canvasGroup.blocksRaycasts = true;
-        Debug.Log("OnEndDrag called.");
+        //Debug.Log("OnEndDrag called.");
         if (placedWeapon.originSlot != null && placedWeapon.originSlot.SlotSpawn) return;
         if (transform.parent == canvas)
         {
             transform.SetParent(originalParent);
             transform.localPosition = Vector3.zero;
             parentSlot = originalParentSlot;
-            Debug.Log("Resetting dragged object to original slot.");
+            //Debug.Log("Resetting dragged object to original slot.");
         }
         transform.SetParent(parentSlot.inventory.placedWeaponsContainer);
         if (!(parentSlot == parentSlotMain && originalParentSlot == null)) { } 
         if (placedWeapon.firstPlaced)
             placedWeapon.Place(parentSlot);
-        Debug.Log("OnEndDrag: " + (parentSlot != null ? parentSlot.name : "no slot")); canvasGroup.blocksRaycasts = true;
+        //Debug.Log("OnEndDrag: " + (parentSlot != null ? parentSlot.name : "no slot")); canvasGroup.blocksRaycasts = true;
     }
 }
