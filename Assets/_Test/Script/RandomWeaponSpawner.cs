@@ -28,6 +28,7 @@ public class RandomWeaponSpawner : MonoBehaviour
         tetrisWeaponManager = TetrisWeaponManager.instance;
         inventoryManager = InventoryManager.instance;
         SpawnRandomWeapons();
+       // SpawnLockSlots();
     }
     private void Update()
     {
@@ -37,7 +38,8 @@ public class RandomWeaponSpawner : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Shuffle();
+            SpawnLockSlots();
+            //Shuffle();
         }
     }
     public void ChangePosWeapons()
@@ -45,6 +47,15 @@ public class RandomWeaponSpawner : MonoBehaviour
         foreach (var w in spawnedWeapons)
         {
             w.ChangePosWeapon();
+        }
+    }
+    public void SpawnLockSlots()
+    {
+        for (int i = 0; i < spawnCount; i++)
+        {
+            InventorySlot emptySlots = inventoryManager.GetRandomEmptyCell();
+            if (emptySlots == null) break;
+            emptySlots.LockSlot();
         }
     }
     public void SpawnRandomWeapons()

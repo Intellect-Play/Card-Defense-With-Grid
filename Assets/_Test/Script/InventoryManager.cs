@@ -31,6 +31,7 @@ public class InventoryManager : MonoBehaviour
 
     public List<StaticWeapon> staticWeapons = new List<StaticWeapon>();
     public Transform placedWeaponsContainer; // bütün weapon-lar burada toplanacaq
+    int spawnName = 0;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -41,7 +42,7 @@ public class InventoryManager : MonoBehaviour
         }
         if (gridInventory == null)
         {
-            Debug.LogError("GridInventory reference required.");
+            //Debug.LogError("GridInventory reference required.");
             return;
         }
         SelectRandomWeapons();
@@ -81,11 +82,12 @@ public class InventoryManager : MonoBehaviour
         foreach (DraggableWeapon draggableWeapon1 in AllWeapons) {
             PlacedWeapon _weaponData = draggableWeapon1.placedWeapon;
             if (weaponData != _weaponData && 
-                weaponData.name == _weaponData.name && 
+                weaponData.Name == _weaponData.Name && 
                 weaponData.WeaponLevel == _weaponData.WeaponLevel&& _weaponData.inventory!=null)
             {
                 draggableWeapon1.uIShake.StartBreathing();
-                Debug.Log("Eyni növ tapıldı: " + draggableWeapon1.weaponData.name);
+                draggableWeapon1.ActiveChilds(true);
+                //Debug.Log("Eyni növ tapıldı: " + draggableWeapon1.placedWeapon.Name + " "+ weaponData.Name);
                 // Burada istədiyiniz əməliyyatları edə bilərsiniz, məsələn, onları birləşdirmək və ya silmək.
             }
         }
@@ -96,6 +98,8 @@ public class InventoryManager : MonoBehaviour
         foreach (DraggableWeapon draggableWeapon1 in AllWeapons)
         {
             draggableWeapon1.uIShake.StopBreathing();
+            draggableWeapon1.ActiveChilds(false);
+
         }
 
     }
@@ -117,7 +121,7 @@ public class InventoryManager : MonoBehaviour
         {
             int randomIndex = Random.Range(i, shuffled.Count);
             (shuffled[i], shuffled[randomIndex]) = (shuffled[randomIndex], shuffled[i]);
-            Debug.Log($"Shuffled weapon {i}: {shuffled[i].name}");
+            //Debug.Log($"Shuffled weapon {i}: {shuffled[i].name}");
             
         }
 
@@ -128,7 +132,7 @@ public class InventoryManager : MonoBehaviour
             selectedWeapons[i].GetComponent<DraggableWeapon>().SelectedSprite = selectedIcons[i];
         }
     
-        Debug.Log($"Selected {count} random weapons.");
+        //Debug.Log($"Selected {count} random weapons.");
     }
     public void ActiveWeaponsRay(bool isActive)
     {
@@ -157,9 +161,11 @@ public class InventoryManager : MonoBehaviour
     }
     public void SpawnWeapons()
     {
-        Debug.Log("Spawning weapons in slots.");
+
+        //Debug.Log("Spawning weapons in slots.");
         foreach (var slot in spawnSlots)
         {
+            spawnName++;
             // Clear existing children
             foreach (Transform c in slot.transform)
             {
@@ -174,7 +180,7 @@ public class InventoryManager : MonoBehaviour
             // instantiate draggable prefab under the spawn slot
             var go = Instantiate(randomWeapon, slot.transform);
             go.transform.localPosition = Vector3.zero;
-
+            go.name = go.name + spawnName;
             var drag = go.GetComponent<DraggableWeapon>();
             AddDraggable(drag);
 
@@ -196,7 +202,46 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public PlacedWeapon SpawnSelectedWeapon(InventorySlot slot, DraggableWeapon _draggableWeapon)
+    {
+        ActiveWeaponsRay(true);
+        // Clear existing children
+        foreach (Transform c in slot.transform)
+        {
+            //Debug.Log("Destroying existing child: " + c.name);
+            RemoveDraggable(c.GetComponent<DraggableWeapon>());
 
+            Destroy(c.gameObject);
+        }
+
+        // pick random
+        GameObject randomWeapon = selectedWeapons[Random.Range(0, selectedWeapons.Count)];
+
+        // instantiate draggable prefab under the spawn slot
+        var go = Instantiate(randomWeapon, slot.transform);
+        go.transform.localPosition = Vector3.zero;
+        DraggableWeapon draggableWeapon = go.GetComponent<DraggableWeapon>();
+        draggableWeapon.weaponData = _draggableWeapon.weaponData;
+        AddDraggable(draggableWeapon);
+
+        var placed = go.GetComponent<PlacedWeapon>();
+
+        if (draggableWeapon == null || placed == null)
+        {
+            //Debug.LogError("draggablePrefab must have DraggableWeapon and PlacedWeapon components.");
+            Destroy(go);
+            return null;
+        }
+        WeaponSO weaponData = draggableWeapon.weaponData;
+        // init both: this object is a spawn copy (not placed)
+        draggableWeapon.SelectedSprite = _draggableWeapon.SelectedSprite;
+        draggableWeapon.Init(go.GetComponent<DraggableWeapon>().weaponData, slot, placedWeaponsContainer);
+        placed.InitAsSpawn(go.GetComponent<DraggableWeapon>().weaponData);
+
+        // optionally set slot icon
+        slot.SetSlotIcon(randomWeapon != null ? weaponData.icon : null);
+        return draggableWeapon.placedWeapon;
+    }
     public void RegisterStaticWeapon(StaticWeapon sw)
     {
         if (!staticWeapons.Contains(sw))

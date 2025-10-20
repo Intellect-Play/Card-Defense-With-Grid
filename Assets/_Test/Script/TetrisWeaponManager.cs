@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,8 @@ public class TetrisWeaponManager : MonoBehaviour
     [SerializeField] private Button RerollButton;
     [SerializeField] private Button BuyButton;
     [SerializeField] private Button ShuffleButton;
+    [SerializeField] private TextMeshProUGUI RerollButtonPrice;
+    [SerializeField] private TextMeshProUGUI BuyButtonPrice;
 
     public List<WeaponSetting> weaponSettings;
     public Dictionary<int,WeaponSetting> weaponSettingsD;
@@ -32,6 +35,7 @@ public class TetrisWeaponManager : MonoBehaviour
 
     private void Awake()
     {
+        PlayerPrefs.SetInt("gold", 10000);
         if (instance == null) instance = this;
         else
         {
@@ -48,6 +52,7 @@ public class TetrisWeaponManager : MonoBehaviour
     private void Start()
     {
         isTetrisScene = true;
+        UIRefleshGame();
 
         StartTetrisWawe();
     }
@@ -56,6 +61,7 @@ public class TetrisWeaponManager : MonoBehaviour
         isTetrisScene = true;
         TetrisCancas.sortingOrder = 10;
         AnimatorController.SetBool("UpTetrisBool", true);
+        UIRefleshGame();
         inventoryManager.SpawnWeapons();
     }
     public void GetStaticWeapons(StaticWeapon staticWeapon)
@@ -178,7 +184,7 @@ public class TetrisWeaponManager : MonoBehaviour
         PlayerPrefs.Save();
         GameManager.Instance.uIManager.SetCoins(g);
         inventoryManager.SpawnWeapons();
-
+        UIRefleshGame();
     }
     public void Fight()
     {
@@ -189,7 +195,24 @@ public class TetrisWeaponManager : MonoBehaviour
     }
     public void Buy()
     {
+        if (PriceCheck.instance.priceSO.BuyPrice > PlayerPrefs.GetInt("gold", 0)) return;
+        int g = PlayerPrefs.GetInt("gold", 0) - PriceCheck.instance.priceSO.RerollPrice;
+        PlayerPrefs.SetInt("gold", g);
+        PlayerPrefs.Save();
+        GameManager.Instance.uIManager.SetCoins(g);
         randomWeaponSpawner.SpawnRandomWeapons();
+        UIRefleshGame();
+    }
+    public void UIRefleshGame()
+    {
+        int g = PlayerPrefs.GetInt("gold", 0);
+        GameManager.Instance.uIManager.SetCoins(g);
+        BuyButton.interactable = PriceCheck.instance.priceSO.BuyPrice <= g;
+        RerollButton.interactable = PriceCheck.instance.priceSO.RerollPrice <= g;
+     
+
+        RerollButtonPrice.text = PriceCheck.instance.priceSO.RerollPrice.ToString();
+        BuyButtonPrice.text = PriceCheck.instance.priceSO.BuyPrice.ToString();
     }
     public void Shuffle() {
         randomWeaponSpawner.Shuffle();

@@ -9,4 +9,6 @@ public class PriceSO : ScriptableObject
     public int ShufflePrice;
     public int RerollPrice;
     public int DecreaseCooldownPrice;
+    public int UnlockSlotPrice;
+
 }

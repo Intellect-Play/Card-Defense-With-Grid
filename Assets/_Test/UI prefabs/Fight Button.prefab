@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1202446431889125216}
   - component: {fileID: 5505557503449502457}
   m_Layer: 0
-  m_Name: Button01_s_BtnText_Yellow
+  m_Name: Fight Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

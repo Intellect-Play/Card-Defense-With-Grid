@@ -9,15 +9,17 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public WeaponSO weaponData;
     public PlacedWeapon placedWeapon;
     public InventorySlot parentSlot; // current slot (spawn slot or grid's origin slot)
+    public InventorySlot parentSlotMain; // current slot (spawn slot or grid's origin slot)
 
     [SerializeField] private RectTransform shapeContainer; // boş GameObject (RectTransform) slotları burda yaranacaq
-    [SerializeField] private Image shapePrefab; // sadə Image prefab (bir hüceyrəni göstərir)
+    [SerializeField] private GameObject shapePrefab; // sadə Image prefab (bir hüceyrəni göstərir)
     public Sprite SelectedSprite;
     public CanvasGroup canvasGroup;
     public Transform originalParent;
     public InventorySlot originalParentSlot;
     public Transform canvas;
     public UIShake uIShake;
+    public List<DragProxy> Childs;
     private void Awake()
     {
         uIShake = GetComponent<UIShake>();
@@ -32,10 +34,11 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         weaponData = weapon;
         parentSlot = slot;
+        parentSlotMain = slot;
         canvas = conteiner;
         // əvvəlkiləri sil
-        foreach (Transform child in shapeContainer)
-            Destroy(child.gameObject);
+        //foreach (Transform child in shapeContainer)
+        //    Destroy(child.gameObject);
 
         if (weapon == null) return;
 
@@ -55,26 +58,39 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         foreach (Vector2Int offset in offsets)
         {
-            Image cell = Instantiate(shapePrefab, shapeContainer);
-            cell.sprite = SelectedSprite;
-            cell.enabled = true;
+            GameObject cell = Instantiate(shapePrefab, shapeContainer);
+
 
             RectTransform rt = cell.GetComponent<RectTransform>();
             rt.sizeDelta = cellSize;
             rt.anchoredPosition = new Vector2(offset.x * cellSize.x, offset.y * cellSize.y) + originOffset;
-
+            DragProxy dragProxy = cell.GetComponent<DragProxy>();
             // Proxy əlavə et
-            if (cell.GetComponent<DragProxy>() == null)
-                cell.gameObject.AddComponent<DragProxy>();
-            placedWeapon.ChildDrags.Add(cell.GetComponent<DragProxy>());
-        }
-        originalParent = transform.parent;
-    }
+            if (dragProxy == null) continue;
+            Childs.Add(dragProxy);
+            cell.gameObject.AddComponent<DragProxy>();
+            placedWeapon.ChildDrags.Add(dragProxy);
 
+            dragProxy.GetImage(SelectedSprite);
+        }
+        placedWeapon.weaponData = weaponData;
+        originalParent = transform.parent;
+        ActiveChilds(false);
+        Debug.Log(placedWeapon.name);
+    }
+    public void ActiveChilds(bool active)
+    {
+        foreach (DragProxy x in Childs)
+        {
+
+            x.GetActivated(active);
+        }
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (weaponData == null || !TetrisWeaponManager.isTetrisScene) return;
+        Debug.Log("Eyni növ tapıldı: placedWeapon " + weaponData.name);
 
         InventoryManager.instance.SameSelected(placedWeapon);
         //originalParent = transform.parent;
@@ -95,7 +111,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (weaponData == null||!TetrisWeaponManager.isTetrisScene) return;
+        if (weaponData == null || !TetrisWeaponManager.isTetrisScene) return;
         Vector2 localPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas as RectTransform,
@@ -113,17 +129,21 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (!TetrisWeaponManager.isTetrisScene) return;
         InventoryManager.instance.FinishSelectedSame();
 
-        InventoryManager.instance.ActiveWeaponsRay(true); 
-        if (transform.parent == canvas) 
-        { 
-            transform.SetParent(originalParent); 
-            transform.localPosition = Vector3.zero; 
-            parentSlot = originalParentSlot; 
-          Debug.Log("Resetting dragged object to original slot."); 
+        InventoryManager.instance.ActiveWeaponsRay(true);
+        //canvasGroup.blocksRaycasts = true;
+        Debug.Log("OnEndDrag called.");
+        if (placedWeapon.originSlot != null && placedWeapon.originSlot.SlotSpawn) return;
+        if (transform.parent == canvas)
+        {
+            transform.SetParent(originalParent);
+            transform.localPosition = Vector3.zero;
+            parentSlot = originalParentSlot;
+            Debug.Log("Resetting dragged object to original slot.");
         }
-        transform.SetParent(parentSlot.inventory.placedWeaponsContainer); 
-        if(placedWeapon.firstPlaced)
-            placedWeapon.Place(parentSlot); 
-        Debug.Log("OnEndDrag: " + (parentSlot != null ? parentSlot.name : "no slot")); canvasGroup.blocksRaycasts = true; 
+        transform.SetParent(parentSlot.inventory.placedWeaponsContainer);
+        if (!(parentSlot == parentSlotMain && originalParentSlot == null)) { } 
+        if (placedWeapon.firstPlaced)
+            placedWeapon.Place(parentSlot);
+        Debug.Log("OnEndDrag: " + (parentSlot != null ? parentSlot.name : "no slot")); canvasGroup.blocksRaycasts = true;
     }
 }

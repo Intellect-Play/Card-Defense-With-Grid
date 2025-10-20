@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         _currentLevelIndex = ResolveCurrentLevelIndex();
-        Debug.Log(PlayerPrefs.GetInt(PrefMatchIndex) + $"[GameManager] Current level index is {_currentLevelIndex}.");
+        //Debug.Log(PlayerPrefs.GetInt(PrefMatchIndex) + $"[GameManager] Current level index is {_currentLevelIndex}.");
     }
 
     void Start()
@@ -310,7 +310,7 @@ public class GameManager : MonoBehaviour
             var root = new GameObject($"Wave {i + 1}");
             root.transform.SetParent(enemyParent, false);
             _waveRoots[i] = root.transform;
-            Debug.Log($"[GameManager] Wave {i + 1} has {c} enemies (cumulative {_cumuCounts[i]}).");
+            //Debug.Log($"[GameManager] Wave {i + 1} has {c} enemies (cumulative {_cumuCounts[i]}).");
         }
 
         uIManager.SetLevelText($"Lvl {_currentLevelIndex + 1}");
@@ -444,7 +444,7 @@ public class GameManager : MonoBehaviour
             _roguelikeShown[wi] = true;
             if (waves[wi].RoguelikeBool)
             {
-                Debug.Log($"[GameManager] Starting roguelike after wave {wi + 1}.");
+                //Debug.Log($"[GameManager] Starting roguelike after wave {wi + 1}.");
                 PauseGameForRoguelike();
                 yield return roguelikeManager.RunRoguelike(wi + 1, waves[wi].roguelikeOptions);
                 if (uIManager.roguelikeBoard.activeSelf)

@@ -16,6 +16,7 @@ public class PlacedWeapon : MonoBehaviour
     public string Name;
     public int WeaponLevel;
     public bool firstPlaced = false;
+    public List<RectTransform> Childs = new List<RectTransform>();
 
 
     public List<DragProxy> ChildDrags = new List<DragProxy>();
@@ -38,6 +39,15 @@ public class PlacedWeapon : MonoBehaviour
     {
         WeaponLevel+=level;
         MergeAnimation();
+        foreach (var drag in ChildDrags)
+        {
+            drag.LevelUpgrade(WeaponLevel);
+        }
+        //Debug.Log("Merged to level " + weaponData.levelWeapon);
+    }
+    public void GetLevel(int level)
+    {
+        WeaponLevel += level;
         foreach (var drag in ChildDrags)
         {
             drag.LevelUpgrade(WeaponLevel);
@@ -81,19 +91,28 @@ public class PlacedWeapon : MonoBehaviour
     {
         firstPlaced = true;
         //Unplace();
+        inventory = slot.inventory;
+        origin = slot.gridPosition;
+        Debug.Log("Placing weapon " + weaponData.name + " at " + origin);
+        originSlot = slot;
+        inventory.PlacePlacedWeapon(this, origin);
+    }
+    public void PlaceSpawn(InventorySlot slot)
+    {
+        firstPlaced = true;
+        //Unplace();
         //Debug.Log("Placing weapon " + weaponData.name + " at " + origin);
         inventory = slot.inventory;
         origin = slot.gridPosition;
         originSlot = slot;
-        inventory.PlacePlacedWeapon(this, origin);
+        //inventory.PlacePlacedWeapon(this, origin);
     }
-
     // Unregister from grid but do not destroy GameObject (used when player picks up)
     public void Unplace()
     {
-        //Debug.Log("Unplacing weapon " + weaponData.name + " from " + origin);
         if (inventory != null)
         {
+        Debug.Log("Unplacing weapon " + gameObject.name + " from " + origin);
             inventory.RemovePlacedWeapon(this);
             inventory = null;
         }

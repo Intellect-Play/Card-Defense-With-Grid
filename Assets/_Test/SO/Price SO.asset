@@ -16,3 +16,4 @@ MonoBehaviour:
   ShufflePrice: 60
   RerollPrice: 50
   DecreaseCooldownPrice: 0
+  UnlockSlotPrice: 20

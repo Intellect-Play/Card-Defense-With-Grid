@@ -79,7 +79,7 @@ public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera ca
 
         cardDeckAnimator = WeaponSpawned.GetComponentInChildren<CardDeckAnimator>();
         cardDeckAnimator.staticWeapon = this;
-        Debug.Log(weaponData.attackType);
+        //Debug.Log(weaponData.attackType);
         cardDeckAnimator.cards[0].attackType = weaponData.attackType;
         WeaponSpawned.transform.localScale = new Vector3(.5f,.5f,.5f);
         SetIcon();

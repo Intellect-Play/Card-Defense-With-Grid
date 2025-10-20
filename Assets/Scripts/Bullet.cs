@@ -440,7 +440,7 @@ public class Bullet : MonoBehaviour
     // L1=3, then +1 per level, max 6
     private IEnumerator BladesRoutine()
     {
-        int count = Mathf.Clamp(chainCount + 3, 3, 6);
+        int count = chainCount;
 
         var targets = GetEnemyTargets(count, transform.position);
         if (targets.Count == 0) { Destroy(gameObject); yield break; }

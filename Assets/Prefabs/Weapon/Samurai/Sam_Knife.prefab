@@ -209,7 +209,6 @@ MonoBehaviour:
   attackType: 0
   chainCount: 0
   areaRadius: 0
-  _damage: 0
 --- !u!1001 &2362700575719904550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,13 +219,63 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 753552020542912727, guid: a132276319e35e0498aeea5b6f9834b9,
         type: 3}
+      propertyPath: m_Time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 753552020542912727, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 753552020542912727, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
+      propertyPath: m_Parameters.textureScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 753552020542912727, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
+      propertyPath: m_Parameters.textureScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 753552020542912727, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.021564484
+      objectReference: {fileID: 0}
+    - target: {fileID: 753552020542912727, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.27108192
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067156272347811351, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
+      propertyPath: m_Time
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2067156272347811351, guid: a132276319e35e0498aeea5b6f9834b9,
         type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067156272347811351, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
+      propertyPath: m_Parameters.textureScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067156272347811351, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
+      propertyPath: m_Parameters.textureScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067156272347811351, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.021564484
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067156272347811351, guid: a132276319e35e0498aeea5b6f9834b9,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.27108192
       objectReference: {fileID: 0}
     - target: {fileID: 2653153344604433488, guid: a132276319e35e0498aeea5b6f9834b9,
         type: 3}

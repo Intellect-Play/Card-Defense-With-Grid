@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: 3
   icons:
-  - {fileID: 21300000, guid: 7c4a3f0aa38d8fc4ba4d41e0922021bc, type: 3}
-  - {fileID: 21300000, guid: 153dd5cb8c942e64a8fbc77f7aa2d494, type: 3}
+  - {fileID: 21300000, guid: 8587594d8e2bcbf4c8596b0a3f5a4f27, type: 3}
+  - {fileID: 21300000, guid: c1d11f0a23cef5e46a733d6d4387e24d, type: 3}
   - {fileID: 21300000, guid: 7bb3258b5e41fc545ac444e776b585a9, type: 3}
   FadeOutIcons:
   - {fileID: 21300000, guid: 03384a76e4b1b7b46a23ec2a68ee8233, type: 3}
