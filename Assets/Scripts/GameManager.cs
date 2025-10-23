@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public UIManager           uIManager;
     public RoguelikeManager    roguelikeManager;
     public TetrisWeaponManager tetrisWeaponManager;
+    public InventoryManager inventoryManager;
 
     public CardDeckAnimator[]  cardDeckAnimators;   // 0=Inventor, 1=Wizard, 2=Samurai
     public Transform           enemyParent;
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
     private static readonly string[] HeroKeys = {
         "Hero_Inventor", "Hero_Wizard", "Hero_Samurai"
     };
+    public GridLevelData gridLevelDatas;
 
     // =================== Unity ===================
 
@@ -90,6 +92,8 @@ public class GameManager : MonoBehaviour
             return;
         }
         _currentLevelIndex = ResolveCurrentLevelIndex();
+        gridLevelDatas = levelManager.levels[_currentLevelIndex].gridLevelDatas;
+        inventoryManager.AwakeInventoryManager();
         //Debug.Log(PlayerPrefs.GetInt(PrefMatchIndex) + $"[GameManager] Current level index is {_currentLevelIndex}.");
     }
 

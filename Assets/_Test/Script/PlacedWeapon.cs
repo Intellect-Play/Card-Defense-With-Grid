@@ -36,6 +36,8 @@ public class PlacedWeapon : MonoBehaviour
         inventory = null;
         originSlot = null;
         WeaponLevel = weapon.levelWeapon;
+        MergeAnimation();
+
     }
     public void Merge(int level)
     {
@@ -70,30 +72,7 @@ public class PlacedWeapon : MonoBehaviour
                 buttonRect.DOScale(1f, scaleDuration).SetEase(Ease.InBack).SetUpdate(true);
             });
         }
-        //Sequence seq = DOTween.Sequence();
-
-        //// Başlanğıcda bir az böyüyür
-        //seq.Append(transform.DOScale(1.12f, 0.18f)
-        //    .SetEase(Ease.OutQuad)
-        //    .SetUpdate(true));
-
-        //// Kiçilib geri qayıdır
-        //seq.Append(transform.DOScale(0.95f, 0.12f)
-        //    .SetEase(Ease.InOutSine)
-        //    .SetUpdate(true));
-
-        //// Normal ölçüyə qayıdır
-        //seq.Append(transform.DOScale(1f, 0.15f)
-        //    .SetEase(Ease.OutBack)
-        //    .SetUpdate(true));
-
-        //// Paralel olaraq çox yüngül rotate titrəmə effekti
-        //transform.DORotate(new Vector3(0f, 0f, Random.Range(-6f, 6f)), 0.05f)
-        //    .SetEase(Ease.InOutSine)
-        //    .SetLoops(6, LoopType.Yoyo)
-        //    .SetUpdate(true);
-
-        //seq.Play();
+        
     }
 
 

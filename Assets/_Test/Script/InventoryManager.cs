@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance;
     [Header("Grid")]
     [SerializeField] public GridInventory gridInventory;
+    [SerializeField] public GameObject SlotPrefab;
 
     [Header("Slots")]
     [Tooltip("Grid slots in row-major order (x=0..width-1, y=0..height-1)")]
@@ -32,7 +34,8 @@ public class InventoryManager : MonoBehaviour
     public List<StaticWeapon> staticWeapons = new List<StaticWeapon>();
     public Transform placedWeaponsContainer; // bütün weapon-lar burada toplanacaq
     int spawnName = 0;
-    private void Awake()
+    public int CellSize;
+    public void AwakeInventoryManager()
     {
         if (instance == null) instance = this;
         else
@@ -45,6 +48,8 @@ public class InventoryManager : MonoBehaviour
             //Debug.LogError("GridInventory reference required.");
             return;
         }
+        CellSize = GameManager.Instance.gridLevelDatas.CellSize;
+        gridSlots = gridInventory.AwakeGrid();
         SelectRandomWeapons();
         // tell gridInventory which prefab to use for placed items
         gridInventory.placedPrefab = draggablePrefab;
@@ -179,6 +184,7 @@ public class InventoryManager : MonoBehaviour
             GameObject randomWeapon = selectedWeapons[Random.Range(0, selectedWeapons.Count)];
             // instantiate draggable prefab under the spawn slot
             var go = Instantiate(randomWeapon, slot.transform);
+            go.GetComponent<RectTransform>().sizeDelta = new Vector2(CellSize, CellSize);
             go.transform.localPosition = Vector3.zero;
             go.name = go.name + spawnName;
             var drag = go.GetComponent<DraggableWeapon>();
@@ -219,6 +225,8 @@ public class InventoryManager : MonoBehaviour
 
         // instantiate draggable prefab under the spawn slot
         var go = Instantiate(randomWeapon, slot.transform);
+        go.GetComponent<RectTransform>().sizeDelta = new Vector2(CellSize, CellSize);
+
         go.transform.localPosition = Vector3.zero;
         DraggableWeapon draggableWeapon = go.GetComponent<DraggableWeapon>();
         draggableWeapon.weaponData = _draggableWeapon.weaponData;

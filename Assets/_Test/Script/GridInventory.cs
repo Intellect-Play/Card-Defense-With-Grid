@@ -1,28 +1,60 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GridInventory : MonoBehaviour
 {
+    [Header("Grid Settings")]
     public int width = 5;
     public int height = 5;
+    public Vector2 cellSize = new Vector2(170, 170); // hər hüceyrənin ölçüsü (UI piksel)
+    public Vector2 spacing = new Vector2(10, 10);    // hüceyrələr arası məsafə
 
+    public GameObject slotPrefab;
     // cell -> PlacedWeapon occupying it (or null)
     public PlacedWeapon[,] grid;
-
+    public GridLayoutGroup gridLayoutGroup;
     // prefab used for creating placed result (set by InventoryManager on Awake)
     [HideInInspector] public GameObject placedPrefab;
     public Transform placedWeaponsContainer; // bütün weapon-lar burada toplanacaq
     string line = "";
     PlacedWeapon pw;
-    private void Awake()
+    public List<InventorySlot> inventorySlots = new List<InventorySlot>();
+    [SerializeField] RectTransform GridBGImage;
+   public List<InventorySlot> AwakeGrid()
     {
+        width = GameManager.Instance.gridLevelDatas.Width;
+        height = GameManager.Instance.gridLevelDatas.Height;
         grid = new PlacedWeapon[width, height];
-        GameObject placedGO = Instantiate(new GameObject());
+        cellSize = new Vector2(GameManager.Instance.gridLevelDatas.CellSize, GameManager.Instance.gridLevelDatas.CellSize);
+        gridLayoutGroup.cellSize = cellSize;
+        GameObject placedGO = new GameObject("TempPlacedWeapon");
         placedGO.SetActive(false);
         pw = placedGO.AddComponent<PlacedWeapon>();
-        //GetComponent<GridLayoutGroup>().enabled = false;
+        instanceSlots();
+        GridBGImage.sizeDelta = new Vector2((cellSize.x + spacing.x) * width + spacing.x, (cellSize.y + spacing.y) * height + spacing.y);
+        return inventorySlots;
+    }
+    private void Start()
+    {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(gridLayoutGroup.GetComponent<RectTransform>());
+
+        gridLayoutGroup.enabled = false;
+
+    }
+    void instanceSlots()
+    {
+        gridLayoutGroup.constraintCount = width;
+
+        for (int i = 0; i < width * height; i++)
+        {
+            GameObject slot = Instantiate(slotPrefab, transform);
+            slot.transform.SetParent(this.transform);
+            slot.transform.localScale = Vector3.one;
+            inventorySlots.Add(slot.GetComponent<InventorySlot>());
+        }
     }
     public void GetNull(Vector2 pos)
     {
@@ -87,13 +119,20 @@ public class GridInventory : MonoBehaviour
     public void RemovePlacedWeapon(PlacedWeapon placed)
     {
         //Debug.Log("Removing placed weapon: " + placed.name);
-        for (int x = 0; x < height; x++)
-            for (int y = 0; y < width; y++)
-                if (grid[x, y] == placed)
+        Debug.Log("Grid before removal:"+ grid.GetLength(0) + " "+ grid.GetLength(1)+" Heigh "+height+" width "+width);
+        for (int y = 0; y < height; ++y)
+            for (int x = 0; x < width; ++x)
+            {
+                Debug.Log($"Checking cell {x},{y} for removal, found: " );
+
+                Debug.Log($"Checking cell {x},{y} for removal, found: " + (grid[x, y] == null)+ "null");
+                if (grid[x, y] != null && grid[x, y] == placed)
                 {
                     grid[x, y] = null;
                     //Debug.Log($" - cleared cell {x},{y}");
                 }
+            }
+                
         int z = 0;
         //Debug.Log("Grid state:");
         for (int y = 0; y < height; y++)

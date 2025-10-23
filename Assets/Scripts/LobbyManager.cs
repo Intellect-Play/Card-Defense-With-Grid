@@ -4,6 +4,7 @@ using TMPro;
 using System;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 [Serializable]
 public class UICard
@@ -57,7 +58,7 @@ public class LobbyManager : MonoBehaviour
 
     [Header("Progress Model")]
     [Tooltip("Matches per Arena (index = arena). Example: [10, 12, 15].")]
-    public int[] matchesPerArena = new int[] { 10 };
+    public int[] matchesPerArena = new int[] { 2 };
     [Tooltip("Optional mapping from the global match number (0-based) to a LevelManager index.\nIf empty, we’ll just use defaultLevelIndex.")]
     public int[] levelOrderByGlobalMatch;
     [Tooltip("Used if levelOrderByGlobalMatch is empty or too short.")]
@@ -98,7 +99,7 @@ public class LobbyManager : MonoBehaviour
     // =================== Unity ===================
     void Start()
     {
-        PlayerPrefs.SetInt("gold", 1000);
+        //PlayerPrefs.SetInt("gold", 1000);
 
         EnsurePriceArrays();
         EnsureDefaults_OnlyFirstUnlocked();
@@ -380,6 +381,8 @@ public class LobbyManager : MonoBehaviour
 
     public void ShowHeroes()
     {
+        //        SoundManager.Instance.PlayClick();
+
         foreach (var b in arenaBoards) if (b) b.SetActive(false);
         if (rankingBoard) rankingBoard.SetActive(false);
         HideAllHeroPages();
@@ -391,6 +394,8 @@ public class LobbyManager : MonoBehaviour
 
     public void ShowBattle()
     {
+        //        SoundManager.Instance.PlayClick();
+
         if (rankingBoard) rankingBoard.SetActive(false);
         if (heroesBoard) heroesBoard.SetActive(false);
         HideAllHeroPages();
@@ -411,6 +416,8 @@ public class LobbyManager : MonoBehaviour
     // =================== Hero page (cards) ===================
     public void ShowHeroPage(string deckName)
     {
+        //SoundManager.Instance.PlayClick();
+
         foreach (var b in arenaBoards) if (b) b.SetActive(false);
         if (rankingBoard) rankingBoard.SetActive(false);
         if (heroesBoard) heroesBoard.SetActive(false);
@@ -678,6 +685,13 @@ public class LobbyManager : MonoBehaviour
 
     public void OnClickStartButton()
     {
+        StartCoroutine(ClickStartTime());
+    }
+    IEnumerator ClickStartTime()
+    {
+        //TutorialManager.Instance.PanelActive(true);
+        //SoundManager.Instance.PlayStartBattle();
+        yield return new WaitForSeconds(0.7f);
         ComputeAndStoreNextLevelIndex(); // writes NextLevelIndex based on MatchIndex/mapping
         SceneManager.LoadScene("Game");
     }

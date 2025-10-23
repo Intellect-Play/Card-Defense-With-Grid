@@ -14,6 +14,8 @@ public class RandomWeaponSpawner : MonoBehaviour
     PlacedWeapon[,] placedWeapons;
     public Camera mainCamera;
     TetrisWeaponManager tetrisWeaponManager;
+    public InventorySlot emptySlots;
+    public int CellSize;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -25,9 +27,11 @@ public class RandomWeaponSpawner : MonoBehaviour
     }
     private void Start()
     {
+        CellSize = GameManager.Instance.gridLevelDatas.CellSize;
         tetrisWeaponManager = TetrisWeaponManager.instance;
         inventoryManager = InventoryManager.instance;
         SpawnRandomWeapons();
+        spawnCount = GameManager.Instance.gridLevelDatas.LockCellCount;
         SpawnLockSlots();
     }
     private void Update()
@@ -53,7 +57,7 @@ public class RandomWeaponSpawner : MonoBehaviour
     {
         for (int i = 0; i < spawnCount; i++)
         {
-            InventorySlot emptySlots = inventoryManager.GetRandomEmptyCell();
+             emptySlots = inventoryManager.GetRandomEmptyCell();
             if (emptySlots == null) break;
             emptySlots.LockSlot();
         }
@@ -68,8 +72,9 @@ public class RandomWeaponSpawner : MonoBehaviour
 
             SlotWeaponsSO randomWeapon = tetrisWeaponManager.GetSlotWeapon();
             GameObject go = Instantiate(weaponPrefab, emptySlots.transform);
+            go.GetComponent<RectTransform>().sizeDelta = new Vector2(CellSize,CellSize);
             go.transform.localPosition = Vector3.zero;
-            go.transform.SetParent(Conteiner);
+            //go.transform.SetParent(Conteiner);
 
             StaticWeapon staticW = go.GetComponent<StaticWeapon>();
             staticW.Init(randomWeapon,1, emptySlots.gridPosition, mainCamera);

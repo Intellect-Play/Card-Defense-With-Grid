@@ -30,6 +30,27 @@ public class StaticWeapon : MonoBehaviour
     public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera camera)
     {
         Init(_weaponData, Level, pos, camera, WeaponSpawned);
+        MergeAnimation();
+    }
+    public void MergeAnimation()
+    {
+        RectTransform buttonRect = GetComponent<RectTransform>();
+        transform.DOKill();
+        if (buttonRect != null)
+        {
+            float scaleUp = 1.2f;
+            float scaleDuration = 0.1f;
+
+            // Böyüdüb sonra kiçildək
+            buttonRect.DOScale(scaleUp, scaleDuration).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() =>
+            {
+                buttonRect.DOScale(.9f, scaleDuration).SetEase(Ease.InBack).SetUpdate(true).OnComplete(() =>
+                {
+                    buttonRect.DOScale(1f, scaleDuration).SetEase(Ease.InBack).SetUpdate(true);
+                });
+            });
+        }
+
     }
     public float GetWeaponSetting(WeaponSetting weaponSetting)
     {
