@@ -6525,8 +6525,8 @@ MonoBehaviour:
         overrideArtwork: {fileID: 0}
         description: 
     gridLevelDatas:
-      Width: 3
-      Height: 3
+      Width: 5
+      Height: 5
       CellSize: 130
       LockCellCount: 1
   - waves:

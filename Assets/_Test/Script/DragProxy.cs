@@ -11,6 +11,8 @@ public class DragProxy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     [SerializeField]private TextMeshProUGUI infoText;
     public RectTransform ChildImage;
     public Tween _breathTween;
+    public Tween _breathTweenArrow;
+
     public Image image;
     public GameObject GreenImage;
 
@@ -28,8 +30,8 @@ public class DragProxy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         if (GreenImage != null)
             GreenImage.SetActive(isActive);
-        ChildImage.gameObject.SetActive(isActive);
-        if(isActive)
+        //ChildImage.gameObject.SetActive(isActive);
+        if (isActive)
         {
             _breathTween = ChildImage.DOAnchorPosY(ChildImage.anchoredPosition.y + moveAmount, duration)
                           .SetLoops(-1, LoopType.Yoyo)
@@ -42,7 +44,26 @@ public class DragProxy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 _breathTween.Kill();
             }
         }
+
+    }
+    public void GetActivatedArrow(bool isActive)
+    {
         
+        ChildImage.gameObject.SetActive(isActive);
+        if (isActive)
+        {
+            _breathTweenArrow = ChildImage.DOAnchorPosY(ChildImage.anchoredPosition.y + moveAmount, duration)
+                          .SetLoops(-1, LoopType.Yoyo)
+                          .SetEase(Ease.InOutSine);
+        }
+        else
+        {
+            if (_breathTweenArrow != null && _breathTweenArrow.IsActive())
+            {
+                _breathTweenArrow.Kill();
+            }
+        }
+
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

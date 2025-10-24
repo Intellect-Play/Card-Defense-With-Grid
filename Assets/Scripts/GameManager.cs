@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public CardDeckAnimator[]  cardDeckAnimators;   // 0=Inventor, 1=Wizard, 2=Samurai
     public Transform           enemyParent;
 
-    [Header("Spawn Settings")]
+    [Header("Spawn Settings")]  
     public float enemySpawnY    = 3.5f;
     public float enemySpawnXMin = -1.5f;
     public float enemySpawnXMax = 1.5f;
@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         _currentLevelIndex = ResolveCurrentLevelIndex();
+        Debug.Log(PlayerPrefs.GetInt(PrefMatchIndex) + $"[GameManager] Current level index is {_currentLevelIndex}.");
         gridLevelDatas = levelManager.levels[_currentLevelIndex].gridLevelDatas;
         inventoryManager.AwakeInventoryManager();
         //Debug.Log(PlayerPrefs.GetInt(PrefMatchIndex) + $"[GameManager] Current level index is {_currentLevelIndex}.");
@@ -147,11 +148,14 @@ public class GameManager : MonoBehaviour
     private int ResolveCurrentLevelIndex()
     {
         int max = (levelManager != null && levelManager.levels != null) ? levelManager.levels.Length : 0;
+        Debug.Log($"[GameManager] LevelManager has {max} levels.");
         if (max <= 0) return 0;
+        Debug.Log($"2 [GameManager] LevelManager has {max} levels.");
 
         if (PlayerPrefs.HasKey(PrefNextLevelIndex))
         {
             int idx = PlayerPrefs.GetInt(PrefNextLevelIndex, 0);
+            Debug.Log(PlayerPrefs.GetInt(PrefNextLevelIndex) + $"[GameManager] Next level index from prefs is {idx}.");
             return Mathf.Clamp(idx, 0, max - 1);
         }
 

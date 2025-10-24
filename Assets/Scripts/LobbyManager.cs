@@ -693,7 +693,7 @@ public class LobbyManager : MonoBehaviour
         //SoundManager.Instance.PlayStartBattle();
         yield return new WaitForSeconds(0.7f);
         ComputeAndStoreNextLevelIndex(); // writes NextLevelIndex based on MatchIndex/mapping
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(1);
     }
 
     // =================== Card defaults ===================

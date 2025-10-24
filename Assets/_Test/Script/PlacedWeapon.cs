@@ -18,7 +18,7 @@ public class PlacedWeapon : MonoBehaviour
     public int WeaponLevel;
     public bool firstPlaced = false;
     public List<RectTransform> Childs = new List<RectTransform>();
-
+    public RectTransform ArrowChild;
     RectTransform buttonRect;
     public List<DragProxy> ChildDrags = new List<DragProxy>();
     // Call when prefab is used as a spawned (not yet placed) object
@@ -36,7 +36,7 @@ public class PlacedWeapon : MonoBehaviour
         inventory = null;
         originSlot = null;
         WeaponLevel = weapon.levelWeapon;
-        MergeAnimation();
+        //MergeAnimation();
 
     }
     public void Merge(int level)
@@ -70,6 +70,10 @@ public class PlacedWeapon : MonoBehaviour
             buttonRect.DOScale(scaleUp, scaleDuration).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() =>
             {
                 buttonRect.DOScale(1f, scaleDuration).SetEase(Ease.InBack).SetUpdate(true);
+            });
+            ArrowChild.DOScale(1.4f, .4f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() =>
+            {
+                ArrowChild.DOScale(0f, scaleDuration).SetEase(Ease.InBack).SetUpdate(true);
             });
         }
         

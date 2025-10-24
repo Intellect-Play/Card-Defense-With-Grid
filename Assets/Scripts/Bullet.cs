@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using static UnityEngine.UI.Image;
 
 public class Bullet : MonoBehaviour
 {
@@ -284,10 +285,16 @@ public class Bullet : MonoBehaviour
     private List<Transform> GetEnemyTargets(int count, Vector3 origin)
     {
         var result = new List<Transform>(count);
-        var enemies = FindObjectsOfType<EnemyBehaviour>();
-        var pool = new List<Transform>();
-        foreach (var e in enemies)
-            if (e && e.gameObject.activeInHierarchy) pool.Add(e.transform);
+        //var enemies = FindObjectsOfType<EnemyBehaviour>();
+        var pool = EnemyTarget.instance.enemyList;
+        var enemies = EnemyTarget.instance.enemyList.ToArray();
+        //foreach (var e in enemies)
+        //    if (e && e.gameObject.activeInHierarchy)
+        //    {
+        //        //if (Vector3.Distance(e.transform.position, transform.position) > 5f) continue;
+        //        pool.Add(e.transform);
+
+        //    }
 
         if (pool.Count == 0) return result;
 
@@ -1331,8 +1338,11 @@ public class Bullet : MonoBehaviour
         foreach (var e in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             if (!e.activeInHierarchy) continue;
+            if(Vector3.Distance(e.transform.position, origin) > 1f) continue;
             float d = (e.transform.position - origin).sqrMagnitude;
             if (d < best) { best = d; dir = (e.transform.position - origin).normalized; }
+            Debug.Log("Closest enemy: " + Vector3.Distance(e.transform.position, origin));
+
         }
         return dir;
     }
@@ -1345,9 +1355,14 @@ public class Bullet : MonoBehaviour
         foreach (var eb in enemies)
         {
             if (!eb.gameObject.activeInHierarchy) continue;
+            if (Vector3.Distance(eb.transform.position, transform.position) > 5f) continue;
+
             float sq = (eb.transform.position - transform.position).sqrMagnitude;
             if (sq < minSqr) { minSqr = sq; best = eb.transform; }
-        }
+        
+        Debug.Log("Closest enemy: " + Vector3.Distance(eb.transform.position, transform.position));
+
+    }
         return best;
     }
 

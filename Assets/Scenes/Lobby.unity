@@ -7831,7 +7831,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 304963682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1147476639}
+        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_MethodName: OnClickStartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &304963682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10753,7 +10765,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 521389241}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1147476639}
+        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_MethodName: OnClickStartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &521389241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18150,12 +18174,12 @@ PrefabInstance:
     - target: {fileID: 6158407440443790641, guid: 7a453222f30ad1c459183e2ae8b312b3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1281.1511
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 6158407440443790641, guid: 7a453222f30ad1c459183e2ae8b312b3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1281.1511
+      value: 1645.7144
       objectReference: {fileID: 0}
     - target: {fileID: 6158407440443790641, guid: 7a453222f30ad1c459183e2ae8b312b3,
         type: 3}
@@ -18200,7 +18224,7 @@ PrefabInstance:
     - target: {fileID: 6158407440443790641, guid: 7a453222f30ad1c459183e2ae8b312b3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 676.1631
+      value: 45.714294
       objectReference: {fileID: 0}
     - target: {fileID: 6158407440443790641, guid: 7a453222f30ad1c459183e2ae8b312b3,
         type: 3}
@@ -18245,7 +18269,7 @@ PrefabInstance:
     - target: {fileID: 7142995486993818496, guid: 7a453222f30ad1c459183e2ae8b312b3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8299472881600568676, guid: 7a453222f30ad1c459183e2ae8b312b3,
         type: 3}
@@ -33010,7 +33034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1559066614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33128,8 +33152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994c66b6148109b489689ed705d244cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Parent: {fileID: 502609387}
-  SiblingIndex: 1
+  Parent: {fileID: 0}
+  SiblingIndex: 0
   LayoutPosition: {x: 0, y: 45.714294, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
@@ -41573,7 +41597,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 406.03, y: 54.145, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1281.1511, y: 1281.1511, z: 0}
+  FillSize: {x: 1080, y: 1645.7144, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
   TargetPosition: {x: 0, y: 777.02, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -44546,30 +44570,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994c66b6148109b489689ed705d244cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Parent: {fileID: 0}
-  SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 676.1631, z: 0}
+  Parent: {fileID: 502609387}
+  SiblingIndex: 1
+  LayoutPosition: {x: 0, y: 45.714294, z: 0}
   LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
   AdapterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 640.57556, y: 640.57556, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   LayoutBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 640.57556, y: 640.57556, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   RotatedAndScaledBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 640.57556, y: 640.57556, z: 0}
+    m_Extent: {x: 540, y: 822.8572, z: 0}
   ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 1281.1511, y: 1423.5013, z: 0}
+  FillSize: {x: 1080, y: 1828.5715, z: 0}
   ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: 0, y: 676.1631, z: 0}
+  TargetPosition: {x: 0, y: 45.714294, z: 0}
   TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 1281.1511, y: 1281.1511, z: 0}
-  TransformPosition: {x: 0, y: 676.1631, z: 0}
+  TargetRectSize: {x: 1080, y: 1645.7144, z: 0}
+  TransformPosition: {x: 0, y: 45.714294, z: 0}
   TransformRotation: {x: 0, y: 0, z: 0, w: 1}
   TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 1281.1511, y: 1281.1511}
+  TransformRectSize: {x: 1080, y: 1645.7144}
 --- !u!1 &7325502050614170387
 GameObject:
   m_ObjectHideFlags: 0

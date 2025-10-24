@@ -27,7 +27,7 @@ public class TutorialManager : MonoBehaviour
         }
         //PlayerPrefs.SetInt("gold", 10000);
     }
-    private void Start()
+    private void StartTutorial()
     {
         PanelColor = Panels.GetComponent<Image>().color;
         PanelActive(false);

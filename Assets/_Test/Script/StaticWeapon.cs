@@ -19,14 +19,17 @@ public class StaticWeapon : MonoBehaviour
     [SerializeField] private PlacedWeapon? placedWeapon;
     public Camera mainCamera;
     public CardDeckAnimator cardDeckAnimator;
-
+    public Image dragProxy;
+    BoxCollider2D boxCollider2D;
     private void Awake()
     {
         //placedWeapon = randomWeaponSpawner.inventoryManager.gridInventory.grid[gridPosition.x, gridPosition.y];
         //icon.GetComponent<Image>();
-
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = false;
     }
 
+   
     public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera camera)
     {
         Init(_weaponData, Level, pos, camera, WeaponSpawned);
@@ -81,7 +84,8 @@ public class StaticWeapon : MonoBehaviour
     }
     public void GetFireTime(float scaleTime)
     {
-        icon.fillAmount = scaleTime;
+        if(dragProxy != null)
+            dragProxy.fillAmount = scaleTime;
     }
 
 public void FireChosen()
@@ -126,6 +130,10 @@ public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera ca
     }
     public void ChangePosWeapon()
     {
+        boxCollider2D.enabled = false;
+
+        boxCollider2D.enabled = true;
+
         WeaponSpawned.transform.position = new Vector3(
            BulletPos.position.x,
            BulletPos.position.y,
@@ -156,17 +164,35 @@ public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera ca
 
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("dragProxy"))
+        {
+            dragProxy = collision.GetComponent<DragProxy>().image;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("dragProxy"))
+        {
+            // if(dragProxy != null&& collision.GetComponent<DragProxy>()==dragProxy)
+            //    dragProxy = null;
+        }
+
+    }
     void SetIcon()
     {
         int iconNum = weaponData.levelToIconIndex[currentLevel - 1];
         icon2.sprite = weaponData.FadeOutIcons[iconNum];
         if (isActive)
         {
+
             icon.gameObject.SetActive(true);
             icon.sprite = weaponData.icons[iconNum];
         }
         else
         {
+            dragProxy = null;
             icon.gameObject.SetActive(false);
         }
         //icon.sprite = isActive ? weaponData.icons[iconNum];

@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RandomWeaponSpawner : MonoBehaviour
 {
     public static RandomWeaponSpawner instance;
     public List<SlotWeaponsSO> possibleWeapons;    // hansı silahlar çıxa bilər
+    public int spawnLockCount = 3;                // neçə dənə spawn edilsin
     public int spawnCount = 3;                // neçə dənə spawn edilsin
+
     public GameObject weaponPrefab;           // sadə prefab (DraggableWeapon DEYİL!)
 
     public List<StaticWeapon> spawnedWeapons = new List<StaticWeapon>();
@@ -30,8 +33,14 @@ public class RandomWeaponSpawner : MonoBehaviour
         CellSize = GameManager.Instance.gridLevelDatas.CellSize;
         tetrisWeaponManager = TetrisWeaponManager.instance;
         inventoryManager = InventoryManager.instance;
+       
+        StartCoroutine(SpawnTime());
+    }
+    IEnumerator SpawnTime()
+    {
+        yield return new WaitForSeconds(0.1f);
         SpawnRandomWeapons();
-        spawnCount = GameManager.Instance.gridLevelDatas.LockCellCount;
+        spawnLockCount = GameManager.Instance.gridLevelDatas.LockCellCount;
         SpawnLockSlots();
     }
     private void Update()
@@ -55,7 +64,7 @@ public class RandomWeaponSpawner : MonoBehaviour
     }
     public void SpawnLockSlots()
     {
-        for (int i = 0; i < spawnCount; i++)
+        for (int i = 0; i < spawnLockCount; i++)
         {
              emptySlots = inventoryManager.GetRandomEmptyCell();
             if (emptySlots == null) break;
@@ -74,7 +83,7 @@ public class RandomWeaponSpawner : MonoBehaviour
             GameObject go = Instantiate(weaponPrefab, emptySlots.transform);
             go.GetComponent<RectTransform>().sizeDelta = new Vector2(CellSize,CellSize);
             go.transform.localPosition = Vector3.zero;
-            //go.transform.SetParent(Conteiner);
+            go.transform.SetParent(Conteiner);
 
             StaticWeapon staticW = go.GetComponent<StaticWeapon>();
             staticW.Init(randomWeapon,1, emptySlots.gridPosition, mainCamera);

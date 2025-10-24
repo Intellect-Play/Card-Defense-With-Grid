@@ -73,6 +73,9 @@ public class TetrisWeaponManager : MonoBehaviour
         AnimatorController.SetBool("UpTetrisBool", true);
         UIRefleshGame();
         inventoryManager.SpawnWeapons();
+        inventoryManager.SameSelectedAll();
+        inventoryManager.FillAllDrags();
+
     }
     public void GetStaticWeapons(StaticWeapon staticWeapon)
     {
@@ -199,6 +202,8 @@ public class TetrisWeaponManager : MonoBehaviour
         GameManager.Instance.uIManager.SetCoins(g);
         inventoryManager.SpawnWeapons();
         UIRefleshGame();
+        inventoryManager.SameSelectedAll();
+
     }
     public void Fight()
     {
@@ -206,6 +211,8 @@ public class TetrisWeaponManager : MonoBehaviour
         TetrisCancas.sortingOrder = 2;
         WeaponsSettingCheck();
         isTetrisScene = false;
+        inventoryManager.ClearSameSelected();
+
     }
     public void Buy()
     {

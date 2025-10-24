@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Fortress
+  - Bullet
+  - dragProxy
   layers:
   - Default
   - TransparentFX

@@ -75,12 +75,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             if (this.transform.childCount != 0) return;
             dragged.placedWeapon.Unplace();
             InventoryManager.instance.RemoveDraggable(dragged);
-            InventoryManager.instance.FinishSelectedSame();
 
             Destroy(dragged.gameObject);
             InventoryManager.instance.SpawnSelectedWeapon(this, dragged).GetLevel(dragged.placedWeapon.WeaponLevel - 1);
 
             TetrisWeaponManager.instance.WeaponsSettingCheck();
+            InventoryManager.instance.FinishSelectedSame();
 
             return;
             dragged.transform.SetParent(transform, false);

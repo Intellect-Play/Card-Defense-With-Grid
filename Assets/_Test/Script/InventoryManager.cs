@@ -84,6 +84,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void SameSelected(PlacedWeapon weaponData)
     {
+        //ClearSameSelected();
         foreach (DraggableWeapon draggableWeapon1 in AllWeapons) {
             PlacedWeapon _weaponData = draggableWeapon1.placedWeapon;
             if (weaponData != _weaponData && 
@@ -96,10 +97,58 @@ public class InventoryManager : MonoBehaviour
                 // Burada istədiyiniz əməliyyatları edə bilərsiniz, məsələn, onları birləşdirmək və ya silmək.
             }
         }
+    }
+    public void FillAllDrags()
+    {
+        foreach (DraggableWeapon draggableWeapon in AllWeapons)
+        {
+            draggableWeapon.DragChildFill();
+        }
+    }
+    public void ClearSameSelected()
+    {
+        Debug.Log("ClearSameSelected");
+        foreach (DraggableWeapon draggableWeapon in AllWeapons)
+        {
+            //draggableWeapon.uIShake.StopBreathing();
+            draggableWeapon.ActiveChildsArrow(false);
+        }
+    }
+    public void SameSelectedAll()
+    {
+        ClearSameSelected();
+        for (int i = 0; i < AllWeapons.Count; i++)
+        {
+            var draggableWeapon1 = AllWeapons[i];
+            var weaponData1 = draggableWeapon1.placedWeapon;
+            if (weaponData1 == null) continue;
+
+            for (int j = 0; j < AllWeapons.Count; j++)
+            {
+                if (i == j) continue; // özünü yoxla
+
+                var draggableWeapon2 = AllWeapons[j];
+                var weaponData2 = draggableWeapon2.placedWeapon;
+                if (weaponData2 == null) continue;
+
+                if (weaponData1.Name == weaponData2.Name &&
+                    weaponData1.WeaponLevel == weaponData2.WeaponLevel &&
+                    weaponData2.inventory != null)
+                {
+                    // eyni növ və səviyyədə olan silah tapılıb
+                    //draggableWeapon1.uIShake.StartBreathing();
+                    draggableWeapon1.ActiveChildsArrow(true);
+
+                    //draggableWeapon2.uIShake.StartBreathing();
+                    draggableWeapon2.ActiveChildsArrow(true);
+                }
+            }
+        }
 
     }
     public void FinishSelectedSame()
     {
+        SameSelectedAll();
         foreach (DraggableWeapon draggableWeapon1 in AllWeapons)
         {
             draggableWeapon1.uIShake.StopBreathing();

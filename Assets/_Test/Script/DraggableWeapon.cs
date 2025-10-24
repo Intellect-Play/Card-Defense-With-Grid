@@ -20,8 +20,10 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public Transform canvas;
     public UIShake uIShake;
     public List<DragProxy> Childs;
+    RectTransform rectTransform;
     private void Awake()
     {
+        rectTransform = GetComponent<RectTransform>();
         uIShake = GetComponent<UIShake>();
         placedWeapon = GetComponent<PlacedWeapon>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -32,6 +34,8 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     // Initialize sprite and slot reference (used both for spawn and when creating placed item)Walkable
     public void Init(WeaponSO weapon, InventorySlot slot, Transform conteiner)
     {
+        //rectTransform.localScale = Vector3.one * .8f;
+
         weaponData = weapon;
         parentSlot = slot;
         parentSlotMain = slot;
@@ -73,10 +77,18 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             dragProxy.GetImage(SelectedSprite);
         }
+        placedWeapon.ArrowChild.SetAsLastSibling();
         placedWeapon.weaponData = weaponData;
         originalParent = transform.parent;
         ActiveChilds(false);
         //Debug.Log(placedWeapon.name);
+    }
+    public void DragChildFill()
+    {
+        foreach (DragProxy x in Childs)
+        {
+            x.image.fillAmount = 1f;
+        }
     }
     public void ActiveChilds(bool active)
     {
@@ -86,11 +98,19 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             x.GetActivated(active);
         }
     }
+    public void ActiveChildsArrow(bool active)
+    {
+        foreach (DragProxy x in Childs)
+        {
 
+            x.GetActivatedArrow(active);
+        }
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (weaponData == null || !TetrisWeaponManager.isTetrisScene) return;
         //Debug.Log("Eyni növ tapıldı: placedWeapon " + weaponData.name);
+        rectTransform.localScale = Vector3.one;
 
         InventoryManager.instance.SameSelected(placedWeapon);
         //originalParent = transform.parent;
@@ -104,7 +124,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (canvas != null)
             transform.SetParent(canvas.transform);
-
+        rectTransform.localScale = Vector3.one;
         canvasGroup.blocksRaycasts = false;
         InventoryManager.instance.ActiveWeaponsRay(false);
     }
@@ -127,9 +147,9 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!TetrisWeaponManager.isTetrisScene) return;
-        InventoryManager.instance.FinishSelectedSame();
 
         InventoryManager.instance.ActiveWeaponsRay(true);
+        InventoryManager.instance.FinishSelectedSame();
         //canvasGroup.blocksRaycasts = true;
         if (placedWeapon.originSlot != null && placedWeapon.originSlot.SlotSpawn) {
             //TetrisWeaponManager.instance.WeaponsSettingCheck();
@@ -150,7 +170,10 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             placedWeapon.Place(parentSlot);
         if ((parentSlotMain.transform == originalParent))
         {
+
             transform.SetParent(parentSlotMain.transform);
+            rectTransform.localScale = Vector3.one;
+
         }
         TetrisWeaponManager.instance.WeaponsSettingCheck();
 

@@ -5,7 +5,7 @@ public class UIShake : MonoBehaviour
 {
     private Tween _breathTween;
 
-    public void StartBreathing(float scaleAmount = 1.08f, float duration = .5f)
+    public void StartBreathing(float scaleAmount = 1.08f, float duration = .2f)
     {
         // Əvvəlki animasiyaları təmizlə
         transform.DOKill();
