@@ -39,7 +39,7 @@ public class TetrisWeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.SetInt("gold", 10000);
+        //PlayerPrefs.SetInt("gold", 10000);
         if (instance == null) instance = this;
         else
         {

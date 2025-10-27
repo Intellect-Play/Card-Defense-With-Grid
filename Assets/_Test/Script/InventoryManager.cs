@@ -107,7 +107,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void ClearSameSelected()
     {
-        Debug.Log("ClearSameSelected");
+        //Debug.Log("ClearSameSelected");
         foreach (DraggableWeapon draggableWeapon in AllWeapons)
         {
             //draggableWeapon.uIShake.StopBreathing();

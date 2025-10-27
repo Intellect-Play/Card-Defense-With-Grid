@@ -33,9 +33,9 @@ public class DragProxy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         //ChildImage.gameObject.SetActive(isActive);
         if (isActive)
         {
-            _breathTween = ChildImage.DOAnchorPosY(ChildImage.anchoredPosition.y + moveAmount, duration)
-                          .SetLoops(-1, LoopType.Yoyo)
-                          .SetEase(Ease.InOutSine);
+            _breathTween = ChildImage.DOAnchorPosY(ChildImage.anchoredPosition.y + moveAmount, duration).SetUpdate(true)
+                          .SetLoops(-1, LoopType.Yoyo).SetUpdate(true)
+                          .SetEase(Ease.InOutSine).SetUpdate(true);
         }
         else
         {
@@ -52,9 +52,9 @@ public class DragProxy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         ChildImage.gameObject.SetActive(isActive);
         if (isActive)
         {
-            _breathTweenArrow = ChildImage.DOAnchorPosY(ChildImage.anchoredPosition.y + moveAmount, duration)
-                          .SetLoops(-1, LoopType.Yoyo)
-                          .SetEase(Ease.InOutSine);
+            _breathTweenArrow = ChildImage.DOAnchorPosY(ChildImage.anchoredPosition.y + moveAmount, duration).SetUpdate(true)
+                          .SetLoops(-1, LoopType.Yoyo).SetUpdate(true)
+                          .SetEase(Ease.InOutSine).SetUpdate(true);
         }
         else
         {

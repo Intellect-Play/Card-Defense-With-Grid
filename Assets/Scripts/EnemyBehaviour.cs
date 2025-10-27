@@ -469,7 +469,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (_hitScaleTweenId_1 != -1) LeanTween.cancel(gameObject, _hitScaleTweenId_1);
         if (_hitScaleTweenId_2 != -1) LeanTween.cancel(gameObject, _hitScaleTweenId_2);
-
+        Debug.Log("PlayHitFeedback LeanTween.scale up");
         _hitScaleTweenId_1 = LeanTween.scale(gameObject, upScale, hitScaleTime)
             .setEaseOutQuad()
             .setOnComplete(() =>
@@ -487,6 +487,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void HideHitVFX()
     {
+
         if (_hitVFXObject != null)
             _hitVFXObject.SetActive(false);
     }
