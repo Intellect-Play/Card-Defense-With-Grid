@@ -95,6 +95,13 @@ public class EnemyBehaviour : MonoBehaviour
 
     public Action<int> onFortressDamage;
 
+    [Header("Hit Flash")]
+    public MeshRenderer targetRenderer;
+    private Material _hitMaterial;
+    private Color _targetEmission = Color.black; // RGB(80,80,80)
+    private Color _flashColor = new Color(100 / 255f, 100 / 255f, 100 / 255f); // hit zamanı ağ işıqlanma
+    private float hitFlashTime = 0.4f;
+     private float flashPeakTime = 0.15f;
     void Awake()
     {
         // Move the general parent along with us (no rotation applied to parent)
@@ -120,7 +127,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         if (!worldCamera) worldCamera = Camera.main;
-
+        StartHitEmisson();
         // hər düşmən üçün yarım perioda kiçik random əlavə
         float jitter = UnityEngine.Random.Range(-0.05f, 0.05f);
         StartContinuousYBob(walkBobOffsetY, walkBobHalfTime + jitter);
@@ -364,6 +371,7 @@ public class EnemyBehaviour : MonoBehaviour
     // ── UI Coins (spawned under coinFlyContainer in the UI hierarchy) ──────────────
     private int _trackedRemainingCoins = 0;
 
+  
     private int SpawnUICoins()
     {
         if (coinSprite == null || coinCanvas == null || coinFlyContainer == null || coinBarRect == null || uiManager == null)
@@ -449,27 +457,74 @@ public class EnemyBehaviour : MonoBehaviour
         var dt = go.GetComponent<DamageText>();
         if (dt != null) dt.Initialize($"-{amount}");
     }
+    public void StartHitEmisson()
+    {
+        if (targetRenderer != null)
+            _hitMaterial = targetRenderer.material;
+        if (targetRenderer != null)
+        {
+            _hitMaterial = targetRenderer.material;
 
+            if (_hitMaterial.HasProperty("_EmissionColor"))
+            {
+                // 🟢 Emission sistemini aktivləşdir
+                _hitMaterial.EnableKeyword("_EMISSION");
+
+                // Başlanğıc emissive rəngi qurulsun
+                _hitMaterial.SetColor("_EmissionColor", _targetEmission);
+                _hitMaterial.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
+                DynamicGI.SetEmissive(targetRenderer, _targetEmission);
+            }
+        }
+    }
     private void PlayHitFeedback()
     {
         if (_dead || _dying) return;
 
-        //Debug.Log("PlayHitFeedback");
         _isProcessingHit = true;
-        StopYBob(); // hit zamanı bob dursun
+        StopYBob();
 
         if (_hitVFXObject != null)
         {
-            _hitVFXObject.SetActive(true);
-            CancelInvoke(nameof(HideHitVFX));
-            Invoke(nameof(HideHitVFX), 0.1f);
+            //_hitVFXObject.SetActive(true);
+            //CancelInvoke(nameof(HideHitVFX));
+            //Invoke(nameof(HideHitVFX), 0.1f);
         }
 
         Vector3 upScale = _originalScale * Mathf.Max(hitScaleUpFactor, 1.0001f);
 
         if (_hitScaleTweenId_1 != -1) LeanTween.cancel(gameObject, _hitScaleTweenId_1);
         if (_hitScaleTweenId_2 != -1) LeanTween.cancel(gameObject, _hitScaleTweenId_2);
-        Debug.Log("PlayHitFeedback LeanTween.scale up");
+
+        // ✨ --- SABİT EMISSION FLASH --- ✨
+        if (_hitMaterial != null && _hitMaterial.HasProperty("_EmissionColor"))
+        {
+            LeanTween.cancel(_hitMaterial.GetInstanceID());
+
+            // 1️⃣ Yavaş ağlaşma
+            LeanTween.value(gameObject, 0f, 1f, flashPeakTime)
+                .setEaseOutQuad()
+                .setOnUpdate((float t) =>
+                {
+                    Color c = Color.Lerp(_targetEmission, _flashColor, t);
+                    _hitMaterial.SetColor("_EmissionColor", c);
+                    DynamicGI.SetEmissive(GetComponentInChildren<Renderer>(), c);
+                })
+                .setOnComplete(() =>
+                {
+                    // 2️⃣ Yavaş geri dönüş
+                    LeanTween.value(gameObject, 0f, 1f, hitFlashTime - flashPeakTime)
+                        .setEaseInQuad()
+                        .setOnUpdate((float t) =>
+                        {
+                            Color c = Color.Lerp(_flashColor, _targetEmission, t);
+                            _hitMaterial.SetColor("_EmissionColor", c);
+                            DynamicGI.SetEmissive(GetComponentInChildren<Renderer>(), c);
+                        });
+                });
+        }
+        // ✨ --- SABİT QALSIN --- ✨
+
         _hitScaleTweenId_1 = LeanTween.scale(gameObject, upScale, hitScaleTime)
             .setEaseOutQuad()
             .setOnComplete(() =>
@@ -484,7 +539,6 @@ public class EnemyBehaviour : MonoBehaviour
                     }).id;
             }).id;
     }
-
     private void HideHitVFX()
     {
 

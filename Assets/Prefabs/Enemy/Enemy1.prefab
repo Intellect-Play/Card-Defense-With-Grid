@@ -266,6 +266,8 @@ MonoBehaviour:
   coinFlyContainer: {fileID: 0}
   coinBarRect: {fileID: 0}
   worldCamera: {fileID: 0}
+  targetRenderer: {fileID: 673937429547072535}
+  emissionBoost: 2.5
 --- !u!1 &3518370648365434126
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Character Shadow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6346212352801566543, guid: 58b7b8b9489204f6fbd895334601f80e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

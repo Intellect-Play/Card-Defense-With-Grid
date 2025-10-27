@@ -17,7 +17,8 @@ MonoBehaviour:
   materialHashCode: 445261006
   m_Version: 1.1.0
   m_SourceFontFileGUID: 22311bfb9f13b412d882972747f44ae1
-  m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 22311bfb9f13b412d882972747f44ae1, type: 3}
+  m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 22311bfb9f13b412d882972747f44ae1,
+    type: 3}
   m_SourceFontFile: {fileID: 12800000, guid: 22311bfb9f13b412d882972747f44ae1, type: 3}
   m_AtlasPopulationMode: 1
   m_FaceInfo:
@@ -5658,7 +5659,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - OUTLINE_ON
-  - UNDERLAY_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -5683,7 +5683,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 8403069687213739495, guid: 715855d65a80d4bd1afb15a96bcf5a78, type: 2}
+        m_Texture: {fileID: 8403069687213739495, guid: 715855d65a80d4bd1afb15a96bcf5a78,
+          type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
@@ -5717,7 +5718,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.28
+    - _OutlineWidth: 0.206
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9

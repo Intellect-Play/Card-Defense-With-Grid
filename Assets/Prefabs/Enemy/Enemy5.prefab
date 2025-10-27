@@ -266,6 +266,9 @@ MonoBehaviour:
   coinFlyContainer: {fileID: 0}
   coinBarRect: {fileID: 0}
   worldCamera: {fileID: 0}
+  targetRenderer: {fileID: 673937429547072535}
+  hitFlashTime: 0.2
+  hitBrightness: 1.8
 --- !u!1 &3518370648365434126
 GameObject:
   m_ObjectHideFlags: 0

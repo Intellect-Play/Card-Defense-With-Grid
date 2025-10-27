@@ -10,7 +10,7 @@ public class StaticWeapon : MonoBehaviour
     public SlotWeaponsSO weaponData;
     public Vector2Int gridPosition;
     public bool isActive;
-    public int currentLevel=1;
+    public int currentLevel = 1;
     public Transform BulletPos;
     [SerializeField] private Image icon;
     [SerializeField] private Image icon2;
@@ -29,7 +29,7 @@ public class StaticWeapon : MonoBehaviour
         boxCollider2D.enabled = false;
     }
 
-   
+
     public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera camera)
     {
         Init(_weaponData, Level, pos, camera, WeaponSpawned);
@@ -57,17 +57,17 @@ public class StaticWeapon : MonoBehaviour
     }
     public float GetWeaponSetting(WeaponSetting weaponSetting)
     {
-        if(placedWeapon == null) return 0;
+        if (placedWeapon == null) return 0;
         int level = weaponSetting.Level;
         Debug.Log("GetWeaponSetting Level " + level);
         LevelUp(level);
         //Debug.Log(weaponSetting.Countdawn[0]+" Time");
         //Debug.Log("GetWeaponSetting " + placedWeapon.WeaponLevel + " " + weaponSetting.Damage[level] + " " + weaponSetting.Countdawn[level]);
         cardDeckAnimator.GetNewSetting(
-            placedWeapon.WeaponLevel, 
-            weaponSetting.slotWeaponsSO.Damage[level - 1], 
+            placedWeapon.WeaponLevel,
+            weaponSetting.slotWeaponsSO.Damage[level - 1],
             weaponSetting.slotWeaponsSO.Countdawn[level - 1]);
-        return placedWeapon.WeaponLevel * weaponSetting.slotWeaponsSO.Damage[level-1];
+        return placedWeapon.WeaponLevel * weaponSetting.slotWeaponsSO.Damage[level - 1];
     }
     public float GetWeaponPower(WeaponSetting weaponSetting)
     {
@@ -84,44 +84,44 @@ public class StaticWeapon : MonoBehaviour
     }
     public void GetFireTime(float scaleTime)
     {
-        if(dragProxy != null)
+        if (dragProxy != null)
             dragProxy.fillAmount = scaleTime;
     }
 
-public void FireChosen()
-{
+    public void FireChosen()
+    {
 
-    // 🔹 DOTween ilə kiçik "pop" effekti (şəkil atır kimi)
-    // Əvvəlcə obyektin ölçüsünü bir az böyüdürük və geri qaytarırıq
-    transform.DOKill(); // əvvəlki animasiyalar təmizlə
-    transform
-        .DOScale(1.15f, 0.1f)  // 0.1 saniyəyə 15% böyüt
-        .SetEase(Ease.OutBack)
-        .OnComplete(() =>
-        {
-            transform.DOScale(1f, 0.15f).SetEase(Ease.InOutSine); // yenidən ölçüyə qaytar
-        });
+        // 🔹 DOTween ilə kiçik "pop" effekti (şəkil atır kimi)
+        // Əvvəlcə obyektin ölçüsünü bir az böyüdürük və geri qaytarırıq
+        transform.DOKill(); // əvvəlki animasiyalar təmizlə
+        transform
+            .DOScale(1.15f, 0.1f)  // 0.1 saniyəyə 15% böyüt
+            .SetEase(Ease.OutBack)
+            .OnComplete(() =>
+            {
+                transform.DOScale(1f, 0.15f).SetEase(Ease.InOutSine); // yenidən ölçüyə qaytar
+            });
 
-    // 🔹 Material revert effekti (əgər aktivdirsə)
-   
+        // 🔹 Material revert effekti (əgər aktivdirsə)
 
- 
-}
 
-public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera camera, GameObject weaponSpawned)
+
+    }
+
+    public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera camera, GameObject weaponSpawned)
     {
         WeaponType = _weaponData.weaponName;
         gameObject.name = _weaponData.weaponName.ToString();
         weaponData = _weaponData;
         gridPosition = pos;
         isActive = false;
-        WeaponSpawned = Instantiate(weaponData.weaponType,Vector3.zero,Quaternion.identity,transform);
+        WeaponSpawned = Instantiate(weaponData.weaponType, Vector3.zero, Quaternion.identity, transform);
 
         cardDeckAnimator = WeaponSpawned.GetComponentInChildren<CardDeckAnimator>();
         cardDeckAnimator.staticWeapon = this;
         //Debug.Log(weaponData.attackType);
         cardDeckAnimator.cards[0].attackType = weaponData.attackType;
-        WeaponSpawned.transform.localScale = new Vector3(.5f,.5f,.5f);
+        WeaponSpawned.transform.localScale = new Vector3(.5f, .5f, .5f);
         SetIcon();
         WeaponSpawned.transform.SetParent(null); // detach UI parent
 
@@ -132,22 +132,26 @@ public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera ca
     {
         boxCollider2D.enabled = false;
 
-        boxCollider2D.enabled = true;
-
         WeaponSpawned.transform.position = new Vector3(
            BulletPos.position.x,
            BulletPos.position.y,
            0
        );
+
+        Physics2D.SyncTransforms();
+
+        boxCollider2D.enabled = true;
+        //boxCollider2D.enabled = false;
+
     }
     public void Shuffle(Vector2Int pos)
-    {       
+    {
         gridPosition = pos;
     }
     public void Activate(PlacedWeapon[,] placedWeapons)
     {
         isActive = placedWeapons[gridPosition.x, gridPosition.y] != null;
-        if(isActive)
+        if (isActive)
         {
             placedWeapon = placedWeapons[gridPosition.x, gridPosition.y];
         }
@@ -155,7 +159,7 @@ public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera ca
         {
             placedWeapon = null;
         }
-            SetIcon();
+        SetIcon();
     }
     public void LevelUp(int SpotWeaponLevel)
     {
@@ -168,7 +172,15 @@ public void Init(SlotWeaponsSO _weaponData, int Level, Vector2Int pos, Camera ca
     {
         if (collision.CompareTag("dragProxy"))
         {
-            dragProxy = collision.GetComponent<DragProxy>().image;
+            if(dragProxy == null)
+                dragProxy = collision.GetComponent<DragProxy>().image;
+            else if(dragProxy != collision.GetComponent<DragProxy>().image)
+            {
+                dragProxy.fillAmount = 1;
+                dragProxy = collision.GetComponent<DragProxy>().image;
+
+            }
+
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
