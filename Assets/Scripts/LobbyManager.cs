@@ -78,7 +78,7 @@ public class LobbyManager : MonoBehaviour
     readonly Color32 whiteShadow = new Color32(255, 255, 255, 220);
 
     // ==== Pref keys ====
-    private const string PrefGold = "gold";
+    private const string PrefGold = "goldMain";
     private const string PrefGems = "gems";
     private const string PrefArenaIndex = "Arena_Index";
     private const string PrefMatchIndex = "Arena_Match_Index";
@@ -86,7 +86,7 @@ public class LobbyManager : MonoBehaviour
     private const string PrefBattlesCompleted = "battlesCompleted";
     private const string PrefBattlesTotal = "battlesTotal";
 
-    private readonly SlotWeaponType[] cardPrefKeys = new[] { SlotWeaponType.Arrow, SlotWeaponType.Axe, SlotWeaponType.Bomb, SlotWeaponType.Stone };
+    private readonly SlotWeaponType[] cardPrefKeys = new[] { SlotWeaponType.Arrow, SlotWeaponType.Bomb, SlotWeaponType.Axe,  SlotWeaponType.Stone };
 
     // Track the currently-open hero page to place messages at its center.
     private RectTransform _activePageRT;
@@ -130,7 +130,7 @@ public class LobbyManager : MonoBehaviour
 
     public static int GetLevel(SlotWeaponType k, int fallback = 1) => PlayerPrefs.GetInt(LevelKey(k), fallback);
     public static void SetLevel(SlotWeaponType k, int level) => PlayerPrefs.SetInt(LevelKey(k), Mathf.Max(0, level));
-    public static bool IsUnlocked(SlotWeaponType k) => PlayerPrefs.GetInt(UnlockKey(k), SlotWeaponType.Arrow == k ?1: 0) == 1;
+    public static bool IsUnlocked(SlotWeaponType k) => PlayerPrefs.GetInt(UnlockKey(k), SlotWeaponType.Arrow == k ?1: (SlotWeaponType.Bomb == k ? 1 : 0)) == 1;
     public static void SetUnlocked(SlotWeaponType k, bool v) => PlayerPrefs.SetInt(UnlockKey(k), v ? 1 : 1);
 
     private int Coins
@@ -151,7 +151,7 @@ public class LobbyManager : MonoBehaviour
     private void UpdateArenaBoardsVisual()
     {
         int target = CurrentArenaBoardIndex();
-        Debug.Log("Target" + target);
+        //Debug.Log("Target" + target);
         for (int i = 0; i < (arenaBoards?.Length ?? 0); i++)
         {
             var go = arenaBoards[i];
@@ -295,7 +295,7 @@ public class LobbyManager : MonoBehaviour
     {
         int total = MatchesTotalForArena(ArenaIndex);
         int nextMatch = MatchIndex + 1;
-        Debug.Log($"[LobbyManager] Advancing match progress: Arena {ArenaIndex} Match {MatchIndex} -> {nextMatch} (of {total})");
+        //Debug.Log($"[LobbyManager] Advancing match progress: Arena {ArenaIndex} Match {MatchIndex} -> {nextMatch} (of {total})");
         if (nextMatch < total)
         {
             MatchIndex = nextMatch;
@@ -305,13 +305,13 @@ public class LobbyManager : MonoBehaviour
             // arena dəyiş (və ya loop)
             if (ArenaIndex < (matchesPerArena?.Length ?? 1) - 1)
             {
-                Debug.Log("[LobbyManager] Advancing to the next arena.");
+                //Debug.Log("[LobbyManager] Advancing to the next arena.");
                 ArenaIndex = ArenaIndex + 1;
                 MatchIndex = 0;
             }
             else
             {
-                Debug.Log("[LobbyManager] Reached the final arena and match. Looping back to the first arena.");
+                //Debug.Log("[LobbyManager] Reached the final arena and match. Looping back to the first arena.");
                 // LOOP: son arenadan sonra 0-a qayıt
                 ArenaIndex = 0;
                 MatchIndex = 0;
@@ -381,7 +381,8 @@ public class LobbyManager : MonoBehaviour
 
     public void ShowHeroes()
     {
-        //        SoundManager.Instance.PlayClick();
+                
+        SoundManager.Instance.PlayClick();
 
         foreach (var b in arenaBoards) if (b) b.SetActive(false);
         if (rankingBoard) rankingBoard.SetActive(false);
@@ -394,7 +395,7 @@ public class LobbyManager : MonoBehaviour
 
     public void ShowBattle()
     {
-        //        SoundManager.Instance.PlayClick();
+        SoundManager.Instance.PlayClick();
 
         if (rankingBoard) rankingBoard.SetActive(false);
         if (heroesBoard) heroesBoard.SetActive(false);
@@ -416,7 +417,7 @@ public class LobbyManager : MonoBehaviour
     // =================== Hero page (cards) ===================
     public void ShowHeroPage(string deckName)
     {
-        //SoundManager.Instance.PlayClick();
+        SoundManager.Instance.PlayClick();
 
         foreach (var b in arenaBoards) if (b) b.SetActive(false);
         if (rankingBoard) rankingBoard.SetActive(false);
@@ -438,7 +439,7 @@ public class LobbyManager : MonoBehaviour
         int n = wizardCards.Length;
         for (int i = 0; i < n; i++)
         {
-            Debug.Log("Processing card " + i + " for deck " + deckName);
+            //Debug.Log("Processing card " + i + " for deck " + deckName);
             SlotWeaponType key = cardPrefKeys[i];
             bool unlocked = IsUnlocked(key);
             int level = GetLevel(key, 1);
@@ -481,18 +482,18 @@ public class LobbyManager : MonoBehaviour
                 label.text = price.ToString();
                 btn.interactable = affordable;
                 SetButtonAffordabilityVisual(buttonGO, affordable);
-                Debug.Log("Setting unlock for " + key + " price " + price + " affordable: " + affordable);
+                //Debug.Log("Setting unlock for " + key + " price " + price + " affordable: " + affordable);
                 int captured = i;
                 btn.onClick.AddListener(() =>
                 {
-                    Debug.Log("Unlock clicked for " + key);
+                    //Debug.Log("Unlock clicked for " + key);
                     if (!HasEnough(price))
                     {
                         Pulse(btn.transform);
                         ShowMessage("Not enough coins!", redWarn);
                         return;
                     }
-                    Debug.Log("Unlocking " + key);
+                    //Debug.Log("Unlocking " + key);
                     Spend(price);
                     SetUnlocked(cardPrefKeys[captured], true);
                     SetLevel(cardPrefKeys[captured], 1);
@@ -690,7 +691,7 @@ public class LobbyManager : MonoBehaviour
     IEnumerator ClickStartTime()
     {
         //TutorialManager.Instance.PanelActive(true);
-        //SoundManager.Instance.PlayStartBattle();
+        SoundManager.Instance.PlayStartBattle();
         yield return new WaitForSeconds(0.7f);
         ComputeAndStoreNextLevelIndex(); // writes NextLevelIndex based on MatchIndex/mapping
         SceneManager.LoadScene(1);
@@ -721,7 +722,7 @@ public class LobbyManager : MonoBehaviour
     // =================== Optional direct card hooks ===================
     public void UnlockCard(string deckName, int index)
     {
-        Debug.Log("UnlockCard: " + deckName + " index " + index);
+        //Debug.Log("UnlockCard: " + deckName + " index " + index);
         if ( index < 0 || index >= cardPrefKeys.Length) return;
         if (IsUnlocked(cardPrefKeys[index])) return;
         int price = GetUnlockPrice(deckName, index);
@@ -740,7 +741,7 @@ public class LobbyManager : MonoBehaviour
 
     public void UpgradeCard(string deckName, int index)
     {
-        Debug.Log("UpgradeCard: " + deckName + " index " + index);
+        //Debug.Log("UpgradeCard: " + deckName + " index " + index);
         if (index < 0 || index >= cardPrefKeys.Length) return;
         if (!IsUnlocked(cardPrefKeys[index])) return;
 

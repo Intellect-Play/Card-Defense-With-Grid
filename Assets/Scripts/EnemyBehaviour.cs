@@ -354,7 +354,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (_dead) return;
         _dead = true;
-
+        SoundManager.Instance.PlayEnemyKill();
         try { OnEnemyDestroyed?.Invoke(this); } catch { }
 
         // Destroy the general parent (owner). If there is no parent, destroy this object.
@@ -490,7 +490,7 @@ public class EnemyBehaviour : MonoBehaviour
             //CancelInvoke(nameof(HideHitVFX));
             //Invoke(nameof(HideHitVFX), 0.1f);
         }
-
+        SoundManager.Instance.PlayEnemyDamage();
         Vector3 upScale = _originalScale * Mathf.Max(hitScaleUpFactor, 1.0001f);
 
         if (_hitScaleTweenId_1 != -1) LeanTween.cancel(gameObject, _hitScaleTweenId_1);

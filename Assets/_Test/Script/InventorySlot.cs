@@ -23,14 +23,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         Unlocked = false;
         slotUnlockButton.gameObject.SetActive(true);
         lockText.text = PriceCheck.instance.priceSO.UnlockSlotPrice.ToString();
-        Debug.Log("LockSlot " + gridPosition);
+        //Debug.Log("LockSlot " + gridPosition);
     }
     public void UnlockButtondActive()
     {
         Time.timeScale = 1f;
         if (!TetrisWeaponManager.isTetrisScene) return;
         if (PriceCheck.instance.priceSO.UnlockSlotPrice > PlayerPrefs.GetInt("gold", 0)) return;
-        Debug.Log("UnlockButtondActive " + gridPosition);
+        //Debug.Log("UnlockButtondActive " + gridPosition);
         // DOTween animasiyası üçün RectTransform
         RectTransform buttonRect = slotUnlockButton.GetComponent<RectTransform>();
         if (buttonRect != null)
@@ -96,7 +96,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 placedComp.PlaceSpawn(this);
                 dragged.parentSlot = this;
                 //dragged.transform.SetParent(inventory.placedWeaponsContainer);
-                Debug.Log("_Placing new object from prefab2.");
+                //Debug.Log("_Placing new object from prefab2.");
 
             }
             return;
@@ -142,12 +142,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 placedComp.Place(this);
                 dragged.parentSlot = this;
                 dragged.transform.SetParent(inventory.placedWeaponsContainer);
-                Debug.Log("_Placing new object from prefab2.");
+                //Debug.Log("_Placing new object from prefab2.");
 
             }
             else
             {
-                Debug.Log("_Placing new object from prefab.");
+                //Debug.Log("_Placing new object from prefab.");
                 Destroy(dragged.gameObject);
                 var newPlaced = inventory.CreatePlacedWeaponFromPrefab(inventory.placedPrefab, weapon, pos, this);
                 if (highlightImage != null) highlightImage.sprite = newPlaced.weaponData.icon;

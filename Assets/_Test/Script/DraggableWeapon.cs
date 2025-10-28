@@ -156,7 +156,7 @@ public class DraggableWeapon : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             return;
 
         }
-        Debug.Log("OnEndDrag called.");
+        //Debug.Log("OnEndDrag called.");
         if (transform.parent == canvas)
         {
             transform.SetParent(originalParent);

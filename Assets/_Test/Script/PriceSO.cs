@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Price")]
 public class PriceSO : ScriptableObject
 {
+    public int WinCoin;
+    public int[] WaweCoins;
+
     public int BuyPrice;
     public int ShufflePrice;
     public int RerollPrice;

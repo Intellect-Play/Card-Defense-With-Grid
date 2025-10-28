@@ -107,8 +107,8 @@ public class GameManager : MonoBehaviour
             mainCam.transparencySortMode = TransparencySortMode.CustomAxis;
             mainCam.transparencySortAxis = new Vector3(0f, 0f, 1f);
         }
-
-        uIManager.SetCoins(PlayerPrefs.GetInt("gold", 0));
+        PlayerPrefs.SetInt("gold", 0);
+        uIManager.SetCoins(0);
         uIManager.SetHealthText(health.ToString());
         uIManager.SetWinBoardActive(false);
         uIManager.SetLoseBoardActive(false);
@@ -148,14 +148,14 @@ public class GameManager : MonoBehaviour
     private int ResolveCurrentLevelIndex()
     {
         int max = (levelManager != null && levelManager.levels != null) ? levelManager.levels.Length : 0;
-        Debug.Log($"[GameManager] LevelManager has {max} levels.");
+        //Debug.Log($"[GameManager] LevelManager has {max} levels.");
         if (max <= 0) return 0;
-        Debug.Log($"2 [GameManager] LevelManager has {max} levels.");
+        //Debug.Log($"2 [GameManager] LevelManager has {max} levels.");
 
         if (PlayerPrefs.HasKey(PrefNextLevelIndex))
         {
             int idx = PlayerPrefs.GetInt(PrefNextLevelIndex, 0);
-            Debug.Log(PlayerPrefs.GetInt(PrefNextLevelIndex) + $"[GameManager] Next level index from prefs is {idx}.");
+            //Debug.Log(PlayerPrefs.GetInt(PrefNextLevelIndex) + $"[GameManager] Next level index from prefs is {idx}.");
             return Mathf.Clamp(idx, 0, max - 1);
         }
 
@@ -334,7 +334,7 @@ public class GameManager : MonoBehaviour
         yield return SpawnWave(0, _waveCountsDeclared[0], waves[0], _waveRoots[0]);
         _waveSpawnFinished[0] = true;
         _waveSpawned[0]       = true;
-        Debug.Log("[GameManager] First wave spawned.");
+        //Debug.Log("[GameManager] First wave spawned.");
         StartCoroutine(MidpointSpawnCoordinator(waves));
         StartCoroutine(RoguelikeCoordinator(waves));
 
@@ -350,7 +350,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         AudioListener.pause = true;
         uIManager.SetWinBoardActive(true);
-        Debug.Log("[GameManager] Player has won the level.");
+        //Debug.Log("[GameManager] Player has won the level.");
         AwardGold(30);
     }
 
@@ -409,10 +409,15 @@ public class GameManager : MonoBehaviour
         if (eb == null) return;
 
         _totalKills++;
-        AwardGold(eb.rewardGold);
         UpdateWaveUIFromTotals();
     }
-
+    private void AwardGoldGame(int amount)
+    {
+        int g = PlayerPrefs.GetInt("gold", 0) + amount;
+        PlayerPrefs.SetInt("gold", g);
+        PlayerPrefs.Save();
+        uIManager.SetCoins(g);
+    }
     private void UpdateWaveUIFromTotals()
     {
         int totalWaves = _waveCountsDeclared.Length;
@@ -450,6 +455,7 @@ public class GameManager : MonoBehaviour
 
             if (_roguelikeShown[wi]) continue;
             _roguelikeShown[wi] = true;
+            AwardGoldGame(PriceCheck.instance.priceSO.WaweCoins[wi]);
             if (waves[wi].RoguelikeBool)
             {
                 //Debug.Log($"[GameManager] Starting roguelike after wave {wi + 1}.");
@@ -543,11 +549,12 @@ public class GameManager : MonoBehaviour
     // =================== Util ===================
 
     private void AwardGold(int amount)
-    {
-        int g = PlayerPrefs.GetInt("gold", 0) + amount;
-        PlayerPrefs.SetInt("gold", g);
+    {                                                                                                                                                                                            
+        amount = PriceCheck.instance.priceSO.WinCoin;
+        int g = PlayerPrefs.GetInt("goldMain", 0) + amount;
+        PlayerPrefs.SetInt("goldMain", g);
         PlayerPrefs.Save();
-        uIManager.SetCoins(g);
+        //uIManager.SetCoins(g);
     }
 
     private List<float> GenerateShuffledXPositions(float min, float max, int count)

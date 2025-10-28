@@ -59,7 +59,7 @@ public class StaticWeapon : MonoBehaviour
     {
         if (placedWeapon == null) return 0;
         int level = weaponSetting.Level;
-        Debug.Log("GetWeaponSetting Level " + level);
+        //Debug.Log("GetWeaponSetting Level " + level);
         LevelUp(level);
         //Debug.Log(weaponSetting.Countdawn[0]+" Time");
         //Debug.Log("GetWeaponSetting " + placedWeapon.WeaponLevel + " " + weaponSetting.Damage[level] + " " + weaponSetting.Countdawn[level]);

@@ -1341,7 +1341,7 @@ public class Bullet : MonoBehaviour
             if(Vector3.Distance(e.transform.position, origin) > 1f) continue;
             float d = (e.transform.position - origin).sqrMagnitude;
             if (d < best) { best = d; dir = (e.transform.position - origin).normalized; }
-            Debug.Log("Closest enemy: " + Vector3.Distance(e.transform.position, origin));
+            //Debug.Log("Closest enemy: " + Vector3.Distance(e.transform.position, origin));
 
         }
         return dir;
@@ -1360,7 +1360,7 @@ public class Bullet : MonoBehaviour
             float sq = (eb.transform.position - transform.position).sqrMagnitude;
             if (sq < minSqr) { minSqr = sq; best = eb.transform; }
         
-        Debug.Log("Closest enemy: " + Vector3.Distance(eb.transform.position, transform.position));
+        //Debug.Log("Closest enemy: " + Vector3.Distance(eb.transform.position, transform.position));
 
     }
         return best;
