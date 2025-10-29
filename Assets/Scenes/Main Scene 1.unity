@@ -3585,9 +3585,9 @@ MonoBehaviour:
         overrideArtwork: {fileID: 0}
         description: 
     gridLevelDatas:
-      Width: 4
-      Height: 4
-      CellSize: 110
+      Width: 3
+      Height: 3
+      CellSize: 120
       LockCellCount: 0
 --- !u!4 &1228646766
 Transform:

@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
     {
         if (health <= 0 && !_loseStarted)
         {
+
             _loseStarted = true;
             health = 0;
             uIManager.SetHealthText("0");
@@ -275,6 +276,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoseSequence()
     {
         yield return new WaitForSecondsRealtime(2f);
+        Debug.Log("[GameManager] Player has lost the level.");
         Time.timeScale = 0f;
         AudioListener.pause = true;
         uIManager.SetLoseBoardActive(true);
