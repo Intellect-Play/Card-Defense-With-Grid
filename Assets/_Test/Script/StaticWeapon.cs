@@ -93,6 +93,7 @@ public class StaticWeapon : MonoBehaviour
 
         // 🔹 DOTween ilə kiçik "pop" effekti (şəkil atır kimi)
         // Əvvəlcə obyektin ölçüsünü bir az böyüdürük və geri qaytarırıq
+        SoundManager.Instance.PlaySound(SoundType.Fire);
         transform.DOKill(); // əvvəlki animasiyalar təmizlə
         transform
             .DOScale(1.15f, 0.1f)  // 0.1 saniyəyə 15% böyüt
