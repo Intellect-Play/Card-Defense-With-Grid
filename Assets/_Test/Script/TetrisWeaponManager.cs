@@ -196,10 +196,8 @@ public class TetrisWeaponManager : MonoBehaviour
     public void Reroll()
     {
         if(PriceCheck.instance.priceSO.RerollPrice > PlayerPrefs.GetInt("gold", 0)) return;
-        int g = PlayerPrefs.GetInt("gold", 0) - PriceCheck.instance.priceSO.RerollPrice;
-        PlayerPrefs.SetInt("gold", g);
-        PlayerPrefs.Save();
-        GameManager.Instance.uIManager.SetCoins(g);
+        GameManager.Instance.InCreaseGold(PriceCheck.instance.priceSO.RerollPrice);
+
         inventoryManager.SpawnWeapons();
         UIRefleshGame();
         inventoryManager.SameSelectedAll();
@@ -218,11 +216,8 @@ public class TetrisWeaponManager : MonoBehaviour
     {
         if (PriceCheck.instance.priceSO.BuyPrice > PlayerPrefs.GetInt("gold", 0)) return;
         if (!randomWeaponSpawner.SpawnRandomWeapons()) return;
-        int g = PlayerPrefs.GetInt("gold", 0) - PriceCheck.instance.priceSO.RerollPrice;
-        PlayerPrefs.SetInt("gold", g);
-        PlayerPrefs.Save();
-        GameManager.Instance.uIManager.SetCoins(g);
-        
+       GameManager.Instance.InCreaseGold(PriceCheck.instance.priceSO.BuyPrice);
+
         UIRefleshGame();
     }
     public void UIRefleshGame()

@@ -30,6 +30,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         Time.timeScale = 1f;
         if (!TetrisWeaponManager.isTetrisScene) return;
         if (PriceCheck.instance.priceSO.UnlockSlotPrice > PlayerPrefs.GetInt("gold", 0)) return;
+        GameManager.Instance.InCreaseGold(PriceCheck.instance.priceSO.UnlockSlotPrice);
+
         //Debug.Log("UnlockButtondActive " + gridPosition);
         // DOTween animasiyası üçün RectTransform
         RectTransform buttonRect = slotUnlockButton.GetComponent<RectTransform>();

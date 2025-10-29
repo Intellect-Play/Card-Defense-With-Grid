@@ -272,7 +272,13 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(RunLevel());
     }
-
+    public void InCreaseGold(int amount)
+    {
+        int g = PlayerPrefs.GetInt("gold", 0) - amount;
+        PlayerPrefs.SetInt("gold", g);
+        PlayerPrefs.Save();
+        uIManager.SetCoins(g);
+    }
     private IEnumerator LoseSequence()
     {
         yield return new WaitForSecondsRealtime(2f);
