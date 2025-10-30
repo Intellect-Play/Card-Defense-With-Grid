@@ -214,12 +214,23 @@ public class InventoryManager : MonoBehaviour
         //Debug.Log("Adding draggable: " + drag.name);
         AllWeapons.Add(drag);
     }
+    int AllWeaponMergeNum = 0;
     public GameObject GetDraggablePrefab()
     {
         if(AllWeapons.Count == 0) return null;
         foreach (GameObject child in selectedWeapons)
         {
-            if(child.GetComponent<DraggableWeapon>().weaponData.name == AllWeapons[0].weaponData.name) return child;
+            for(int i = 0; i < AllWeapons.Count; i++)
+            {
+                if (child.GetComponent<DraggableWeapon>().weaponData.name == AllWeapons[i].weaponData.name &&
+                    AllWeapons[i].placedWeapon.WeaponLevel <= 3)
+                {
+                    AllWeaponMergeNum = i;
+                    Debug.Log("Merge üçün silah tapıldı: " + child.GetComponent<DraggableWeapon>().weaponData.name + " Level: " + AllWeapons[i].placedWeapon.WeaponLevel+ " AllWeaponMergeNum "+ AllWeaponMergeNum);
+                    return child;
+                }
+            }
+         
         }
         return null;
     }
@@ -239,6 +250,19 @@ public class InventoryManager : MonoBehaviour
             int randomIndex = Random.Range(i, shuffledWeapons.Count);
             (shuffledWeapons[i], shuffledWeapons[randomIndex]) = (shuffledWeapons[randomIndex], shuffledWeapons[i]);
         }
+        for (int i = 0; i < spawnSlots.Count; i++)
+        {
+            var slot = spawnSlots[i];
+            spawnName++;
+
+            // Köhnə child-ları sil
+            foreach (Transform c in slot.transform)
+            {
+                RemoveDraggable(c.GetComponent<DraggableWeapon>());
+                Destroy(c.gameObject);
+            }
+        }
+            GameObject randomWeaponForMerge = GetDraggablePrefab();
         // Hər slot üçün unikal silah seç
         for (int i = 0; i < spawnSlots.Count; i++)
         {
@@ -258,7 +282,7 @@ public class InventoryManager : MonoBehaviour
             GameObject randomWeapon;
             if (i == randomMergeSpawner)
             {
-                randomWeapon = GetDraggablePrefab();
+                randomWeapon = randomWeaponForMerge;
                 if (randomWeapon == null)
                     randomWeapon = shuffledWeapons[i];
                 //Debug.Log("Random merge spawner seçildi: " + i);
@@ -289,8 +313,8 @@ public class InventoryManager : MonoBehaviour
             placed.InitAsSpawn(weaponData);
 
             slot.SetSlotIcon(randomWeapon != null ? weaponData.icon : null);
-            if(i == randomMergeSpawner&& AllWeapons.Count>0)
-                placed.GetLevel(AllWeapons[0].placedWeapon.WeaponLevel-1);
+            if(i == randomMergeSpawner&& AllWeapons.Count>0&& randomWeaponForMerge !=null)
+                placed.GetLevel(AllWeapons[AllWeaponMergeNum].placedWeapon.WeaponLevel-1);
         }
     }
 
