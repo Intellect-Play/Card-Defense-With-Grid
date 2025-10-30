@@ -51,7 +51,10 @@ public class PlacedWeapon : MonoBehaviour
     }
     public void GetLevel(int level)
     {
+        //Debug.Log("Get Level to " + WeaponLevel + " " + level);
+
         WeaponLevel += level;
+        //Debug.Log("Get Level to " + WeaponLevel+" "+level);
         foreach (var drag in ChildDrags)
         {
             drag.LevelUpgrade(WeaponLevel);

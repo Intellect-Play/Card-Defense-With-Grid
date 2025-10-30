@@ -114,6 +114,7 @@ public class InventoryManager : MonoBehaviour
             draggableWeapon.ActiveChildsArrow(false);
         }
     }
+
     public void SameSelectedAll()
     {
         ClearSameSelected();
@@ -213,14 +214,23 @@ public class InventoryManager : MonoBehaviour
         //Debug.Log("Adding draggable: " + drag.name);
         AllWeapons.Add(drag);
     }
-    public void                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-        SpawnWeapons()
+    public GameObject GetDraggablePrefab()
+    {
+        if(AllWeapons.Count == 0) return null;
+        foreach (GameObject child in selectedWeapons)
+        {
+            if(child.GetComponent<DraggableWeapon>().weaponData.name == AllWeapons[0].weaponData.name) return child;
+        }
+        return null;
+    }
+    public void SpawnWeapons()
     {
         // Əgər slot sayı silah sayından çoxdursa, siyahını qarışdır
         if (selectedWeapons.Count < spawnSlots.Count)
         {
             Debug.LogWarning("Spawn slot count is greater than available weapons! Some slots will stay empty.");
         }
+        int randomMergeSpawner = Random.Range(0, spawnSlots.Count);
 
         // Silah siyahısını random sırala (Fisher-Yates shuffle)
         List<GameObject> shuffledWeapons = new List<GameObject>(selectedWeapons);
@@ -229,7 +239,6 @@ public class InventoryManager : MonoBehaviour
             int randomIndex = Random.Range(i, shuffledWeapons.Count);
             (shuffledWeapons[i], shuffledWeapons[randomIndex]) = (shuffledWeapons[randomIndex], shuffledWeapons[i]);
         }
-
         // Hər slot üçün unikal silah seç
         for (int i = 0; i < spawnSlots.Count; i++)
         {
@@ -246,9 +255,16 @@ public class InventoryManager : MonoBehaviour
             // Əgər artıq silah qalmayıbsa, break
             if (i >= shuffledWeapons.Count)
                 break;
-
-            // Random qarışdırılmış siyahıdan al
-            GameObject randomWeapon = shuffledWeapons[i];
+            GameObject randomWeapon;
+            if (i == randomMergeSpawner)
+            {
+                randomWeapon = GetDraggablePrefab();
+                if (randomWeapon == null)
+                    randomWeapon = shuffledWeapons[i];
+                //Debug.Log("Random merge spawner seçildi: " + i);
+            }
+            else 
+                randomWeapon = shuffledWeapons[i];
 
             // Instantiate
             var go = Instantiate(randomWeapon, slot.transform);
@@ -273,6 +289,8 @@ public class InventoryManager : MonoBehaviour
             placed.InitAsSpawn(weaponData);
 
             slot.SetSlotIcon(randomWeapon != null ? weaponData.icon : null);
+            if(i == randomMergeSpawner&& AllWeapons.Count>0)
+                placed.GetLevel(AllWeapons[0].placedWeapon.WeaponLevel-1);
         }
     }
 

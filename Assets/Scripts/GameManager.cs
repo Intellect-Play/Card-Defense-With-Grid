@@ -107,8 +107,8 @@ public class GameManager : MonoBehaviour
             mainCam.transparencySortMode = TransparencySortMode.CustomAxis;
             mainCam.transparencySortAxis = new Vector3(0f, 0f, 1f);
         }
-        PlayerPrefs.SetInt("gold", 0);
-        uIManager.SetCoins(0);
+        //PlayerPrefs.SetInt("gold", 0);
+        uIManager.SetCoins(PlayerPrefs.GetInt("gold", 0));
         uIManager.SetHealthText(health.ToString());
         uIManager.SetWinBoardActive(false);
         uIManager.SetLoseBoardActive(false);
@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         DeactivateAllDecks();
         InitialHeroSelectionAndThenStart();
         //StartCoroutine(InitialHeroSelectionAndThenStart());
+
     }
 
     void Update()

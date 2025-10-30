@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using static UnityEngine.UI.Image;
+using static UnityEngine.GraphicsBuffer;
 
 public class Bullet : MonoBehaviour
 {
@@ -342,109 +343,6 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // -------------------- Samurai Hammer (multi + inner-spin + VFX) --------------------
-    // L1=4, then +1 per level, max 8
-    private IEnumerator HammerRoutine()
-    {
-        int count = chainCount;
-
-        if (count > 1)
-        {
-            var targets = GetEnemyTargets(count, transform.position);
-            if (targets.Count == 0) { Destroy(gameObject); yield break; }
-
-            Transform primary = targets[0];
-            Vector3 fwd = (primary ? (primary.position - transform.position).normalized
-                                    : (_direction.sqrMagnitude > 0f ? _direction.normalized : Vector3.up));
-            Vector3 perp = new Vector3(-fwd.y, fwd.x, 0f);
-
-            float spreadDeg = 16f;
-            float forwardSpace = 0.30f;
-            float sideSpace = 0.18f;
-            float delayBetween = 0.06f;
-
-            for (int i = 0; i < count; i++)
-            {
-                float ang = (i - (count - 1) / 2f) * spreadDeg;
-                Vector3 dir = (Quaternion.Euler(0f, 0f, ang) * fwd).normalized;
-
-                Vector3 spawnPos = transform.position
-                                + dir * (i * forwardSpace)
-                                + perp * ((i - (count - 1) / 2f) * sideSpace);
-
-                var go = Instantiate(gameObject, spawnPos, Quaternion.identity);
-                var hb = go.GetComponent<Bullet>();
-                hb.attackType = AttackType.Samurai_Hammer;
-                hb._damage = _damage;
-
-                var windFx = go.transform.Find("wind_fx");
-                if (windFx) windFx.gameObject.SetActive(true);
-
-                hb.StartCoroutine(hb.HammerFlyRoutine(targets[i % targets.Count], delayBetween * i));
-            }
-
-            Destroy(gameObject);
-            yield break;
-        }
-
-        Transform target = FindClosestEnemyTransform();
-        if (!target) { Destroy(gameObject); yield break; }
-        yield return StartCoroutine(HammerFlyRoutine(target, 0f));
-    }
-
-    private IEnumerator HammerFlyRoutine(Transform target, float startDelay)
-    {
-        if (startDelay > 0f) yield return new WaitForSeconds(startDelay);
-
-        Transform spinT = transform.Find("Bullet") ?? transform;
-        int tweenId = LeanTween.rotateAroundLocal(spinT.gameObject, Vector3.forward, -360f, 0.45f)
-                            .setRepeat(-1)
-                            .setEaseLinear()
-                            .id;
-
-        Transform hitVFX = transform.Find("hit");
-        if (hitVFX) hitVFX.gameObject.SetActive(false);
-        Transform windFx = transform.Find("wind_fx");
-        if (windFx) windFx.gameObject.SetActive(true);
-
-        float moveSpeed = 3.25f;
-        float reTargetT = 0f;
-        float maxLife = 2.5f;
-        float t = 0f;
-
-        while (t < maxLife)
-        {
-            if (!target || !target.gameObject.activeInHierarchy)
-            {
-                reTargetT += Time.deltaTime;
-                if (reTargetT > 0.15f) { target = FindClosestEnemyTransform(); reTargetT = 0f; }
-                if (!target) break;
-            }
-
-            Vector3 toTarget = (target.position - transform.position).normalized;
-            transform.position += toTarget * moveSpeed * Time.deltaTime;
-
-            if (Vector3.Distance(transform.position, target.position) <= 0.3f)
-            {
-                OnHitEnemy(target);
-                LeanTween.cancel(spinT.gameObject);
-
-                if (hitVFX) hitVFX.gameObject.SetActive(true);
-                yield return new WaitForSeconds(0.10f);
-                Destroy(gameObject);
-                yield break;
-            }
-
-            t += Time.deltaTime;
-            yield return null;
-        }
-
-        LeanTween.cancel(spinT.gameObject);
-        Destroy(gameObject);
-    }
-
-    // -------------------- Samurai Blades --------------------
-    // L1=3, then +1 per level, max 6
     private IEnumerator BladesRoutine()
     {
         int count = chainCount;
@@ -509,6 +407,129 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private IEnumerator HammerRoutine()
+    {
+        int count = chainCount;
+
+        var targets = GetEnemyTargets(count, transform.position);
+        if (targets.Count == 0) { Destroy(gameObject); yield break; }
+
+        Transform primary = targets[0];
+        Vector3 fwd = (primary ? (primary.position - transform.position).normalized
+                            : (_direction.sqrMagnitude > 0f ? _direction.normalized : Vector3.up));
+        Vector3 perp = new Vector3(-fwd.y, fwd.x, 0f);
+
+        float lateral = 0.35f;
+        float fwdSpacing = 0.25f;
+        float backSpacing = 0.35f;
+        float smallLat = 0.20f;
+        float bigLat = 0.35f;
+        float backDelay = 0.08f;
+
+        var shots = new List<(Vector3 pos, float delay, float phase)>();
+        switch (count)
+        {
+            case 1:
+                shots.Add((transform.position, 0f, 0f));
+                break;
+
+            case 2:
+                shots.Add((transform.position + perp * (+lateral * 0.5f), 0f, 0f));
+                shots.Add((transform.position + perp * (-lateral * 0.5f), 0f, Mathf.PI));
+                break;
+
+            case 3:
+                shots.Add((transform.position + fwd * fwdSpacing, 0f, 0f));
+                shots.Add((transform.position - fwd * backSpacing + perp * (+lateral * 0.6f), backDelay, 0f));
+                shots.Add((transform.position - fwd * backSpacing + perp * (-lateral * 0.6f), backDelay, Mathf.PI));
+                break;
+
+            default: // 4..6
+                shots.Add((transform.position + fwd * fwdSpacing + perp * (+smallLat), 0f, 0f));
+                shots.Add((transform.position + fwd * fwdSpacing + perp * (-smallLat), 0f, Mathf.PI));
+                shots.Add((transform.position - fwd * backSpacing + perp * (+bigLat), backDelay, 0f));
+                shots.Add((transform.position - fwd * backSpacing + perp * (-bigLat), backDelay, Mathf.PI));
+                for (int i = 4; i < count; i++)
+                    shots.Add((transform.position - fwd * (backSpacing + 0.1f * i), backDelay + 0.02f * (i - 3), (i % 2 == 0) ? 0f : Mathf.PI));
+                break;
+        }
+
+        for (int i = 0; i < shots.Count; i++)
+        {
+            var (pos, delay, phase) = shots[i];
+            Transform tgt = targets[Mathf.Min(i, targets.Count - 1)];
+
+            var bladeGO = Instantiate(gameObject, pos, Quaternion.identity);
+            var bComp = bladeGO.GetComponent<Bullet>();
+            bComp.attackType = AttackType.Samurai_Blades;
+            bComp._damage = _damage;
+            Transform spinT = transform.Find("Bullet") ?? transform;
+            int tweenId = LeanTween.rotateAroundLocal(spinT.gameObject, Vector3.forward, -360f, 0.45f)
+                                .setRepeat(-1)
+                                .setEaseLinear()
+                                .id;
+            if (delay > 0f) bComp.StartCoroutine(bComp.DelayStartBladeZigZag(tgt, phase, delay));
+            else bComp.StartCoroutine(bComp.BladeZigZag(tgt, phase));
+        }
+
+        Destroy(gameObject);
+    }
+    //yield return StartCoroutine(HammerFlyRoutine(target, 0f));
+
+    private IEnumerator HammerFlyRoutine(Transform target, float startDelay)
+    {
+        if (startDelay > 0f) yield return new WaitForSeconds(startDelay);
+
+        Transform spinT = transform.Find("Bullet") ?? transform;
+        int tweenId = LeanTween.rotateAroundLocal(spinT.gameObject, Vector3.forward, -360f, 0.45f)
+                            .setRepeat(-1)
+                            .setEaseLinear()
+                            .id;
+
+        Transform hitVFX = transform.Find("hit");
+        if (hitVFX) hitVFX.gameObject.SetActive(false);
+        Transform windFx = transform.Find("wind_fx");
+        if (windFx) windFx.gameObject.SetActive(true);
+
+        float moveSpeed = 3.25f;
+        float reTargetT = 0f;
+        float maxLife = 2.5f;
+        float t = 0f;
+
+        while (t < maxLife)
+        {
+            if (!target || !target.gameObject.activeInHierarchy)
+            {
+                reTargetT += Time.deltaTime;
+                if (reTargetT > 0.15f) { target = FindClosestEnemyTransform(); reTargetT = 0f; }
+                if (!target) break;
+            }
+
+            Vector3 toTarget = (target.position - transform.position).normalized;
+            transform.position += toTarget * moveSpeed * Time.deltaTime;
+
+            if (Vector3.Distance(transform.position, target.position) <= 0.3f)
+            {
+                OnHitEnemy(target);
+                LeanTween.cancel(spinT.gameObject);
+
+                if (hitVFX) hitVFX.gameObject.SetActive(true);
+                yield return new WaitForSeconds(0.10f);
+                Destroy(gameObject);
+                yield break;
+            }
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        LeanTween.cancel(spinT.gameObject);
+        Destroy(gameObject);
+    }
+
+    // -------------------- Samurai Blades --------------------
+    // L1=3, then +1 per level, max 6
+ 
     private IEnumerator DelayStartBladeZigZag(Transform target, float phaseOffset, float delay)
     {
         yield return new WaitForSeconds(delay);

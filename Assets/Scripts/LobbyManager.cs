@@ -99,7 +99,7 @@ public class LobbyManager : MonoBehaviour
     // =================== Unity ===================
     void Start()
     {
-        //PlayerPrefs.SetInt("gold", 1000);
+        PlayerPrefs.SetInt("goldMain", 1000);
 
         EnsurePriceArrays();
         EnsureDefaults_OnlyFirstUnlocked();
