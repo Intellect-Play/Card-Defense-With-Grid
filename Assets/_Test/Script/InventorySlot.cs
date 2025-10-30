@@ -27,7 +27,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
     public void UnlockButtondActive()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         if (!TetrisWeaponManager.isTetrisScene) return;
         if (PriceCheck.instance.priceSO.UnlockSlotPrice > PlayerPrefs.GetInt("gold", 0)) return;
         GameManager.Instance.InCreaseGold(PriceCheck.instance.priceSO.UnlockSlotPrice);
