@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109ae0839b7cbc1429f4bf69bb4ee53c, type: 3}
   m_Name: Price SO
   m_EditorClassIdentifier: 
-  WinCoin: 30
-  WaweCoins: 01000000140000001e000000280000003200000046000000000000000000000000000000
-  BuyPrice: 100
+  WinCoin: 50
+  WaweCoins: 23000000460000002300000050000000280000005a0000002d0000006400000032000000
+  BuyPrice: 85
   ShufflePrice: 60
-  RerollPrice: 50
+  RerollPrice: 70
   DecreaseCooldownPrice: 0
   UnlockSlotPrice: 20

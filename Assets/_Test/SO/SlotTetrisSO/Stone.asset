@@ -33,12 +33,14 @@ MonoBehaviour:
   - 10
   - 11
   - 12
+  - 12
+  - 12
   Countdawn:
   - 3
+  - 2.8
+  - 2.5
+  - 2.2
   - 2
-  - 5
-  - 5
-  - 5
   description: 
   attackType: 1
   weaponType: {fileID: 7787875020771003900, guid: 8655791197cf2c34db6638996301c773,

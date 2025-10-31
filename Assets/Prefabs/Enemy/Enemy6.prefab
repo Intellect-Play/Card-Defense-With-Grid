@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000020265577, y: -0.7071523, z: 0.70706135, w: 0.0000020861623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9142035, y: 0.9142035, z: 0.9142035}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1818753692379195120}
@@ -267,8 +267,6 @@ MonoBehaviour:
   coinBarRect: {fileID: 0}
   worldCamera: {fileID: 0}
   targetRenderer: {fileID: 673937429547072535}
-  hitFlashTime: 0.2
-  hitBrightness: 1.8
 --- !u!1 &3518370648365434126
 GameObject:
   m_ObjectHideFlags: 0

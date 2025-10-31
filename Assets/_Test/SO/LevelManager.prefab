@@ -1,0 +1,2691 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4535057042824623402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1763207698448189709}
+  - component: {fileID: 1405382718092366813}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1763207698448189709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4535057042824623402}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1223507, y: 0.71320647, z: -0.026760045}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1405382718092366813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4535057042824623402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569d2ac5e4dcdad4ca9d0d7b3ac00153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 150
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 5
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 4
+      Height: 4
+      CellSize: 110
+      LockCellCount: 0
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 5
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 5
+      Height: 4
+      CellSize: 110
+      LockCellCount: 0
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 5
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 5
+      Height: 5
+      CellSize: 110
+      LockCellCount: 0
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 6
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 5
+      Height: 5
+      CellSize: 100
+      LockCellCount: 3
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 6
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 5
+      Height: 4
+      CellSize: 110
+      LockCellCount: 4
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 6
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 5
+      Height: 4
+      CellSize: 110
+      LockCellCount: 4
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 6
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 10
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 5
+      Height: 4
+      CellSize: 110
+      LockCellCount: 4
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 6
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 6
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 6
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 5
+      Height: 6
+      CellSize: 80
+      LockCellCount: 5
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 6
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 10
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 8
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 5
+      Height: 6
+      CellSize: 80
+      LockCellCount: 5
+  - waves:
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions: []
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 4
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 3
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 25
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 3
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 6
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 2
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 10
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 0
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 8
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 86f44f54aa2184cc480179be68537143, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    - goldAmountMultiplier: 1
+      RoguelikeBool: 1
+      enemies:
+      - enemy: {fileID: 11400000, guid: c0a3a320cf0732743aacf304cb9d0467, type: 2}
+        count: 8
+      - enemy: {fileID: 11400000, guid: 94302503f21d915428917e6caa4d876d, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: 1bd725d31478c4ac38dea064adfa7099, type: 2}
+        count: 1
+      - enemy: {fileID: 11400000, guid: ed496cd4782ed4a9292160a458c5f3fa, type: 2}
+        count: 1
+      roguelikeOptions:
+      - deckName: 
+        type: 0
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 1
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+      - deckName: 
+        type: 2
+        targetCard: {fileID: 0}
+        targetDeckName: 
+        targetHero: {fileID: 0}
+        oldLevel: 0
+        newLevel: 0
+        healthAmount: 0
+        overrideArtwork: {fileID: 0}
+        description: 
+    gridLevelDatas:
+      Width: 5
+      Height: 6
+      CellSize: 80
+      LockCellCount: 5

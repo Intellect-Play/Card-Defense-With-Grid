@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf2198fc44f5bf4daacd34b7b068039, type: 3}
   m_Name: Enemy3
   m_EditorClassIdentifier: 
-  health: 100
-  attack: 5
-  moveSpeed: 0.5
+  health: 22
+  attack: 4
+  moveSpeed: 0.2
   rewardedGold: 0
   prefab: {fileID: 3518370648365434126, guid: e7fc48baf8162413482ec4e3cff70995, type: 3}
