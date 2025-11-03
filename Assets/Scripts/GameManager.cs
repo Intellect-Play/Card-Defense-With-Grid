@@ -288,6 +288,16 @@ public class GameManager : MonoBehaviour
         AudioListener.pause = true;
         uIManager.SetLoseBoardActive(true);
         enabled = false;
+        try
+        {
+            TinySauce.OnGameFinished(false, 30, PlayerPrefs.GetInt("NextLevelIndex", 0));
+
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
     }
 
     public void TakeDamage(int amount)
@@ -356,6 +366,16 @@ public class GameManager : MonoBehaviour
 
         // Win board
         yield return new WaitForSecondsRealtime(2f);
+        try
+        {
+            TinySauce.OnGameFinished(true, 50, PlayerPrefs.GetInt("NextLevelIndex", 0));
+
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
         Time.timeScale = 0f;
         AudioListener.pause = true;
         uIManager.SetWinBoardActive(true);

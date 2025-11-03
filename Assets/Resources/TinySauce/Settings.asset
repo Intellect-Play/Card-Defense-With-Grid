@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa11ec82e9746928e211e7f096812ca, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  gameAnalyticsIosGameKey: 
+  gameAnalyticsIosSecretKey: 
+  gameAnalyticsAndroidGameKey: e82252ac989848336b2ac505a3a5655b
+  gameAnalyticsAndroidSecretKey: 6a416fa126124e42b8198d020c60194b57fb9bf8
+  facebookAppId: 1119516457016071
+  facebookClientToken: 937deee4bddaeab16716eef66a166eb8
+  adjustIOSToken: 
+  adjustAndroidToken: dgq1l6s5c4xs
+  EditorIdfa: d70d6fd5-db16-4f0b-ac70-d384adf354e2
+  UseRemoteConfig: 0
+  UseVoodooAnalytics: 1
+  companyName: BGAI Tech LLC
+  privacyPolicyURL: https://drive.google.com/file/d/18mlaiuArZKHyPC1g4NAHTJGnVqIhTdvZ/view?usp=sharing
+  developerContactEmail: cooperate@bgaitechstudio.com

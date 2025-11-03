@@ -119,6 +119,16 @@ public class LobbyManager : MonoBehaviour
         //    samuraiButton.interactable = false;
         //    samuraiBG.SetActive(true);
         //}
+        try
+        {
+            TinySauce.OnGameStarted(PlayerPrefs.GetInt("NextLevelIndex", 0));
+
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
     public void RefreshFromPrefsAndRedraw()
     {

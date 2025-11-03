@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoadingScene.unity
     guid: 1ef0207e82d433f43b30de443cba50fd
+  - enabled: 1
+    path: Assets/VoodooPackages/TinySauce/Preload/Scene/TSPreloadScene.unity
+    guid: bd3e77c0fce3d499b809746835c3d75d
   - enabled: 1
     path: Assets/Scenes/Tutorial Scene.unity
     guid: 523c804fa6086f8488c2951a22fee8e1

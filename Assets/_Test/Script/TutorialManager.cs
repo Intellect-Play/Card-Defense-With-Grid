@@ -59,7 +59,16 @@ public class TutorialManager : MonoBehaviour
         StartMoving();
         handBuy.SetActive(false);
         fightButton.onClick.AddListener(DestroyHandFight);
-       
+        try
+        {
+            TinySauce.OnGameStarted(PlayerPrefs.GetInt("NextLevelIndex", 0));
+
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
     private void Update()
     {

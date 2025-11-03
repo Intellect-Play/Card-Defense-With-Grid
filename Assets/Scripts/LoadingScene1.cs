@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScene1 : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         if(PlayerPrefs.GetInt("TutorialFinish",0) == 0)
         {
