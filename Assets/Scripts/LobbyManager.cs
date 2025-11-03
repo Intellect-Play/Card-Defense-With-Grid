@@ -17,6 +17,8 @@ public class UICard
 public class LobbyManager : MonoBehaviour
 {
     [Header("Boards")]
+    public GameObject ArenaBoard;
+
     public GameObject[] arenaBoards;
     public GameObject rankingBoard;
     public GameObject heroesBoard;
@@ -370,7 +372,7 @@ public class LobbyManager : MonoBehaviour
 
     public void ShowRanking()
     {
-        foreach (var b in arenaBoards) if (b) b.SetActive(false);
+        ArenaBoard.SetActive(false);
         if (heroesBoard) heroesBoard.SetActive(false);
         HideAllHeroPages();
 
@@ -384,10 +386,9 @@ public class LobbyManager : MonoBehaviour
                 
         SoundManager.Instance.PlayClick();
 
-        foreach (var b in arenaBoards) if (b) b.SetActive(false);
+        ArenaBoard.SetActive(false);
         if (rankingBoard) rankingBoard.SetActive(false);
         HideAllHeroPages();
-
         PopOpen(heroesBoard);
         _activePageRT = null;
         FocusButton(heroesButtonImage);
@@ -400,6 +401,7 @@ public class LobbyManager : MonoBehaviour
         if (rankingBoard) rankingBoard.SetActive(false);
         if (heroesBoard) heroesBoard.SetActive(false);
         HideAllHeroPages();
+        PopOpen(ArenaBoard);
 
         UpdateArenaBoardsVisual();   // <<-- yeni
 
@@ -419,7 +421,7 @@ public class LobbyManager : MonoBehaviour
     {
         SoundManager.Instance.PlayClick();
 
-        foreach (var b in arenaBoards) if (b) b.SetActive(false);
+        ArenaBoard.SetActive(false);
         if (rankingBoard) rankingBoard.SetActive(false);
         if (heroesBoard) heroesBoard.SetActive(false);
         HideAllHeroPages();
@@ -694,7 +696,7 @@ public class LobbyManager : MonoBehaviour
         SoundManager.Instance.PlayStartBattle();
         yield return new WaitForSeconds(0.7f);
         ComputeAndStoreNextLevelIndex(); // writes NextLevelIndex based on MatchIndex/mapping
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 
     // =================== Card defaults ===================

@@ -69,15 +69,15 @@ public class LeaderboardManager : MonoBehaviour
             {
                 lBoardItems = data.items;
                 loaded = true;
-                Debug.Log("Loaded leaderboard from PlayerPrefs:");
-                foreach (var it in lBoardItems)
-                    Debug.Log($"  {it.index}: {it.name} – {it.cups} cups");
+                //Debug.Log("Loaded leaderboard from PlayerPrefs:");
+               // foreach (var it in lBoardItems)
+                 //   Debug.Log($"  {it.index}: {it.name} – {it.cups} cups");
             }
         }
 
         if (!loaded)
         {
-            Debug.Log("No saved leaderboard—generating fake data:");
+          //  Debug.Log("No saved leaderboard—generating fake data:");
             for (int i = 0; i < lBoardItems.Length; i++)
             {
                 lBoardItems[i] = new LeaderboardItem
@@ -87,7 +87,7 @@ public class LeaderboardManager : MonoBehaviour
                     cups  = UnityEngine.Random.Range(0, 500)
                 };
                 var it = lBoardItems[i];
-                Debug.Log($"  {it.index}: {it.name} – {it.cups} cups"); 
+                //Debug.Log($"  {it.index}: {it.name} – {it.cups} cups"); 
             }
 
             var outData = new LeaderboardData { items = lBoardItems };

@@ -119,13 +119,13 @@ public class GridInventory : MonoBehaviour
     public void RemovePlacedWeapon(PlacedWeapon placed)
     {
         //Debug.Log("Removing placed weapon: " + placed.name);
-        Debug.Log("Grid before removal:"+ grid.GetLength(0) + " "+ grid.GetLength(1)+" Heigh "+height+" width "+width);
+        //Debug.Log("Grid before removal:"+ grid.GetLength(0) + " "+ grid.GetLength(1)+" Heigh "+height+" width "+width);
         for (int y = 0; y < height; ++y)
             for (int x = 0; x < width; ++x)
             {
-                Debug.Log($"Checking cell {x},{y} for removal, found: " );
+                //Debug.Log($"Checking cell {x},{y} for removal, found: " );
 
-                Debug.Log($"Checking cell {x},{y} for removal, found: " + (grid[x, y] == null)+ "null");
+                //Debug.Log($"Checking cell {x},{y} for removal, found: " + (grid[x, y] == null)+ "null");
                 if (grid[x, y] != null && grid[x, y] == placed)
                 {
                     grid[x, y] = null;

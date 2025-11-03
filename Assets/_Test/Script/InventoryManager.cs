@@ -15,7 +15,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<InventorySlot> gridSlots = new List<InventorySlot>();
     [SerializeField] private List<InventorySlot> gridSlotsForWeapons = new List<InventorySlot>();
 
-    [SerializeField] private List<InventorySlot> spawnSlots = new List<InventorySlot>();
+    [SerializeField] public List<InventorySlot> spawnSlots = new List<InventorySlot>();
 
     [Header("Weapons")]
     [SerializeField] private List<WeaponSO> availableweaponDatas = new List<WeaponSO>();
@@ -35,6 +35,8 @@ public class InventoryManager : MonoBehaviour
     public Transform placedWeaponsContainer; // bütün weapon-lar burada toplanacaq
     int spawnName = 0;
     public int CellSize;
+    public bool isTutorialSpawn = false;
+    int tutorialCount = 0;
     public void AwakeInventoryManager()
     {
         if (instance == null) instance = this;
@@ -183,7 +185,7 @@ public class InventoryManager : MonoBehaviour
         // İlk 4 elementi seçilmiş siyahıya atır
         for (int i = 0; i < count; i++)
         {
-            selectedWeapons.Add(shuffled[i]);
+            selectedWeapons.Add(availableWeapons[i]);
             selectedWeapons[i].GetComponent<DraggableWeapon>().SelectedSprite = selectedIcons[i];
         }
     
@@ -236,6 +238,11 @@ public class InventoryManager : MonoBehaviour
     }
     public void SpawnWeapons()
     {
+        if (isTutorialSpawn)
+        {
+            SpawnWeaponsForTutorial();
+            return;
+        }
         // Əgər slot sayı silah sayından çoxdursa, siyahını qarışdır
         if (selectedWeapons.Count < spawnSlots.Count)
         {
@@ -317,7 +324,79 @@ public class InventoryManager : MonoBehaviour
                 placed.GetLevel(AllWeapons[AllWeaponMergeNum].placedWeapon.WeaponLevel-1);
         }
     }
+    public void SpawnWeaponsForTutorial()
+    {
+        // Əgər slot sayı silah sayından çoxdursa, siyahını qarışdır
+        if (availableWeapons.Count < spawnSlots.Count)
+        {
+            Debug.LogWarning("Spawn slot count is greater than available weapons! Some slots will stay empty.");
+        }
+        tutorialCount++;
 
+
+        for (int i = 0; i < spawnSlots.Count; i++)
+        {
+            var slot = spawnSlots[i];
+            spawnName++;
+
+            // Köhnə child-ları sil
+            foreach (Transform c in slot.transform)
+            {
+                RemoveDraggable(c.GetComponent<DraggableWeapon>());
+                Destroy(c.gameObject);
+            }
+        }
+        GameObject randomWeaponForMerge = GetDraggablePrefab();
+        // Hər slot üçün unikal silah seç
+        for (int i = 0; i < spawnSlots.Count; i++)
+        {
+            var slot = spawnSlots[i];
+            spawnName++;
+
+            // Köhnə child-ları sil
+            foreach (Transform c in slot.transform)
+            {
+                RemoveDraggable(c.GetComponent<DraggableWeapon>());
+                Destroy(c.gameObject);
+            }
+
+            // Əgər artıq silah qalmayıbsa, break
+            if (i >= availableWeapons.Count)
+                break;
+            GameObject randomWeapon;
+           
+                randomWeapon = availableWeapons[i];
+
+            // Instantiate
+            var go = Instantiate(randomWeapon, slot.transform);
+            go.GetComponent<RectTransform>().sizeDelta = new Vector2(CellSize, CellSize);
+            go.transform.localPosition = Vector3.zero;
+            go.name = go.name + spawnName;
+
+            var drag = go.GetComponent<DraggableWeapon>();
+            AddDraggable(drag);
+
+            var placed = go.GetComponent<PlacedWeapon>();
+
+            if (drag == null || placed == null)
+            {
+                Destroy(go);
+                continue;
+            }
+
+            WeaponSO weaponData = drag.weaponData;
+
+            drag.Init(weaponData, slot, placedWeaponsContainer);
+            placed.InitAsSpawn(weaponData);
+
+            slot.SetSlotIcon(randomWeapon != null ? weaponData.icon : null);
+            if (tutorialCount == 3)
+            {
+                placed.GetLevel(1);
+                //TutorialManager.Instance.handBuy.SetActive(true);
+            }
+        }
+    }
 
     public PlacedWeapon SpawnSelectedWeapon(InventorySlot slot, DraggableWeapon _draggableWeapon)
     {
